@@ -21,6 +21,8 @@ import {
   CheckSquare,
   Sparkles,
   Package,
+  ClipboardCheck,
+  Flame,
 } from "lucide-react";
 
 /* ---------- paleta y tipografía: Cuaderno de cocina ---------- */
@@ -62,6 +64,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Clásica",
+        calories: 350, // kcal/ración (estimado)
         ingredients: [
           { name: "Lentejas", qty: 300, unit: "g" },
           { name: "Zanahoria", qty: 2, unit: "ud" },
@@ -73,6 +76,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Con chorizo",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Lentejas", qty: 300, unit: "g" },
           { name: "Zanahoria", qty: 2, unit: "ud" },
@@ -90,6 +94,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Pasta", qty: 250, unit: "g" },
           { name: "Albahaca", qty: 1, unit: "taza" },
@@ -108,6 +113,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Lechuga romana", qty: 1, unit: "ud" },
           { name: "Pollo", qty: 200, unit: "g" },
@@ -126,6 +132,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con cebolla",
+        calories: 320, // kcal/ración (estimado)
         ingredients: [
           { name: "Patata", qty: 4, unit: "ud" },
           { name: "Huevos", qty: 5, unit: "ud" },
@@ -137,6 +144,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Sin cebolla",
+        calories: 310, // kcal/ración (estimado)
         ingredients: [
           { name: "Patata", qty: 4, unit: "ud" },
           { name: "Huevos", qty: 5, unit: "ud" },
@@ -155,6 +163,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 150, // kcal/ración (estimado)
         ingredients: [
           { name: "Tomate maduro", qty: 1, unit: "kg" },
           { name: "Pepino", qty: 1, unit: "ud" },
@@ -176,6 +185,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 320, // kcal/ración (estimado)
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Espinacas", qty: 300, unit: "g" },
@@ -196,6 +206,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con atún",
+        calories: 430, // kcal/ración (estimado)
         ingredients: [
           { name: "Macarrones", qty: 250, unit: "g" },
           { name: "Tomate triturado", qty: 1, unit: "lata" },
@@ -207,6 +218,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Vegetariana",
+        calories: 400, // kcal/ración (estimado)
         ingredients: [
           { name: "Macarrones", qty: 250, unit: "g" },
           { name: "Tomate triturado", qty: 1, unit: "lata" },
@@ -226,6 +238,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 350, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz", qty: 300, unit: "g" },
           { name: "Pimiento rojo", qty: 1, unit: "ud" },
@@ -246,6 +259,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Muslos de pollo", qty: 4, unit: "ud" },
           { name: "Patata", qty: 4, unit: "ud" },
@@ -266,6 +280,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Lomo de salmón", qty: 4, unit: "ud" },
           { name: "Limón", qty: 1, unit: "ud" },
@@ -285,6 +300,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De pollo",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Pechuga de pollo", qty: 400, unit: "g" },
           { name: "Pimiento rojo", qty: 1, unit: "ud" },
@@ -297,6 +313,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Vegetales",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Champiñones", qty: 250, unit: "g" },
           { name: "Pimiento rojo", qty: 1, unit: "ud" },
@@ -317,6 +334,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 220, // kcal/ración (estimado)
         ingredients: [
           { name: "Calabacín", qty: 3, unit: "ud" },
           { name: "Patata", qty: 1, unit: "ud" },
@@ -336,6 +354,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 600, // kcal/ración (estimado)
         ingredients: [
           { name: "Carne picada", qty: 500, unit: "g" },
           { name: "Pan de hamburguesa", qty: 4, unit: "ud" },
@@ -356,6 +375,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 250, // kcal/ración (estimado)
         ingredients: [
           { name: "Calabacín", qty: 2, unit: "ud" },
           { name: "Pimiento rojo", qty: 1, unit: "ud" },
@@ -376,6 +396,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 280, // kcal/ración (estimado)
         ingredients: [
           { name: "Lomos de merluza", qty: 4, unit: "ud" },
           { name: "Ajo", qty: 2, unit: "diente" },
@@ -395,6 +416,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Leche de coco", qty: 1, unit: "lata" },
@@ -417,6 +439,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Mixta (pollo y marisco)",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz bomba", qty: 400, unit: "g" },
           { name: "Pollo troceado", qty: 400, unit: "g" },
@@ -433,6 +456,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De verduras",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz bomba", qty: 400, unit: "g" },
           { name: "Judía verde", qty: 200, unit: "g" },
@@ -456,6 +480,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 650, // kcal/ración (estimado)
         ingredients: [
           { name: "Fabes (judía blanca)", qty: 500, unit: "g" },
           { name: "Chorizo", qty: 200, unit: "g" },
@@ -479,6 +504,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 300, // kcal/ración (estimado)
         ingredients: [
           { name: "Tomate maduro", qty: 1, unit: "kg" },
           { name: "Pan", qty: 150, unit: "g" },
@@ -501,6 +527,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De jamón",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Jamón serrano picado", qty: 200, unit: "g" },
           { name: "Mantequilla", qty: 80, unit: "g" },
@@ -515,6 +542,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De pollo",
+        calories: 360, // kcal/ración (estimado)
         ingredients: [
           { name: "Pollo cocido picado", qty: 250, unit: "g" },
           { name: "Mantequilla", qty: 80, unit: "g" },
@@ -536,6 +564,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Bravas + alioli",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Patata", qty: 800, unit: "g" },
           { name: "Aceite de oliva", qty: 300, unit: "ml" },
@@ -558,6 +587,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "En salsa de tomate",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Carne picada mixta", qty: 500, unit: "g" },
           { name: "Pan rallado", qty: 50, unit: "g" },
@@ -572,6 +602,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "En salsa de almendras",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Carne picada mixta", qty: 500, unit: "g" },
           { name: "Pan rallado", qty: 50, unit: "g" },
@@ -594,6 +625,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De atún",
+        calories: 430, // kcal/ración (estimado)
         ingredients: [
           { name: "Masa de empanada", qty: 2, unit: "ud" },
           { name: "Atún en lata", qty: 3, unit: "lata" },
@@ -608,6 +640,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De carne",
+        calories: 460, // kcal/ración (estimado)
         ingredients: [
           { name: "Masa de empanada", qty: 2, unit: "ud" },
           { name: "Carne picada", qty: 400, unit: "g" },
@@ -629,6 +662,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 650, // kcal/ración (estimado)
         ingredients: [
           { name: "Garbanzos", qty: 400, unit: "g" },
           { name: "Morcillo de ternera", qty: 300, unit: "g" },
@@ -653,6 +687,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 150, // kcal/ración (estimado)
         ingredients: [
           { name: "Berenjena", qty: 2, unit: "ud" },
           { name: "Pimiento rojo", qty: 2, unit: "ud" },
@@ -673,6 +708,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 320, // kcal/ración (estimado)
         ingredients: [
           { name: "Pulpo cocido", qty: 1, unit: "kg" },
           { name: "Patata", qty: 4, unit: "ud" },
@@ -693,6 +729,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz bomba", qty: 400, unit: "g" },
           { name: "Costillas de cerdo", qty: 400, unit: "g" },
@@ -716,6 +753,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De carne",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Pimientos rojos grandes", qty: 4, unit: "ud" },
           { name: "Carne picada", qty: 400, unit: "g" },
@@ -729,6 +767,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De arroz y verduras",
+        calories: 320, // kcal/ración (estimado)
         ingredients: [
           { name: "Pimientos rojos grandes", qty: 4, unit: "ud" },
           { name: "Arroz", qty: 200, unit: "g" },
@@ -752,6 +791,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Margarita",
+        calories: 550, // kcal/ración (estimado)
         ingredients: [
           { name: "Masa de pizza", qty: 2, unit: "ud" },
           { name: "Tomate triturado", qty: 200, unit: "g" },
@@ -764,6 +804,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Cuatro quesos",
+        calories: 650, // kcal/ración (estimado)
         ingredients: [
           { name: "Masa de pizza", qty: 2, unit: "ud" },
           { name: "Tomate triturado", qty: 200, unit: "g" },
@@ -776,6 +817,7 @@ const seedRecipes = [
       {
         id: "v3",
         name: "Carnívora",
+        calories: 700, // kcal/ración (estimado)
         ingredients: [
           { name: "Masa de pizza", qty: 2, unit: "ud" },
           { name: "Tomate triturado", qty: 200, unit: "g" },
@@ -796,6 +838,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 550, // kcal/ración (estimado)
         ingredients: [
           { name: "Placas de lasaña", qty: 12, unit: "ud" },
           { name: "Carne picada", qty: 500, unit: "g" },
@@ -821,6 +864,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con setas variadas",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz arborio", qty: 320, unit: "g" },
           { name: "Setas variadas", qty: 300, unit: "g" },
@@ -843,6 +887,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De gambas",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Fideos de arroz", qty: 300, unit: "g" },
           { name: "Gambas", qty: 300, unit: "g" },
@@ -860,6 +905,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De pollo",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Fideos de arroz", qty: 300, unit: "g" },
           { name: "Pechuga de pollo", qty: 400, unit: "g" },
@@ -883,6 +929,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Tortillas de maíz", qty: 12, unit: "ud" },
           { name: "Lomo de cerdo", qty: 600, unit: "g" },
@@ -906,6 +953,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con alubias",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Carne picada", qty: 500, unit: "g" },
           { name: "Alubias rojas cocidas", qty: 2, unit: "lata" },
@@ -929,6 +977,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De verduras",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Cuscús", qty: 300, unit: "g" },
           { name: "Calabaza", qty: 300, unit: "g" },
@@ -943,6 +992,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De pollo",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Cuscús", qty: 300, unit: "g" },
           { name: "Muslos de pollo", qty: 4, unit: "ud" },
@@ -964,6 +1014,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De salmón",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz para sushi", qty: 300, unit: "g" },
           { name: "Salmón fresco", qty: 400, unit: "g" },
@@ -979,6 +1030,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De atún",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz para sushi", qty: 300, unit: "g" },
           { name: "Atún fresco", qty: 400, unit: "g" },
@@ -1000,6 +1052,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Clásico",
+        calories: 350, // kcal/ración (estimado)
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Tahini", qty: 3, unit: "cda" },
@@ -1023,6 +1076,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con pollo",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Fideos chinos", qty: 250, unit: "g" },
           { name: "Pechuga de pollo", qty: 400, unit: "g" },
@@ -1038,6 +1092,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Con tofu",
+        calories: 400, // kcal/ración (estimado)
         ingredients: [
           { name: "Fideos chinos", qty: 250, unit: "g" },
           { name: "Tofu firme", qty: 350, unit: "g" },
@@ -1060,6 +1115,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Ternera para guisar", qty: 700, unit: "g" },
           { name: "Cebolla", qty: 3, unit: "ud" },
@@ -1083,6 +1139,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Clásica",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Masa quebrada", qty: 1, unit: "ud" },
           { name: "Bacon", qty: 200, unit: "g" },
@@ -1096,6 +1153,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De puerro y queso",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Masa quebrada", qty: 1, unit: "ud" },
           { name: "Puerro", qty: 3, unit: "ud" },
@@ -1118,6 +1176,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Clásico",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Pan de molde", qty: 12, unit: "ud" },
           { name: "Pechuga de pollo", qty: 300, unit: "g" },
@@ -1139,6 +1198,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "César",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Tortilla de trigo grande", qty: 4, unit: "ud" },
           { name: "Pollo a la plancha", qty: 400, unit: "g" },
@@ -1150,6 +1210,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Mexicano",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Tortilla de trigo grande", qty: 4, unit: "ud" },
           { name: "Pollo a la plancha", qty: 400, unit: "g" },
@@ -1171,6 +1232,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Mediterránea",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Quinoa", qty: 200, unit: "g" },
           { name: "Tomate cherry", qty: 200, unit: "g" },
@@ -1194,6 +1256,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Mediterráneas",
+        calories: 350, // kcal/ración (estimado)
         ingredients: [
           { name: "Pechuga de pollo", qty: 500, unit: "g" },
           { name: "Calabacín", qty: 1, unit: "ud" },
@@ -1217,6 +1280,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estándar",
+        calories: 280, // kcal/ración (estimado)
         ingredients: [
           { name: "Gambas peladas", qty: 500, unit: "g" },
           { name: "Ajo", qty: 6, unit: "diente" },
@@ -1237,6 +1301,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Madrileño",
+        calories: 550, // kcal/ración (estimado)
         ingredients: [
           { name: "Pan de barra", qty: 2, unit: "ud" },
           { name: "Anillas de calamar", qty: 500, unit: "g" },
@@ -1257,6 +1322,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De queso y jamón",
+        calories: 350, // kcal/ración (estimado)
         ingredients: [
           { name: "Huevos", qty: 6, unit: "ud" },
           { name: "Jamón cocido", qty: 100, unit: "g" },
@@ -1267,6 +1333,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De champiñones",
+        calories: 280, // kcal/ración (estimado)
         ingredients: [
           { name: "Huevos", qty: 6, unit: "ud" },
           { name: "Champiñones", qty: 200, unit: "g" },
@@ -1286,6 +1353,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De pollo",
+        calories: 220, // kcal/ración (estimado)
         ingredients: [
           { name: "Caldo de pollo", qty: 1.5, unit: "l" },
           { name: "Fideos finos", qty: 150, unit: "g" },
@@ -1308,6 +1376,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con jamón",
+        calories: 320, // kcal/ración (estimado)
         ingredients: [
           { name: "Pan de hogaza", qty: 4, unit: "ud" },
           { name: "Tomate maduro", qty: 2, unit: "ud" },
@@ -1320,6 +1389,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Solo",
+        calories: 220, // kcal/ración (estimado)
         ingredients: [
           { name: "Pan de hogaza", qty: 4, unit: "ud" },
           { name: "Tomate maduro", qty: 2, unit: "ud" },
@@ -1339,6 +1409,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con plátano y canela",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Copos de avena", qty: 200, unit: "g" },
           { name: "Leche", qty: 400, unit: "ml" },
@@ -1351,6 +1422,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Con frutos rojos",
+        calories: 350, // kcal/ración (estimado)
         ingredients: [
           { name: "Copos de avena", qty: 200, unit: "g" },
           { name: "Leche", qty: 400, unit: "ml" },
@@ -1372,6 +1444,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Tradicional",
+        calories: 280, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz", qty: 150, unit: "g" },
           { name: "Leche", qty: 1, unit: "l" },
@@ -1392,6 +1465,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con nueces y miel",
+        calories: 250, // kcal/ración (estimado)
         ingredients: [
           { name: "Manzana reineta", qty: 4, unit: "ud" },
           { name: "Azúcar moreno", qty: 4, unit: "cda" },
@@ -1415,6 +1489,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Clásico",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Pechuga de pollo", qty: 500, unit: "g" },
           { name: "Cacahuetes tostados", qty: 80, unit: "g" },
@@ -1441,6 +1516,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Tradicional",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz cocido frío", qty: 600, unit: "g" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -1456,6 +1532,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Vegetariano",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz cocido frío", qty: 600, unit: "g" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -1478,6 +1555,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Estilo cantonés",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Solomillo de ternera", qty: 500, unit: "g" },
           { name: "Brócoli", qty: 500, unit: "g" },
@@ -1502,6 +1580,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con piña",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Lomo de cerdo", qty: 600, unit: "g" },
           { name: "Maicena", qty: 100, unit: "g" },
@@ -1527,6 +1606,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De pollo y verduras",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Tallarines chinos al huevo", qty: 350, unit: "g" },
           { name: "Pechuga de pollo", qty: 300, unit: "g" },
@@ -1542,6 +1622,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De gambas",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Tallarines chinos al huevo", qty: 350, unit: "g" },
           { name: "Gambas peladas", qty: 350, unit: "g" },
@@ -1567,6 +1648,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Shoyu de cerdo",
+        calories: 550, // kcal/ración (estimado)
         ingredients: [
           { name: "Fideos ramen", qty: 4, unit: "ud" },
           { name: "Panceta de cerdo (chashu)", qty: 400, unit: "g" },
@@ -1583,6 +1665,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Vegetariano de miso",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Fideos ramen", qty: 4, unit: "ud" },
           { name: "Caldo de verduras", qty: 1.5, unit: "l" },
@@ -1607,6 +1690,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De cerdo y col",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Obleas de gyoza", qty: 32, unit: "ud" },
           { name: "Carne picada de cerdo", qty: 400, unit: "g" },
@@ -1622,6 +1706,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De gambas",
+        calories: 350, // kcal/ración (estimado)
         ingredients: [
           { name: "Obleas de gyoza", qty: 32, unit: "ud" },
           { name: "Gambas peladas picadas", qty: 400, unit: "g" },
@@ -1644,6 +1729,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Tradicional",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Pechuga de pollo", qty: 400, unit: "g" },
           { name: "Huevos", qty: 6, unit: "ud" },
@@ -1668,6 +1754,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "California",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz para sushi", qty: 400, unit: "g" },
           { name: "Vinagre de arroz", qty: 80, unit: "ml" },
@@ -1683,6 +1770,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De salmón y aguacate",
+        calories: 400, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz para sushi", qty: 400, unit: "g" },
           { name: "Vinagre de arroz", qty: 80, unit: "ml" },
@@ -1706,6 +1794,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De cerdo",
+        calories: 600, // kcal/ración (estimado)
         ingredients: [
           { name: "Filetes de lomo de cerdo", qty: 4, unit: "ud" },
           { name: "Harina", qty: 100, unit: "g" },
@@ -1720,6 +1809,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De pollo (chicken katsu)",
+        calories: 550, // kcal/ración (estimado)
         ingredients: [
           { name: "Pechuga de pollo", qty: 600, unit: "g" },
           { name: "Harina", qty: 100, unit: "g" },
@@ -1744,6 +1834,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con ternera",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz japonés", qty: 400, unit: "g" },
           { name: "Solomillo de ternera", qty: 400, unit: "g" },
@@ -1763,6 +1854,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Vegetariano",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Arroz japonés", qty: 400, unit: "g" },
           { name: "Tofu firme", qty: 300, unit: "g" },
@@ -1789,6 +1881,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De ternera",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Solomillo de ternera laminado", qty: 600, unit: "g" },
           { name: "Pera asiática (o manzana)", qty: 1, unit: "ud" },
@@ -1805,6 +1898,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De cerdo (dwaeji bulgogi)",
+        calories: 500, // kcal/ración (estimado)
         ingredients: [
           { name: "Panceta de cerdo laminada", qty: 600, unit: "g" },
           { name: "Gochujang", qty: 3, unit: "cda" },
@@ -1829,6 +1923,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Tradicional",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Fideos de batata (dangmyeon)", qty: 300, unit: "g" },
           { name: "Solomillo de ternera", qty: 300, unit: "g" },
@@ -1856,6 +1951,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Picante clásico",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Pasteles de arroz (tteok)", qty: 500, unit: "g" },
           { name: "Pasta de pescado (eomuk)", qty: 200, unit: "g", opt: true },
@@ -1881,6 +1977,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Yangnyeom (dulce-picante)",
+        calories: 650, // kcal/ración (estimado)
         ingredients: [
           { name: "Alitas de pollo", qty: 1, unit: "kg" },
           { name: "Maicena", qty: 150, unit: "g" },
@@ -1897,6 +1994,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Soja y ajo",
+        calories: 620, // kcal/ración (estimado)
         ingredients: [
           { name: "Alitas de pollo", qty: 1, unit: "kg" },
           { name: "Maicena", qty: 150, unit: "g" },
@@ -1922,6 +2020,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Tradicional (guanciale)",
+        calories: 580, // kcal/ración (estimado)
         ingredients: [
           { name: "Espaguetis", qty: 400, unit: "g" },
           { name: "Guanciale", qty: 200, unit: "g" },
@@ -1934,6 +2033,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Con bacon",
+        calories: 560, // kcal/ración (estimado)
         ingredients: [
           { name: "Espaguetis", qty: 400, unit: "g" },
           { name: "Bacon", qty: 200, unit: "g" },
@@ -1955,6 +2055,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Tradicional milanés",
+        calories: 450, // kcal/ración (estimado)
         ingredients: [
           { name: "Ossobuco de ternera", qty: 4, unit: "ud" },
           { name: "Harina", qty: 50, unit: "g" },
@@ -1982,6 +2083,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De pollo",
+        calories: 480, // kcal/ración (estimado)
         ingredients: [
           { name: "Pechuga de pollo", qty: 600, unit: "g" },
           { name: "Yogur griego", qty: 200, unit: "g" },
@@ -1998,6 +2100,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "De cerdo",
+        calories: 500, // kcal/ración (estimado)
         ingredients: [
           { name: "Solomillo de cerdo", qty: 600, unit: "g" },
           { name: "Aceite de oliva", qty: 4, unit: "cda" },
@@ -2021,6 +2124,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Tradicional de cordero",
+        calories: 550, // kcal/ración (estimado)
         ingredients: [
           { name: "Berenjenas grandes", qty: 3, unit: "ud" },
           { name: "Patata", qty: 3, unit: "ud" },
@@ -2041,6 +2145,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Con ternera",
+        calories: 520, // kcal/ración (estimado)
         ingredients: [
           { name: "Berenjenas grandes", qty: 3, unit: "ud" },
           { name: "Patata", qty: 3, unit: "ud" },
@@ -2067,6 +2172,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Libanés",
+        calories: 180, // kcal/ración (estimado)
         ingredients: [
           { name: "Bulgur fino", qty: 150, unit: "g" },
           { name: "Perejil fresco", qty: 3, unit: "taza" },
@@ -2091,6 +2197,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con feta",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Huevos", qty: 6, unit: "ud" },
           { name: "Pimiento rojo", qty: 2, unit: "ud" },
@@ -2109,6 +2216,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Sencilla",
+        calories: 320, // kcal/ración (estimado)
         ingredients: [
           { name: "Huevos", qty: 6, unit: "ud" },
           { name: "Pimiento rojo", qty: 2, unit: "ud" },
@@ -2135,6 +2243,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con frutos rojos",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Yogur griego", qty: 4, unit: "ud" },
           { name: "Copos de avena", qty: 300, unit: "g" },
@@ -2159,6 +2268,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De limón",
+        calories: 320, // kcal/ración (estimado)
         ingredients: [
           { name: "Yogur natural", qty: 1, unit: "ud" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -2182,6 +2292,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con huevo poché",
+        calories: 350, // kcal/ración (estimado)
         ingredients: [
           { name: "Pan de hogaza", qty: 4, unit: "ud" },
           { name: "Aguacate", qty: 2, unit: "ud" },
@@ -2196,6 +2307,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Con salmón ahumado",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Pan de hogaza", qty: 4, unit: "ud" },
           { name: "Aguacate", qty: 2, unit: "ud" },
@@ -2218,6 +2330,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Espinaca y plátano",
+        calories: 220, // kcal/ración (estimado)
         ingredients: [
           { name: "Espinacas frescas", qty: 2, unit: "taza" },
           { name: "Plátano", qty: 2, unit: "ud" },
@@ -2240,6 +2353,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con frosting",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Zanahoria rallada", qty: 300, unit: "g" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -2257,6 +2371,7 @@ const seedRecipes = [
       {
         id: "v2",
         name: "Sin frosting",
+        calories: 320, // kcal/ración (estimado)
         ingredients: [
           { name: "Zanahoria rallada", qty: 300, unit: "g" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -2282,6 +2397,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con vino blanco",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Muslos de pollo", qty: 8, unit: "ud" },
           { name: "Ajo", qty: 8, unit: "diente" },
@@ -2306,6 +2422,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Extremeñas",
+        calories: 550, // kcal/ración (estimado)
         ingredients: [
           { name: "Pan del día anterior", qty: 500, unit: "g" },
           { name: "Chorizo", qty: 200, unit: "g" },
@@ -2330,6 +2447,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Tradicional",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Bacalao desalado", qty: 4, unit: "ud" },
           { name: "Cebolla", qty: 3, unit: "ud" },
@@ -2353,6 +2471,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "De ajo con huevo",
+        calories: 280, // kcal/ración (estimado)
         ingredients: [
           { name: "Pan del día anterior", qty: 200, unit: "g" },
           { name: "Ajo", qty: 6, unit: "diente" },
@@ -2377,6 +2496,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con garbanzos del cocido",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Carne cocida desmenuzada", qty: 500, unit: "g" },
           { name: "Garbanzos cocidos", qty: 300, unit: "g" },
@@ -2404,6 +2524,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con atún y huevo",
+        calories: 420, // kcal/ración (estimado)
         ingredients: [
           { name: "Patata", qty: 800, unit: "g" },
           { name: "Cebolla morada", qty: 1, unit: "ud" },
@@ -2429,6 +2550,7 @@ const seedRecipes = [
       {
         id: "v1",
         name: "Con cebolla morada",
+        calories: 380, // kcal/ración (estimado)
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Atún en aceite", qty: 3, unit: "lata" },
@@ -2602,6 +2724,26 @@ function computeRecommendations(recipes, plan, monday, dateKey, slot, currentDis
 }
 // Un hueco de comida puede tener varios platos. Compatibilidad con el formato antiguo (un solo objeto).
 const slotDishes = (e) => (Array.isArray(e) ? e : e ? [e] : []);
+// Suma las calorías (por ración) de los platos planificados en un día. "missing" cuenta
+// los platos sin dato de calorías (o con receta borrada), para avisar de que el total es parcial.
+function dayCalorieInfo(day, recipeById) {
+  let total = 0;
+  let missing = 0;
+  let hasAny = false;
+  for (const slot of SLOTS) {
+    for (const d of slotDishes(day?.[slot])) {
+      const rec = recipeById(d.recipeId);
+      const variant = rec && (rec.variants.find((v) => v.id === d.variantId) || rec.variants[0]);
+      if (variant && variant.calories != null) {
+        total += variant.calories;
+        hasAny = true;
+      } else {
+        missing += 1;
+      }
+    }
+  }
+  return { total, missing, hasAny };
+}
 const cloneRecipe = (r) => ({
   ...JSON.parse(JSON.stringify(r)),
   id: uid(),
@@ -2765,6 +2907,8 @@ export default function App() {
   const [checked, setChecked] = useState({});
   const [pantryItems, setPantryItems] = useState([]); // [{id, name, qty, unit}] qty/unit null = "siempre disponible"
   const [extras, setExtras] = useState([]); // productos sueltos añadidos a mano
+  const [reviewedDays, setReviewedDays] = useState({}); // { [dateKey]: true } días ya confirmados (cocinado o no)
+  const [reviewingDate, setReviewingDate] = useState(null); // dateKey del día que se está revisando ahora mismo
 
   const monday = useMemo(() => startOfWeek(weekOffset), [weekOffset]);
 
@@ -2774,6 +2918,7 @@ export default function App() {
       const p = await loadKey("plan", {});
       const pan = await loadKey("pantry", []);
       const ext = await loadKey("extras", []);
+      const rev = await loadKey("reviewedDays", {});
       // migrar huecos antiguos (objeto único) a array de platos
       let migrated = false;
       for (const dk of Object.keys(p)) {
@@ -2801,6 +2946,7 @@ export default function App() {
         saveKey("pantry", pantryMigrated);
       }
       setExtras(ext);
+      setReviewedDays(rev || {});
       setReady(true);
     })();
   }, []);
@@ -2839,25 +2985,84 @@ export default function App() {
     persistPantryItems(pantryItems.filter((it) => it.name.trim().toLowerCase() !== name.trim().toLowerCase()));
   // Al marcar un producto de la compra como comprado, se suma esa cantidad a la despensa
   // (y al desmarcarlo, se deshace). Solo aplica a productos con cantidad medible (no a "otros productos").
+  // Usa la forma funcional de setState para que sea seguro llamarla varias veces
+  // seguidas (p. ej. al confirmar el consumo de un día con varios ingredientes),
+  // sin que una llamada pise el resultado de la anterior.
   const applyPurchaseToPantry = (item, bought) => {
     if (!item || !item.unit || !item.remaining || item.remaining <= 0) return;
     const delta = bought ? item.remaining : -item.remaining;
-    const existing = pantryItems.find(
-      (it) =>
-        it.qty != null &&
-        it.unit === item.unit &&
-        it.name.trim().toLowerCase() === item.name.trim().toLowerCase()
-    );
-    if (existing) {
-      const newQty = existing.qty + delta;
-      if (newQty <= 0.01) {
-        persistPantryItems(pantryItems.filter((it) => it.id !== existing.id));
+    setPantryItems((prev) => {
+      const existing = prev.find(
+        (it) =>
+          it.qty != null &&
+          it.unit === item.unit &&
+          it.name.trim().toLowerCase() === item.name.trim().toLowerCase()
+      );
+      let next;
+      if (existing) {
+        const newQty = existing.qty + delta;
+        next =
+          newQty <= 0.01
+            ? prev.filter((it) => it.id !== existing.id)
+            : prev.map((it) => (it.id === existing.id ? { ...it, qty: newQty } : it));
+      } else if (bought) {
+        next = [...prev, { id: uid(), name: item.name, qty: item.remaining, unit: item.unit }];
       } else {
-        persistPantryItems(pantryItems.map((it) => (it.id === existing.id ? { ...it, qty: newQty } : it)));
+        next = prev;
       }
-    } else if (bought) {
-      persistPantryItems([...pantryItems, { id: uid(), name: item.name, qty: item.remaining, unit: item.unit }]);
+      saveKey("pantry", next);
+      return next;
+    });
+  };
+
+  // Días pasados con algún plato planificado que aún no se han confirmado.
+  const pendingDays = useMemo(() => {
+    const todayKey = localDateKey(new Date());
+    return Object.keys(plan)
+      .filter((dk) => dk < todayKey && !reviewedDays[dk])
+      .filter((dk) => SLOTS.some((slot) => slotDishes(plan[dk][slot]).length > 0))
+      .sort();
+  }, [plan, reviewedDays]);
+
+  const persistReviewedDays = (next) => {
+    setReviewedDays(next);
+    saveKey("reviewedDays", next);
+  };
+  const markDayReviewed = (dateKey) => {
+    const next = { ...reviewedDays, [dateKey]: true };
+    persistReviewedDays(next);
+    const stillPending = pendingDays.filter((dk) => dk !== dateKey);
+    setReviewingDate(stillPending.length ? stillPending[0] : null);
+  };
+  const startReview = () => {
+    if (pendingDays.length) setReviewingDate(pendingDays[0]);
+  };
+  // Descuenta de la despensa los ingredientes de los platos confirmados (checkedKeys) de un día,
+  // escalados por los comensales de cada plato, y marca el día como revisado.
+  const confirmDayConsumption = (dateKey, checkedKeys) => {
+    const day = plan[dateKey] || {};
+    const usage = {};
+    for (const slot of SLOTS) {
+      slotDishes(day[slot]).forEach((d, idx) => {
+        const dishKey = `${slot}-${idx}`;
+        if (!checkedKeys.has(dishKey)) return;
+        const rec = recipeById(d.recipeId);
+        if (!rec) return;
+        const variant = rec.variants.find((v) => v.id === d.variantId) || rec.variants[0];
+        if (!variant) return;
+        const base = rec.baseServings || 4;
+        const factor = (d.servings || base) / base;
+        for (const ing of variant.ingredients) {
+          const k = `${ing.name.trim().toLowerCase()}|${ing.unit}`;
+          if (!usage[k]) usage[k] = { name: ing.name.trim(), unit: ing.unit, qty: 0 };
+          usage[k].qty += (Number(ing.qty) || 0) * factor;
+        }
+      });
     }
+    Object.values(usage).forEach((u) => {
+      applyPurchaseToPantry({ name: u.name, unit: u.unit, remaining: u.qty }, false);
+    });
+    markDayReviewed(dateKey);
   };
 
   const persistExtras = (next) => {
@@ -3125,6 +3330,8 @@ export default function App() {
             onCell={(dateKey, slot) => setPickerCell({ dateKey, slot })}
             onRemoveDish={removeDish}
             onSetServings={setDishServings}
+            pendingCount={pendingDays.length}
+            onStartReview={startReview}
           />
         )}
 
@@ -3270,14 +3477,65 @@ export default function App() {
           }}
         />
       )}
+
+      {reviewingDate && (
+        <DayReviewSheet
+          key={reviewingDate}
+          dateKey={reviewingDate}
+          day={plan[reviewingDate] || {}}
+          recipeById={recipeById}
+          remainingCount={pendingDays.length}
+          onConfirm={(checkedKeys) => confirmDayConsumption(reviewingDate, checkedKeys)}
+          onSkip={() => markDayReviewed(reviewingDate)}
+          onClose={() => setReviewingDate(null)}
+        />
+      )}
     </div>
   );
 }
 
 /* ===================== PLANIFICADOR ===================== */
-function Planner({ monday, weekOffset, setWeekOffset, plan, recipeById, onCell, onRemoveDish, onSetServings }) {
+function Planner({ monday, weekOffset, setWeekOffset, plan, recipeById, onCell, onRemoveDish, onSetServings, pendingCount, onStartReview }) {
+  const weekCal = useMemo(() => {
+    let total = 0, missing = 0, hasAny = false;
+    for (let d = 0; d < 7; d++) {
+      const info = dayCalorieInfo(plan[keyFor(monday, d)], recipeById);
+      total += info.total;
+      missing += info.missing;
+      if (info.hasAny) hasAny = true;
+    }
+    return { total, missing, hasAny };
+  }, [plan, monday, recipeById]);
+
   return (
     <div>
+      {pendingCount > 0 && (
+        <button
+          onClick={onStartReview}
+          style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            gap: 9,
+            background: c.highlight,
+            border: `1px solid ${c.line}`,
+            borderLeft: `4px solid ${c.paprika}`,
+            borderRadius: "3px 8px 8px 3px",
+            padding: "10px 14px",
+            marginBottom: 14,
+            color: c.ink,
+            textAlign: "left",
+            boxShadow: "1px 1px 0 rgba(44,54,80,0.08)",
+          }}
+        >
+          <ClipboardCheck size={18} style={{ color: c.paprika, flexShrink: 0 }} />
+          <span style={{ flex: 1, fontFamily: display, fontWeight: 700, fontSize: 15.5 }}>
+            ¿Cocinaste lo planificado? Tienes {pendingCount} {pendingCount === 1 ? "día" : "días"} por confirmar
+          </span>
+          <ChevronRight size={17} style={{ flexShrink: 0, color: c.muted }} />
+        </button>
+      )}
+
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
         <button onClick={() => setWeekOffset(weekOffset - 1)} style={navBtn}>
           <ChevronLeft size={20} />
@@ -3286,6 +3544,13 @@ function Planner({ monday, weekOffset, setWeekOffset, plan, recipeById, onCell, 
           <div style={{ fontFamily: display, fontSize: 21, fontWeight: 700, color: c.ink, lineHeight: 1 }}>
             {fmtRange(monday)}
           </div>
+          {weekCal.hasAny && (
+            <div style={{ fontSize: 12, color: c.muted, marginTop: 3, fontFamily: "'Special Elite', monospace" }}>
+              <Flame size={11} style={{ verticalAlign: -1, color: c.paprika, marginRight: 3 }} />
+              ~{weekCal.total.toLocaleString("es-ES")} kcal esta semana
+              {weekCal.missing > 0 && <span style={{ fontStyle: "italic" }}> (faltan datos de {weekCal.missing})</span>}
+            </div>
+          )}
           {weekOffset !== 0 && (
             <button
               onClick={() => setWeekOffset(0)}
@@ -3306,6 +3571,7 @@ function Planner({ monday, weekOffset, setWeekOffset, plan, recipeById, onCell, 
           const date = new Date(monday);
           date.setDate(date.getDate() + di);
           const isToday = dk === localDateKey(new Date());
+          const dayCal = dayCalorieInfo(plan[dk], recipeById);
           return (
             <div
               key={dk}
@@ -3323,6 +3589,12 @@ function Planner({ monday, weekOffset, setWeekOffset, plan, recipeById, onCell, 
                 {isToday && (
                   <span style={{ fontFamily: display, fontSize: 14, color: "#fff", background: c.paprika, padding: "0 9px", borderRadius: 4, fontWeight: 700, transform: "rotate(-3deg)" }}>
                     ¡hoy!
+                  </span>
+                )}
+                {dayCal.hasAny && (
+                  <span style={{ marginLeft: "auto", fontSize: 11, color: c.muted, fontFamily: "'Special Elite', monospace", whiteSpace: "nowrap" }}>
+                    <Flame size={10} style={{ verticalAlign: -1, color: c.paprika, marginRight: 2 }} />
+                    ~{dayCal.total.toLocaleString("es-ES")} kcal
                   </span>
                 )}
               </div>
@@ -3620,6 +3892,7 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
                       style={{ fontSize: 11, color: c.herb, background: c.herbSoft, padding: "4px 9px", borderRadius: 20 }}
                     >
                       {v.name} · {v.ingredients.length} ing.
+                      {v.calories != null && <> · ~{v.calories} kcal</>}
                     </span>
                   ))}
                   {r.variants.length === 0 && (
@@ -4087,6 +4360,117 @@ function Pantry({ items, onAdd, onUpdate, onRemove }) {
   );
 }
 
+/* ===================== REVISAR UN DÍA: ¿QUÉ COCINASTE? ===================== */
+function DayReviewSheet({ dateKey, day, recipeById, remainingCount, onConfirm, onSkip, onClose }) {
+  const dishes = [];
+  for (const slot of SLOTS) {
+    slotDishes(day[slot]).forEach((d, idx) => {
+      const rec = recipeById(d.recipeId);
+      const variant = rec && (rec.variants.find((v) => v.id === d.variantId) || rec.variants[0]);
+      dishes.push({
+        key: `${slot}-${idx}`,
+        slot,
+        recipeName: rec ? rec.name : "Receta borrada",
+        variantName: rec && rec.variants.length > 1 && variant ? variant.name : null,
+        valid: !!rec,
+      });
+    });
+  }
+
+  const [checkedKeys, setCheckedKeys] = useState(
+    () => new Set(dishes.filter((d) => d.valid).map((d) => d.key))
+  );
+
+  const toggleDish = (key) => {
+    setCheckedKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
+
+  const dateObj = new Date(dateKey + "T00:00:00");
+  const rawLabel = dateObj.toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
+  const dayLabel = rawLabel.charAt(0).toUpperCase() + rawLabel.slice(1);
+
+  return (
+    <Sheet onClose={onClose} title="¿Qué cocinaste?">
+      <div style={{ marginBottom: 14 }}>
+        <div style={{ fontFamily: display, fontSize: 19, fontWeight: 700, color: c.ink }}>{dayLabel}</div>
+        <p style={{ fontSize: 13, color: c.muted, marginTop: 4, fontStyle: "italic" }}>
+          Desmarca lo que no hiciste. Lo demás se descontará de tu despensa.
+          {remainingCount > 1 && ` Quedan ${remainingCount - 1} día${remainingCount - 1 === 1 ? "" : "s"} más por confirmar.`}
+        </p>
+      </div>
+
+      {dishes.length === 0 ? (
+        <p style={{ color: c.muted, fontSize: 14, textAlign: "center", padding: "16px 0" }}>
+          No había nada planificado este día.
+        </p>
+      ) : (
+        <div style={{ background: c.card, border: `1px solid ${c.line}`, borderRadius: 14, overflow: "hidden", marginBottom: 16 }}>
+          {dishes.map((d, idx) => {
+            const on = checkedKeys.has(d.key);
+            return (
+              <button
+                key={d.key}
+                onClick={() => d.valid && toggleDish(d.key)}
+                disabled={!d.valid}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "12px 14px",
+                  background: "none",
+                  border: "none",
+                  borderTop: idx === 0 ? "none" : `1px solid ${c.line}`,
+                  textAlign: "left",
+                  opacity: d.valid ? 1 : 0.5,
+                }}
+              >
+                <span
+                  style={{
+                    width: 22,
+                    height: 22,
+                    borderRadius: 6,
+                    border: `2px solid ${on ? c.herb : c.line}`,
+                    background: on ? c.herb : "transparent",
+                    display: "grid",
+                    placeItems: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  {on && <span className="check-pop" style={{ display: "inline-flex" }}><Check size={14} color="#fff" /></span>}
+                </span>
+                <span style={{ flex: 1, minWidth: 0 }}>
+                  <span style={{ fontSize: 10, color: c.paprika, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                    {d.slot}
+                  </span>
+                  <div style={{ fontSize: 15, color: c.ink, textDecoration: on ? "none" : "line-through" }}>
+                    {d.recipeName}
+                    {d.variantName && <span style={{ fontSize: 12, color: c.herb, marginLeft: 6 }}>{d.variantName}</span>}
+                  </div>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      <div style={{ display: "flex", gap: 8 }}>
+        <button onClick={onSkip} style={{ ...ghostBtn, flex: 1, justifyContent: "center", padding: "11px" }}>
+          No cociné nada
+        </button>
+        <button onClick={() => onConfirm(checkedKeys)} style={{ ...primaryBtn, flex: 1, justifyContent: "center", padding: "11px" }}>
+          Confirmar
+        </button>
+      </div>
+    </Sheet>
+  );
+}
+
 function SlotPicker({ recipes, slot, plan, monday, dateKey, currentDishes, existingCount, onPick, onClose }) {
   const [expanded, setExpanded] = useState(null);
   const [query, setQuery] = useState("");
@@ -4391,6 +4775,18 @@ function RecipeEditor({ recipe, onClose, onSave }) {
               />
               <button onClick={() => duplicateVariant(v.id)} style={iconBtn} title="Duplicar opción"><Copy size={16} /></button>
               <button onClick={() => removeVariant(v.id)} style={iconBtn} title="Borrar opción"><Trash2 size={16} /></button>
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+              <Flame size={15} style={{ color: c.paprika, flexShrink: 0 }} />
+              <input
+                type="number"
+                value={v.calories ?? ""}
+                onChange={(e) => updateVariant(v.id, { calories: e.target.value ? Number(e.target.value) : null })}
+                placeholder="Calorías por ración (opcional)"
+                style={{ ...inp, margin: 0, flex: 1, fontFamily: "'Special Elite', monospace" }}
+              />
+              <span style={{ fontSize: 12, color: c.muted, flexShrink: 0 }}>kcal</span>
             </div>
 
             {v.ingredients.map((ing, i) => (
