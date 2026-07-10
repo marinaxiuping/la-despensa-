@@ -20,6 +20,7 @@ import {
   Square,
   CheckSquare,
   Sparkles,
+  Package,
 } from "lucide-react";
 
 /* ---------- paleta y tipografía: Cuaderno de cocina ---------- */
@@ -2478,6 +2479,19 @@ function fmtQty(n) {
   if (Math.abs(n - Math.round(n)) < 0.01) return String(Math.round(n));
   return n.toFixed(2).replace(/\.?0+$/, "").replace(".", ",");
 }
+// Convierte una cantidad de una unidad a otra cuando es posible (peso g↔kg, volumen ml↔l).
+// Devuelve null si las unidades no son compatibles (p. ej. "ud" a "g").
+function convertQty(qty, fromUnit, toUnit) {
+  if (fromUnit === toUnit) return qty;
+  const toBase = { g: 1, kg: 1000, ml: 1, l: 1000 };
+  const weightUnits = ["g", "kg"];
+  const volUnits = ["ml", "l"];
+  const sameGroup =
+    (weightUnits.includes(fromUnit) && weightUnits.includes(toUnit)) ||
+    (volUnits.includes(fromUnit) && volUnits.includes(toUnit));
+  if (!sameGroup) return null;
+  return (qty * toBase[fromUnit]) / toBase[toUnit];
+}
 
 /* ---------- clasificación de platos para el recomendador ---------- */
 // Rol de cada categoría: primer/segundo plato, plato único, postre, desayuno.
@@ -2692,6 +2706,30 @@ function Doodle({ kind, size = 110 }) {
       </svg>
     );
   }
+  if (kind === "no-pantry") {
+    return (
+      <svg viewBox="0 0 140 140" style={s} className="doodle-float">
+        {/* balda */}
+        <line x1="18" y1="98" x2="122" y2="98" stroke={c.muted} strokeWidth="2.5" strokeLinecap="round"/>
+        <line x1="18" y1="98" x2="14" y2="106" stroke={c.muted} strokeWidth="2" strokeLinecap="round"/>
+        <line x1="122" y1="98" x2="126" y2="106" stroke={c.muted} strokeWidth="2" strokeLinecap="round"/>
+        {/* tarro 1 */}
+        <rect x="30" y="60" width="24" height="38" rx="4" fill={c.card} stroke={c.ink} strokeWidth="2"/>
+        <rect x="35" y="52" width="14" height="10" rx="2" fill={c.herbSoft} stroke={c.ink} strokeWidth="1.5"/>
+        <line x1="30" y1="78" x2="54" y2="78" stroke={c.rule} strokeWidth="1.5"/>
+        {/* tarro 2, más alto */}
+        <rect x="60" y="46" width="26" height="52" rx="4" fill={c.card} stroke={c.ink} strokeWidth="2"/>
+        <rect x="66" y="38" width="14" height="10" rx="2" fill={c.paprikaSoft} stroke={c.ink} strokeWidth="1.5"/>
+        <line x1="60" y1="66" x2="86" y2="66" stroke={c.rule} strokeWidth="1.5"/>
+        <line x1="60" y1="82" x2="86" y2="82" stroke={c.rule} strokeWidth="1.5"/>
+        {/* tarro 3 */}
+        <rect x="94" y="66" width="22" height="32" rx="4" fill={c.card} stroke={c.ink} strokeWidth="2"/>
+        <rect x="99" y="58" width="12" height="10" rx="2" fill={c.highlight} stroke={c.ink} strokeWidth="1.5"/>
+        {/* squiggle encima, como si faltara algo */}
+        <path d="M55 30 q4 -5 8 0 t8 0" stroke={c.paprika} strokeWidth="1.8" fill="none" strokeLinecap="round"/>
+      </svg>
+    );
+  }
   return null;
 }
 
@@ -2725,7 +2763,7 @@ export default function App() {
   const [pickerCell, setPickerCell] = useState(null); // {dateKey, slot}
   const [editing, setEditing] = useState(null); // recipe object o null
   const [checked, setChecked] = useState({});
-  const [pantry, setPantry] = useState([]); // nombres normalizados que ya tienes en casa
+  const [pantryItems, setPantryItems] = useState([]); // [{id, name, qty, unit}] qty/unit null = "siempre disponible"
   const [extras, setExtras] = useState([]); // productos sueltos añadidos a mano
 
   const monday = useMemo(() => startOfWeek(weekOffset), [weekOffset]);
@@ -2750,11 +2788,18 @@ export default function App() {
           }
         }
       }
+      // migrar despensa antigua (array de nombres) a objetos con cantidad opcional
+      const pantryMigrated = (pan || []).map((entry) =>
+        typeof entry === "string" ? { id: uid(), name: entry, qty: null, unit: null } : entry
+      );
       setRecipes(r || seedRecipes);
       if (!r) saveKey("recipes", seedRecipes);
       setPlan(p);
       if (migrated) saveKey("plan", p);
-      setPantry(pan);
+      setPantryItems(pantryMigrated);
+      if (pantryMigrated.length !== (pan || []).length || pantryMigrated.some((x, i) => typeof pan[i] === "string")) {
+        saveKey("pantry", pantryMigrated);
+      }
       setExtras(ext);
       setReady(true);
     })();
@@ -2768,17 +2813,52 @@ export default function App() {
     setPlan(next);
     saveKey("plan", next);
   };
-  const persistPantry = (next) => {
-    setPantry(next);
+  const persistPantryItems = (next) => {
+    setPantryItems(next);
     saveKey("pantry", next);
   };
-  const addToPantry = (name) => {
-    const n = name.trim().toLowerCase();
-    if (!n || pantry.includes(n)) return;
-    persistPantry([...pantry, n]);
+  const addPantryItem = ({ name, qty, unit }) => {
+    const n = name.trim();
+    if (!n) return;
+    persistPantryItems([
+      ...pantryItems,
+      { id: uid(), name: n, qty: qty || null, unit: qty ? unit : null },
+    ]);
   };
-  const removeFromPantry = (name) =>
-    persistPantry(pantry.filter((x) => x !== name.trim().toLowerCase()));
+  const updatePantryItem = (id, patch) =>
+    persistPantryItems(pantryItems.map((it) => (it.id === id ? { ...it, ...patch } : it)));
+  const removePantryItem = (id) => persistPantryItems(pantryItems.filter((it) => it.id !== id));
+  // Añadido rápido desde la lista de la compra: marca "siempre disponible" (sin cantidad)
+  const quickAddToPantry = (name) => {
+    const n = name.trim();
+    const already = pantryItems.some((it) => it.name.trim().toLowerCase() === n.toLowerCase());
+    if (already || !n) return;
+    persistPantryItems([...pantryItems, { id: uid(), name: n, qty: null, unit: null }]);
+  };
+  const quickRemoveFromPantry = (name) =>
+    persistPantryItems(pantryItems.filter((it) => it.name.trim().toLowerCase() !== name.trim().toLowerCase()));
+  // Al marcar un producto de la compra como comprado, se suma esa cantidad a la despensa
+  // (y al desmarcarlo, se deshace). Solo aplica a productos con cantidad medible (no a "otros productos").
+  const applyPurchaseToPantry = (item, bought) => {
+    if (!item || !item.unit || !item.remaining || item.remaining <= 0) return;
+    const delta = bought ? item.remaining : -item.remaining;
+    const existing = pantryItems.find(
+      (it) =>
+        it.qty != null &&
+        it.unit === item.unit &&
+        it.name.trim().toLowerCase() === item.name.trim().toLowerCase()
+    );
+    if (existing) {
+      const newQty = existing.qty + delta;
+      if (newQty <= 0.01) {
+        persistPantryItems(pantryItems.filter((it) => it.id !== existing.id));
+      } else {
+        persistPantryItems(pantryItems.map((it) => (it.id === existing.id ? { ...it, qty: newQty } : it)));
+      }
+    } else if (bought) {
+      persistPantryItems([...pantryItems, { id: uid(), name: item.name, qty: item.remaining, unit: item.unit }]);
+    }
+  };
 
   const persistExtras = (next) => {
     setExtras(next);
@@ -2851,15 +2931,31 @@ export default function App() {
       }
     }
     return Object.entries(map)
-      .map(([k, v]) => ({ k, ...v, optional: v.req === 0 }))
+      .map(([k, v]) => {
+        const optional = v.req === 0;
+        // Buscar cobertura en la despensa: por nombre, con conversión de unidad si aplica.
+        const matches = pantryItems.filter(
+          (it) => it.name.trim().toLowerCase() === v.name.trim().toLowerCase()
+        );
+        const alwaysHave = matches.some((it) => it.qty == null);
+        let have = 0;
+        if (!alwaysHave) {
+          for (const it of matches) {
+            const converted = convertQty(it.qty, it.unit, v.unit);
+            if (converted != null) have += converted;
+          }
+        }
+        const remaining = alwaysHave ? 0 : Math.max(0, v.qty - have);
+        const fullyCovered = alwaysHave || remaining <= 0.01;
+        return { k, ...v, optional, have: alwaysHave ? null : have, remaining, fullyCovered };
+      })
       .sort((a, b) => a.name.localeCompare(b.name, "es"));
-  }, [plan, recipes, monday]);
+  }, [plan, recipes, monday, pantryItems]);
 
   const toBuyCount = useMemo(
     () =>
-      shopping.filter((i) => !pantry.includes(i.name.trim().toLowerCase())).length +
-      extras.filter((e) => !e.done).length,
-    [shopping, pantry, extras]
+      shopping.filter((i) => !i.fullyCovered).length + extras.filter((e) => !e.done).length,
+    [shopping, extras]
   );
 
   const missingLibrary = useMemo(
@@ -3051,14 +3147,24 @@ export default function App() {
             range={fmtRange(monday)}
             checked={checked}
             setChecked={setChecked}
-            pantry={pantry}
-            addToPantry={addToPantry}
-            removeFromPantry={removeFromPantry}
+            quickAddToPantry={quickAddToPantry}
+            quickRemoveFromPantry={quickRemoveFromPantry}
+            onPurchaseToggle={applyPurchaseToPantry}
+            onGoToPantry={() => setView("despensa")}
             extras={extras}
             addExtra={addExtra}
             toggleExtra={toggleExtra}
             removeExtra={removeExtra}
             clearDoneExtras={clearDoneExtras}
+          />
+        )}
+
+        {view === "despensa" && (
+          <Pantry
+            items={pantryItems}
+            onAdd={addPantryItem}
+            onUpdate={updatePantryItem}
+            onRemove={removePantryItem}
           />
         )}
       </main>
@@ -3080,6 +3186,7 @@ export default function App() {
           { id: "menu", label: "Menú", icon: CalendarDays },
           { id: "recetas", label: "Recetas", icon: BookOpen },
           { id: "compra", label: "Compra", icon: ShoppingCart },
+          { id: "despensa", label: "Despensa", icon: Package },
         ].map(({ id, label, icon: Icon }) => {
           const active = view === id;
           return (
@@ -3537,21 +3644,34 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
 }
 
 /* ===================== LISTA DE LA COMPRA ===================== */
-function Shopping({ items, range, checked, setChecked, pantry, addToPantry, removeFromPantry, extras, addExtra, toggleExtra, removeExtra, clearDoneExtras }) {
+function Shopping({ items, range, checked, setChecked, quickAddToPantry, quickRemoveFromPantry, onPurchaseToggle, onGoToPantry, extras, addExtra, toggleExtra, removeExtra, clearDoneExtras }) {
   const [copied, setCopied] = useState(false);
-  const [showPantry, setShowPantry] = useState(false);
-  const [newPantry, setNewPantry] = useState("");
   const [newExtra, setNewExtra] = useState("");
-  const toggle = (k) => setChecked({ ...checked, [k]: !checked[k] });
+  // Al marcar, guardamos la cantidad comprada (para poder deshacerlo bien y mostrarla
+  // tachada aunque, tras sumarse a la despensa, ya no quede nada pendiente de ese producto).
+  const toggle = (item) => {
+    if (checked[item.k]) {
+      const snap = checked[item.k];
+      const next = { ...checked };
+      delete next[item.k];
+      setChecked(next);
+      onPurchaseToggle({ name: item.name, unit: snap.unit, remaining: snap.qty }, false);
+    } else {
+      const next = { ...checked, [item.k]: { qty: item.remaining, unit: item.unit } };
+      setChecked(next);
+      onPurchaseToggle(item, true);
+    }
+  };
 
-  const inPantry = (name) => pantry.includes(name.trim().toLowerCase());
-  const toBuy = items.filter((i) => !inPantry(i.name));
-  const haveFromMenu = items.filter((i) => inPantry(i.name));
+  // Un producto marcado se queda visible (tachado) aunque al sumarse a la despensa
+  // ya esté cubierto; solo pasa a "ya tienes" si estaba cubierto sin que tú lo marcaras.
+  const toBuy = items.filter((i) => !i.fullyCovered || checked[i.k]);
+  const haveFromMenu = items.filter((i) => i.fullyCovered && !checked[i.k]);
   const doneExtras = extras.filter((e) => e.done).length;
 
   const copyText = () => {
     const lines = toBuy.map(
-      (i) => `${checked[i.k] ? "✓ " : "□ "}${i.name} — ${fmtQty(i.qty)} ${i.unit}${i.optional ? " (opcional)" : ""}`
+      (i) => `${checked[i.k] ? "✓ " : "□ "}${i.name} — ${fmtQty(checked[i.k] ? checked[i.k].qty : i.remaining)} ${i.unit}${i.optional ? " (opcional)" : ""}`
     );
     if (extras.length) {
       lines.push("", "Otros productos:");
@@ -3579,13 +3699,12 @@ function Shopping({ items, range, checked, setChecked, pantry, addToPantry, remo
           </button>
         )}
       </div>
-      <p style={{ fontSize: 13, color: c.muted, marginTop: 2, marginBottom: 16, fontStyle: "italic" }}>
-        Generada con el menú de {range}
+      <p style={{ fontSize: 13, color: c.muted, marginTop: 2, marginBottom: 12, fontStyle: "italic" }}>
+        Generada con el menú de {range}, descontando lo que ya tienes. Marca lo comprado y se añade solo a tu despensa.
       </p>
 
-      {/* gestión de despensa */}
       <button
-        onClick={() => setShowPantry(!showPantry)}
+        onClick={onGoToPantry}
         style={{
           display: "inline-flex",
           alignItems: "center",
@@ -3599,72 +3718,13 @@ function Shopping({ items, range, checked, setChecked, pantry, addToPantry, remo
           color: c.ink,
           fontFamily: display,
           fontWeight: 700,
-          fontSize: 18,
+          fontSize: 16.5,
           boxShadow: "1px 1px 0 rgba(44,54,80,0.08)",
         }}
       >
-        <Home size={15} /> Mi despensa
-        <span style={{ fontFamily: body, fontSize: 12, fontWeight: 600, color: c.muted }}>
-          ({pantry.length})
-        </span>
-        <ChevronRight size={15} style={{ transform: showPantry ? "rotate(90deg)" : "none", transition: "transform .15s", marginLeft: 2 }} />
+        <Package size={15} /> Gestionar mi despensa
+        <ChevronRight size={15} style={{ marginLeft: 2 }} />
       </button>
-
-      {showPantry && (
-        <div style={{ background: c.card, border: `1px solid ${c.line}`, borderRadius: 12, padding: 14, marginBottom: 18 }}>
-          <p style={{ fontSize: 13, color: c.muted, marginTop: 0, fontStyle: "italic" }}>
-            Lo que tengas aquí no aparecerá en la compra. Añade básicos como sal, aceite o especias.
-          </p>
-          <div style={{ display: "flex", gap: 6, marginBottom: pantry.length ? 12 : 0 }}>
-            <input
-              value={newPantry}
-              onChange={(e) => setNewPantry(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && newPantry.trim()) {
-                  addToPantry(newPantry);
-                  setNewPantry("");
-                }
-              }}
-              placeholder="Añadir a la despensa…"
-              style={{ ...inp, margin: 0, flex: 1 }}
-            />
-            <button
-              onClick={() => {
-                if (newPantry.trim()) {
-                  addToPantry(newPantry);
-                  setNewPantry("");
-                }
-              }}
-              style={{ ...primaryBtn, padding: "0 14px" }}
-            >
-              <Plus size={16} />
-            </button>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
-            {pantry.map((p) => (
-              <span
-                key={p}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 5,
-                  fontSize: 13,
-                  background: c.paper,
-                  border: `1px solid ${c.line}`,
-                  borderRadius: 20,
-                  padding: "5px 6px 5px 11px",
-                  textTransform: "capitalize",
-                }}
-              >
-                {p}
-                <button onClick={() => removeFromPantry(p)} style={{ ...iconBtn, padding: 2 }}>
-                  <X size={13} />
-                </button>
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
 
       {items.length === 0 ? (
         <EmptyState
@@ -3690,8 +3750,8 @@ function Shopping({ items, range, checked, setChecked, pantry, addToPantry, remo
                     }}
                   >
                     <button
-                      onClick={() => toggle(i.k)}
-                      style={{ flex: 1, display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", textAlign: "left", padding: 0 }}
+                      onClick={() => toggle(i)}
+                      style={{ flex: 1, display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", textAlign: "left", padding: 0, minWidth: 0 }}
                     >
                       <span
                         style={{
@@ -3707,37 +3767,44 @@ function Shopping({ items, range, checked, setChecked, pantry, addToPantry, remo
                       >
                         {on && <span className="check-pop" style={{ display: "inline-flex" }}><Check size={14} color="#fff" /></span>}
                       </span>
-                      <span style={{ flex: 1, fontSize: 15, color: on ? c.muted : c.ink, textDecoration: on ? "line-through" : "none" }}>
-                        {i.name}
-                        {i.optional && (
-                          <span
-                            style={{
-                              fontSize: 10,
-                              color: c.paprika,
-                              background: c.paprikaSoft,
-                              padding: "2px 6px",
-                              borderRadius: 10,
-                              marginLeft: 7,
-                              fontWeight: 600,
-                              verticalAlign: "middle",
-                              textDecoration: "none",
-                            }}
-                          >
-                            opcional
-                          </span>
+                      <span style={{ flex: 1, minWidth: 0 }}>
+                        <span style={{ fontSize: 15, color: on ? c.muted : c.ink, textDecoration: on ? "line-through" : "none" }}>
+                          {i.name}
+                          {i.optional && (
+                            <span
+                              style={{
+                                fontSize: 10,
+                                color: c.paprika,
+                                background: c.paprikaSoft,
+                                padding: "2px 6px",
+                                borderRadius: 10,
+                                marginLeft: 7,
+                                fontWeight: 600,
+                                verticalAlign: "middle",
+                                textDecoration: "none",
+                              }}
+                            >
+                              opcional
+                            </span>
+                          )}
+                        </span>
+                        {!on && i.have > 0 && (
+                          <div style={{ fontSize: 11, color: c.herb, marginTop: 1, fontStyle: "italic" }}>
+                            ya tienes {fmtQty(i.have)} {i.unit} en la despensa
+                          </div>
                         )}
                       </span>
-                      <span style={{ fontSize: 13, color: c.muted, fontFamily: "'Special Elite', monospace", letterSpacing: 0.2 }}>
-                        {fmtQty(i.qty)} {i.unit}
+                      <span style={{ fontSize: 13, color: c.muted, fontFamily: "'Special Elite', monospace", letterSpacing: 0.2, flexShrink: 0 }}>
+                        {fmtQty(on ? on.qty : i.remaining)} {i.unit}
                         {i.count > 1 && <span style={{ color: c.paprika }}> ×{i.count}</span>}
                       </span>
                     </button>
                     <button
-                      onClick={() => addToPantry(i.name)}
+                      onClick={() => quickAddToPantry(i.name)}
                       title="Ya lo tengo en casa"
                       style={{ ...iconBtn, color: c.paprika, flexShrink: 0 }}
                     >
-                      <Home size={16} />
+                      <Package size={16} />
                     </button>
                   </div>
                 );
@@ -3748,7 +3815,7 @@ function Shopping({ items, range, checked, setChecked, pantry, addToPantry, remo
           {haveFromMenu.length > 0 && (
             <div style={{ marginTop: 16 }}>
               <div style={{ fontSize: 12, color: c.muted, fontWeight: 600, marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}>
-                <Home size={13} /> Ya tienes en casa ({haveFromMenu.length})
+                <Package size={13} /> Ya tienes en casa ({haveFromMenu.length})
               </div>
               <div style={{ background: c.card, border: `1px solid ${c.line}`, borderRadius: 14, overflow: "hidden" }}>
                 {haveFromMenu.map((i, idx) => (
@@ -3764,7 +3831,7 @@ function Shopping({ items, range, checked, setChecked, pantry, addToPantry, remo
                   >
                     <span style={{ flex: 1, fontSize: 14, color: c.muted, textDecoration: "line-through" }}>{i.name}</span>
                     <button
-                      onClick={() => removeFromPantry(i.name)}
+                      onClick={() => quickRemoveFromPantry(i.name)}
                       style={{ ...ghostBtn, padding: "5px 10px", fontSize: 12 }}
                     >
                       Necesito comprarlo
@@ -3850,6 +3917,176 @@ function Shopping({ items, range, checked, setChecked, pantry, addToPantry, remo
     </div>
   );
 }
+/* ===================== MI DESPENSA ===================== */
+function Pantry({ items, onAdd, onUpdate, onRemove }) {
+  const [name, setName] = useState("");
+  const [qty, setQty] = useState("");
+  const [unit, setUnit] = useState("ud");
+  const [editingId, setEditingId] = useState(null);
+  const [editQty, setEditQty] = useState("");
+  const [editUnit, setEditUnit] = useState("ud");
+
+  const sorted = useMemo(
+    () => [...items].sort((a, b) => a.name.localeCompare(b.name, "es")),
+    [items]
+  );
+
+  const submitAdd = () => {
+    if (!name.trim()) return;
+    onAdd({ name, qty: qty ? Number(qty) : null, unit });
+    setName("");
+    setQty("");
+    setUnit("ud");
+  };
+
+  const startEdit = (item) => {
+    setEditingId(item.id);
+    setEditQty(item.qty != null ? String(item.qty) : "");
+    setEditUnit(item.unit || "ud");
+  };
+  const saveEdit = (item) => {
+    const q = editQty.trim() ? Number(editQty) : null;
+    onUpdate(item.id, { qty: q, unit: q ? editUnit : null });
+    setEditingId(null);
+  };
+
+  return (
+    <div>
+      <h2 style={{ fontFamily: display, fontSize: 15, fontWeight: 700, margin: 0, color: c.ink }}>
+        Mi despensa
+      </h2>
+      <p style={{ fontSize: 13, color: c.muted, marginTop: 4, marginBottom: 16, fontStyle: "italic" }}>
+        Lo que anotes aquí se descuenta de la lista de la compra. Sin cantidad = "siempre lo tengo" (sal, aceite, especias…). Con cantidad, la compra solo te pedirá lo que te falte.
+      </p>
+
+      {/* alta de producto */}
+      <div style={{ background: c.card, border: `1px solid ${c.line}`, borderRadius: 12, padding: 14, marginBottom: 18 }}>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && submitAdd()}
+          placeholder="Nombre del producto…"
+          style={{ ...inp, margin: "0 0 8px" }}
+        />
+        <div style={{ display: "flex", gap: 6 }}>
+          <input
+            type="number"
+            value={qty}
+            onChange={(e) => setQty(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && submitAdd()}
+            placeholder="Cantidad (opcional)"
+            style={{ ...inp, margin: 0, flex: 1 }}
+          />
+          <select
+            value={unit}
+            onChange={(e) => setUnit(e.target.value)}
+            disabled={!qty}
+            style={{ ...inp, margin: 0, width: 90, padding: "10px 6px", opacity: qty ? 1 : 0.5 }}
+          >
+            {UNITS.map((u) => <option key={u}>{u}</option>)}
+          </select>
+        </div>
+        <button onClick={submitAdd} style={{ ...primaryBtn, width: "100%", justifyContent: "center", marginTop: 10 }}>
+          <Plus size={16} /> Añadir a la despensa
+        </button>
+      </div>
+
+      {sorted.length === 0 ? (
+        <EmptyState
+          kind="no-pantry"
+          title="Despensa vacía"
+          subtitle="Añade lo que tengas en casa: así la compra solo te pedirá lo que de verdad te falte."
+        />
+      ) : (
+        <div style={{ background: c.card, border: `1px solid ${c.line}`, borderRadius: 14, overflow: "hidden" }}>
+          {sorted.map((item, idx) => {
+            const editing = editingId === item.id;
+            return (
+              <div
+                key={item.id}
+                className="dish-tag"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "11px 12px 11px 14px",
+                  borderTop: idx === 0 ? "none" : `1px solid ${c.line}`,
+                }}
+              >
+                {editing ? (
+                  <>
+                    <span style={{ flex: 1, fontSize: 15, color: c.ink }}>{item.name}</span>
+                    <input
+                      type="number"
+                      autoFocus
+                      value={editQty}
+                      onChange={(e) => setEditQty(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && saveEdit(item)}
+                      placeholder="cantidad"
+                      style={{ ...inp, margin: 0, width: 78, textAlign: "center" }}
+                    />
+                    <select
+                      value={editUnit}
+                      onChange={(e) => setEditUnit(e.target.value)}
+                      disabled={!editQty}
+                      style={{ ...inp, margin: 0, width: 82, padding: "10px 4px", opacity: editQty ? 1 : 0.5 }}
+                    >
+                      {UNITS.map((u) => <option key={u}>{u}</option>)}
+                    </select>
+                    <button onClick={() => saveEdit(item)} style={{ ...iconBtn, color: c.herb, flexShrink: 0 }} title="Guardar">
+                      <Check size={18} />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <span style={{ flex: 1, fontSize: 15, color: c.ink, minWidth: 0 }}>{item.name}</span>
+                    {item.qty != null ? (
+                      <span
+                        style={{
+                          fontSize: 12,
+                          color: c.muted,
+                          fontFamily: "'Special Elite', monospace",
+                          background: c.paper,
+                          border: `1px solid ${c.line}`,
+                          padding: "3px 9px",
+                          borderRadius: 20,
+                          flexShrink: 0,
+                        }}
+                      >
+                        {fmtQty(item.qty)} {item.unit}
+                      </span>
+                    ) : (
+                      <span
+                        style={{
+                          fontSize: 11,
+                          color: c.herb,
+                          background: c.herbSoft,
+                          padding: "4px 10px",
+                          borderRadius: 20,
+                          fontWeight: 600,
+                          flexShrink: 0,
+                        }}
+                      >
+                        siempre disponible
+                      </span>
+                    )}
+                    <button onClick={() => startEdit(item)} style={{ ...iconBtn, flexShrink: 0 }} title="Editar cantidad">
+                      <Pencil size={15} />
+                    </button>
+                  </>
+                )}
+                <button onClick={() => onRemove(item.id)} style={{ ...iconBtn, flexShrink: 0 }} title="Quitar de la despensa">
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function SlotPicker({ recipes, slot, plan, monday, dateKey, currentDishes, existingCount, onPick, onClose }) {
   const [expanded, setExpanded] = useState(null);
   const [query, setQuery] = useState("");
