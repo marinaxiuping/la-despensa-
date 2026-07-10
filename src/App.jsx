@@ -2895,6 +2895,30 @@ function EmptyState({ kind, title, subtitle, children }) {
   );
 }
 
+// Rellena el campo "calories" en recetas ya guardadas que coincidan por id con la
+// biblioteca de fábrica (RECIPE_LIBRARY), solo cuando ese dato falta. Nunca toca
+// recetas propias del usuario (no están en la biblioteca) ni pisa un valor ya puesto.
+function backfillCalories(storedRecipes) {
+  let anyChanged = false;
+  const next = storedRecipes.map((r) => {
+    const libRecipe = RECIPE_LIBRARY.find((lr) => lr.id === r.id);
+    if (!libRecipe) return r;
+    let recipeChanged = false;
+    const newVariants = r.variants.map((v) => {
+      if (v.calories != null) return v;
+      const libVariant = libRecipe.variants.find((lv) => lv.id === v.id);
+      if (libVariant && libVariant.calories != null) {
+        recipeChanged = true;
+        return { ...v, calories: libVariant.calories };
+      }
+      return v;
+    });
+    if (recipeChanged) anyChanged = true;
+    return recipeChanged ? { ...r, variants: newVariants } : r;
+  });
+  return { next, changed: anyChanged };
+}
+
 export default function App() {
   const [view, setView] = useState("menu");
   const [recipes, setRecipes] = useState([]);
@@ -2939,6 +2963,13 @@ export default function App() {
       );
       setRecipes(r || seedRecipes);
       if (!r) saveKey("recipes", seedRecipes);
+      else {
+        const { next: recipesWithCalories, changed: caloriesFilled } = backfillCalories(r);
+        if (caloriesFilled) {
+          setRecipes(recipesWithCalories);
+          saveKey("recipes", recipesWithCalories);
+        }
+      }
       setPlan(p);
       if (migrated) saveKey("plan", p);
       setPantryItems(pantryMigrated);
