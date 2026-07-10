@@ -23,6 +23,7 @@ import {
   Package,
   ClipboardCheck,
   Flame,
+  TriangleAlert,
 } from "lucide-react";
 
 /* ---------- paleta y tipografía: Cuaderno de cocina ---------- */
@@ -52,6 +53,14 @@ const ruled = {
 const SLOTS = ["Desayuno", "Comida", "Cena"];
 const DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 const UNITS = ["ud", "g", "kg", "ml", "l", "cda", "cdta", "taza", "diente", "lata", "al gusto"];
+const ALLERGENS = [
+  { key: "gluten", label: "Gluten" },
+  { key: "lacteos", label: "Lácteos" },
+  { key: "frutos_secos", label: "Frutos secos" },
+  { key: "huevo", label: "Huevo" },
+  { key: "pescado", label: "Pescado/marisco" },
+  { key: "soja", label: "Soja" },
+];
 
 /* ---------- datos de ejemplo (solo la 1ª vez) ---------- */
 const seedRecipes = [
@@ -65,6 +74,7 @@ const seedRecipes = [
         id: "v1",
         name: "Clásica",
         calories: 350, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Lentejas", qty: 300, unit: "g" },
           { name: "Zanahoria", qty: 2, unit: "ud" },
@@ -77,6 +87,7 @@ const seedRecipes = [
         id: "v2",
         name: "Con chorizo",
         calories: 480, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Lentejas", qty: 300, unit: "g" },
           { name: "Zanahoria", qty: 2, unit: "ud" },
@@ -95,6 +106,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pasta", qty: 250, unit: "g" },
           { name: "Albahaca", qty: 1, unit: "taza" },
@@ -114,6 +126,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Lechuga romana", qty: 1, unit: "ud" },
           { name: "Pollo", qty: 200, unit: "g" },
@@ -133,6 +146,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con cebolla",
         calories: 320, // kcal/ración (estimado)
+        allergens: ["huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Patata", qty: 4, unit: "ud" },
           { name: "Huevos", qty: 5, unit: "ud" },
@@ -145,6 +159,7 @@ const seedRecipes = [
         id: "v2",
         name: "Sin cebolla",
         calories: 310, // kcal/ración (estimado)
+        allergens: ["huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Patata", qty: 4, unit: "ud" },
           { name: "Huevos", qty: 5, unit: "ud" },
@@ -164,6 +179,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 150, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Tomate maduro", qty: 1, unit: "kg" },
           { name: "Pepino", qty: 1, unit: "ud" },
@@ -186,6 +202,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 320, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Espinacas", qty: 300, unit: "g" },
@@ -207,6 +224,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con atún",
         calories: 430, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos", "pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Macarrones", qty: 250, unit: "g" },
           { name: "Tomate triturado", qty: 1, unit: "lata" },
@@ -219,6 +237,7 @@ const seedRecipes = [
         id: "v2",
         name: "Vegetariana",
         calories: 400, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Macarrones", qty: 250, unit: "g" },
           { name: "Tomate triturado", qty: 1, unit: "lata" },
@@ -239,6 +258,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 350, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz", qty: 300, unit: "g" },
           { name: "Pimiento rojo", qty: 1, unit: "ud" },
@@ -260,6 +280,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 520, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Muslos de pollo", qty: 4, unit: "ud" },
           { name: "Patata", qty: 4, unit: "ud" },
@@ -281,6 +302,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Lomo de salmón", qty: 4, unit: "ud" },
           { name: "Limón", qty: 1, unit: "ud" },
@@ -301,6 +323,7 @@ const seedRecipes = [
         id: "v1",
         name: "De pollo",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pechuga de pollo", qty: 400, unit: "g" },
           { name: "Pimiento rojo", qty: 1, unit: "ud" },
@@ -314,6 +337,7 @@ const seedRecipes = [
         id: "v2",
         name: "Vegetales",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Champiñones", qty: 250, unit: "g" },
           { name: "Pimiento rojo", qty: 1, unit: "ud" },
@@ -335,6 +359,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 220, // kcal/ración (estimado)
+        allergens: ["lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Calabacín", qty: 3, unit: "ud" },
           { name: "Patata", qty: 1, unit: "ud" },
@@ -355,6 +380,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 600, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Carne picada", qty: 500, unit: "g" },
           { name: "Pan de hamburguesa", qty: 4, unit: "ud" },
@@ -376,6 +402,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 250, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Calabacín", qty: 2, unit: "ud" },
           { name: "Pimiento rojo", qty: 1, unit: "ud" },
@@ -397,6 +424,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 280, // kcal/ración (estimado)
+        allergens: ["pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Lomos de merluza", qty: 4, unit: "ud" },
           { name: "Ajo", qty: 2, unit: "diente" },
@@ -417,6 +445,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Leche de coco", qty: 1, unit: "lata" },
@@ -440,6 +469,7 @@ const seedRecipes = [
         id: "v1",
         name: "Mixta (pollo y marisco)",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz bomba", qty: 400, unit: "g" },
           { name: "Pollo troceado", qty: 400, unit: "g" },
@@ -457,6 +487,7 @@ const seedRecipes = [
         id: "v2",
         name: "De verduras",
         calories: 420, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz bomba", qty: 400, unit: "g" },
           { name: "Judía verde", qty: 200, unit: "g" },
@@ -481,6 +512,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 650, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Fabes (judía blanca)", qty: 500, unit: "g" },
           { name: "Chorizo", qty: 200, unit: "g" },
@@ -505,6 +537,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 300, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Tomate maduro", qty: 1, unit: "kg" },
           { name: "Pan", qty: 150, unit: "g" },
@@ -528,6 +561,7 @@ const seedRecipes = [
         id: "v1",
         name: "De jamón",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Jamón serrano picado", qty: 200, unit: "g" },
           { name: "Mantequilla", qty: 80, unit: "g" },
@@ -543,6 +577,7 @@ const seedRecipes = [
         id: "v2",
         name: "De pollo",
         calories: 360, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pollo cocido picado", qty: 250, unit: "g" },
           { name: "Mantequilla", qty: 80, unit: "g" },
@@ -565,6 +600,7 @@ const seedRecipes = [
         id: "v1",
         name: "Bravas + alioli",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Patata", qty: 800, unit: "g" },
           { name: "Aceite de oliva", qty: 300, unit: "ml" },
@@ -588,6 +624,7 @@ const seedRecipes = [
         id: "v1",
         name: "En salsa de tomate",
         calories: 420, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Carne picada mixta", qty: 500, unit: "g" },
           { name: "Pan rallado", qty: 50, unit: "g" },
@@ -603,6 +640,7 @@ const seedRecipes = [
         id: "v2",
         name: "En salsa de almendras",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Carne picada mixta", qty: 500, unit: "g" },
           { name: "Pan rallado", qty: 50, unit: "g" },
@@ -626,6 +664,7 @@ const seedRecipes = [
         id: "v1",
         name: "De atún",
         calories: 430, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Masa de empanada", qty: 2, unit: "ud" },
           { name: "Atún en lata", qty: 3, unit: "lata" },
@@ -641,6 +680,7 @@ const seedRecipes = [
         id: "v2",
         name: "De carne",
         calories: 460, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Masa de empanada", qty: 2, unit: "ud" },
           { name: "Carne picada", qty: 400, unit: "g" },
@@ -663,6 +703,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 650, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Garbanzos", qty: 400, unit: "g" },
           { name: "Morcillo de ternera", qty: 300, unit: "g" },
@@ -688,6 +729,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 150, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Berenjena", qty: 2, unit: "ud" },
           { name: "Pimiento rojo", qty: 2, unit: "ud" },
@@ -709,6 +751,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 320, // kcal/ración (estimado)
+        allergens: ["pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pulpo cocido", qty: 1, unit: "kg" },
           { name: "Patata", qty: 4, unit: "ud" },
@@ -730,6 +773,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 520, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz bomba", qty: 400, unit: "g" },
           { name: "Costillas de cerdo", qty: 400, unit: "g" },
@@ -754,6 +798,7 @@ const seedRecipes = [
         id: "v1",
         name: "De carne",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pimientos rojos grandes", qty: 4, unit: "ud" },
           { name: "Carne picada", qty: 400, unit: "g" },
@@ -768,6 +813,7 @@ const seedRecipes = [
         id: "v2",
         name: "De arroz y verduras",
         calories: 320, // kcal/ración (estimado)
+        allergens: ["lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pimientos rojos grandes", qty: 4, unit: "ud" },
           { name: "Arroz", qty: 200, unit: "g" },
@@ -792,6 +838,7 @@ const seedRecipes = [
         id: "v1",
         name: "Margarita",
         calories: 550, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Masa de pizza", qty: 2, unit: "ud" },
           { name: "Tomate triturado", qty: 200, unit: "g" },
@@ -805,6 +852,7 @@ const seedRecipes = [
         id: "v2",
         name: "Cuatro quesos",
         calories: 650, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Masa de pizza", qty: 2, unit: "ud" },
           { name: "Tomate triturado", qty: 200, unit: "g" },
@@ -818,6 +866,7 @@ const seedRecipes = [
         id: "v3",
         name: "Carnívora",
         calories: 700, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Masa de pizza", qty: 2, unit: "ud" },
           { name: "Tomate triturado", qty: 200, unit: "g" },
@@ -839,6 +888,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 550, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Placas de lasaña", qty: 12, unit: "ud" },
           { name: "Carne picada", qty: 500, unit: "g" },
@@ -865,6 +915,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con setas variadas",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz arborio", qty: 320, unit: "g" },
           { name: "Setas variadas", qty: 300, unit: "g" },
@@ -888,6 +939,7 @@ const seedRecipes = [
         id: "v1",
         name: "De gambas",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Fideos de arroz", qty: 300, unit: "g" },
           { name: "Gambas", qty: 300, unit: "g" },
@@ -906,6 +958,7 @@ const seedRecipes = [
         id: "v2",
         name: "De pollo",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Fideos de arroz", qty: 300, unit: "g" },
           { name: "Pechuga de pollo", qty: 400, unit: "g" },
@@ -930,6 +983,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 450, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Tortillas de maíz", qty: 12, unit: "ud" },
           { name: "Lomo de cerdo", qty: 600, unit: "g" },
@@ -954,6 +1008,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con alubias",
         calories: 480, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Carne picada", qty: 500, unit: "g" },
           { name: "Alubias rojas cocidas", qty: 2, unit: "lata" },
@@ -978,6 +1033,7 @@ const seedRecipes = [
         id: "v1",
         name: "De verduras",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Cuscús", qty: 300, unit: "g" },
           { name: "Calabaza", qty: 300, unit: "g" },
@@ -993,6 +1049,7 @@ const seedRecipes = [
         id: "v2",
         name: "De pollo",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Cuscús", qty: 300, unit: "g" },
           { name: "Muslos de pollo", qty: 4, unit: "ud" },
@@ -1015,6 +1072,7 @@ const seedRecipes = [
         id: "v1",
         name: "De salmón",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz para sushi", qty: 300, unit: "g" },
           { name: "Salmón fresco", qty: 400, unit: "g" },
@@ -1031,6 +1089,7 @@ const seedRecipes = [
         id: "v2",
         name: "De atún",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz para sushi", qty: 300, unit: "g" },
           { name: "Atún fresco", qty: 400, unit: "g" },
@@ -1053,6 +1112,7 @@ const seedRecipes = [
         id: "v1",
         name: "Clásico",
         calories: 350, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Tahini", qty: 3, unit: "cda" },
@@ -1077,6 +1137,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con pollo",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Fideos chinos", qty: 250, unit: "g" },
           { name: "Pechuga de pollo", qty: 400, unit: "g" },
@@ -1093,6 +1154,7 @@ const seedRecipes = [
         id: "v2",
         name: "Con tofu",
         calories: 400, // kcal/ración (estimado)
+        allergens: ["gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Fideos chinos", qty: 250, unit: "g" },
           { name: "Tofu firme", qty: 350, unit: "g" },
@@ -1116,6 +1178,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 480, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Ternera para guisar", qty: 700, unit: "g" },
           { name: "Cebolla", qty: 3, unit: "ud" },
@@ -1140,6 +1203,7 @@ const seedRecipes = [
         id: "v1",
         name: "Clásica",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Masa quebrada", qty: 1, unit: "ud" },
           { name: "Bacon", qty: 200, unit: "g" },
@@ -1154,6 +1218,7 @@ const seedRecipes = [
         id: "v2",
         name: "De puerro y queso",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Masa quebrada", qty: 1, unit: "ud" },
           { name: "Puerro", qty: 3, unit: "ud" },
@@ -1177,6 +1242,7 @@ const seedRecipes = [
         id: "v1",
         name: "Clásico",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pan de molde", qty: 12, unit: "ud" },
           { name: "Pechuga de pollo", qty: 300, unit: "g" },
@@ -1199,6 +1265,7 @@ const seedRecipes = [
         id: "v1",
         name: "César",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos", "pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Tortilla de trigo grande", qty: 4, unit: "ud" },
           { name: "Pollo a la plancha", qty: 400, unit: "g" },
@@ -1211,6 +1278,7 @@ const seedRecipes = [
         id: "v2",
         name: "Mexicano",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Tortilla de trigo grande", qty: 4, unit: "ud" },
           { name: "Pollo a la plancha", qty: 400, unit: "g" },
@@ -1233,6 +1301,7 @@ const seedRecipes = [
         id: "v1",
         name: "Mediterránea",
         calories: 420, // kcal/ración (estimado)
+        allergens: ["lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Quinoa", qty: 200, unit: "g" },
           { name: "Tomate cherry", qty: 200, unit: "g" },
@@ -1257,6 +1326,7 @@ const seedRecipes = [
         id: "v1",
         name: "Mediterráneas",
         calories: 350, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pechuga de pollo", qty: 500, unit: "g" },
           { name: "Calabacín", qty: 1, unit: "ud" },
@@ -1281,6 +1351,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 280, // kcal/ración (estimado)
+        allergens: ["pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Gambas peladas", qty: 500, unit: "g" },
           { name: "Ajo", qty: 6, unit: "diente" },
@@ -1302,6 +1373,7 @@ const seedRecipes = [
         id: "v1",
         name: "Madrileño",
         calories: 550, // kcal/ración (estimado)
+        allergens: ["gluten", "pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pan de barra", qty: 2, unit: "ud" },
           { name: "Anillas de calamar", qty: 500, unit: "g" },
@@ -1323,6 +1395,7 @@ const seedRecipes = [
         id: "v1",
         name: "De queso y jamón",
         calories: 350, // kcal/ración (estimado)
+        allergens: ["huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Huevos", qty: 6, unit: "ud" },
           { name: "Jamón cocido", qty: 100, unit: "g" },
@@ -1334,6 +1407,7 @@ const seedRecipes = [
         id: "v2",
         name: "De champiñones",
         calories: 280, // kcal/ración (estimado)
+        allergens: ["huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Huevos", qty: 6, unit: "ud" },
           { name: "Champiñones", qty: 200, unit: "g" },
@@ -1354,6 +1428,7 @@ const seedRecipes = [
         id: "v1",
         name: "De pollo",
         calories: 220, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Caldo de pollo", qty: 1.5, unit: "l" },
           { name: "Fideos finos", qty: 150, unit: "g" },
@@ -1377,6 +1452,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con jamón",
         calories: 320, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pan de hogaza", qty: 4, unit: "ud" },
           { name: "Tomate maduro", qty: 2, unit: "ud" },
@@ -1390,6 +1466,7 @@ const seedRecipes = [
         id: "v2",
         name: "Solo",
         calories: 220, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pan de hogaza", qty: 4, unit: "ud" },
           { name: "Tomate maduro", qty: 2, unit: "ud" },
@@ -1410,6 +1487,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con plátano y canela",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Copos de avena", qty: 200, unit: "g" },
           { name: "Leche", qty: 400, unit: "ml" },
@@ -1423,6 +1501,7 @@ const seedRecipes = [
         id: "v2",
         name: "Con frutos rojos",
         calories: 350, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Copos de avena", qty: 200, unit: "g" },
           { name: "Leche", qty: 400, unit: "ml" },
@@ -1445,6 +1524,7 @@ const seedRecipes = [
         id: "v1",
         name: "Tradicional",
         calories: 280, // kcal/ración (estimado)
+        allergens: ["lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz", qty: 150, unit: "g" },
           { name: "Leche", qty: 1, unit: "l" },
@@ -1466,6 +1546,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con nueces y miel",
         calories: 250, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Manzana reineta", qty: 4, unit: "ud" },
           { name: "Azúcar moreno", qty: 4, unit: "cda" },
@@ -1490,6 +1571,7 @@ const seedRecipes = [
         id: "v1",
         name: "Clásico",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pechuga de pollo", qty: 500, unit: "g" },
           { name: "Cacahuetes tostados", qty: 80, unit: "g" },
@@ -1517,6 +1599,7 @@ const seedRecipes = [
         id: "v1",
         name: "Tradicional",
         calories: 420, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz cocido frío", qty: 600, unit: "g" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -1533,6 +1616,7 @@ const seedRecipes = [
         id: "v2",
         name: "Vegetariano",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz cocido frío", qty: 600, unit: "g" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -1556,6 +1640,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estilo cantonés",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Solomillo de ternera", qty: 500, unit: "g" },
           { name: "Brócoli", qty: 500, unit: "g" },
@@ -1581,6 +1666,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con piña",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Lomo de cerdo", qty: 600, unit: "g" },
           { name: "Maicena", qty: 100, unit: "g" },
@@ -1607,6 +1693,7 @@ const seedRecipes = [
         id: "v1",
         name: "De pollo y verduras",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Tallarines chinos al huevo", qty: 350, unit: "g" },
           { name: "Pechuga de pollo", qty: 300, unit: "g" },
@@ -1623,6 +1710,7 @@ const seedRecipes = [
         id: "v2",
         name: "De gambas",
         calories: 420, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Tallarines chinos al huevo", qty: 350, unit: "g" },
           { name: "Gambas peladas", qty: 350, unit: "g" },
@@ -1649,6 +1737,7 @@ const seedRecipes = [
         id: "v1",
         name: "Shoyu de cerdo",
         calories: 550, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Fideos ramen", qty: 4, unit: "ud" },
           { name: "Panceta de cerdo (chashu)", qty: 400, unit: "g" },
@@ -1666,6 +1755,7 @@ const seedRecipes = [
         id: "v2",
         name: "Vegetariano de miso",
         calories: 420, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Fideos ramen", qty: 4, unit: "ud" },
           { name: "Caldo de verduras", qty: 1.5, unit: "l" },
@@ -1691,6 +1781,7 @@ const seedRecipes = [
         id: "v1",
         name: "De cerdo y col",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Obleas de gyoza", qty: 32, unit: "ud" },
           { name: "Carne picada de cerdo", qty: 400, unit: "g" },
@@ -1707,6 +1798,7 @@ const seedRecipes = [
         id: "v2",
         name: "De gambas",
         calories: 350, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Obleas de gyoza", qty: 32, unit: "ud" },
           { name: "Gambas peladas picadas", qty: 400, unit: "g" },
@@ -1730,6 +1822,7 @@ const seedRecipes = [
         id: "v1",
         name: "Tradicional",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pechuga de pollo", qty: 400, unit: "g" },
           { name: "Huevos", qty: 6, unit: "ud" },
@@ -1755,6 +1848,7 @@ const seedRecipes = [
         id: "v1",
         name: "California",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz para sushi", qty: 400, unit: "g" },
           { name: "Vinagre de arroz", qty: 80, unit: "ml" },
@@ -1771,6 +1865,7 @@ const seedRecipes = [
         id: "v2",
         name: "De salmón y aguacate",
         calories: 400, // kcal/ración (estimado)
+        allergens: ["gluten", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz para sushi", qty: 400, unit: "g" },
           { name: "Vinagre de arroz", qty: 80, unit: "ml" },
@@ -1795,6 +1890,7 @@ const seedRecipes = [
         id: "v1",
         name: "De cerdo",
         calories: 600, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Filetes de lomo de cerdo", qty: 4, unit: "ud" },
           { name: "Harina", qty: 100, unit: "g" },
@@ -1810,6 +1906,7 @@ const seedRecipes = [
         id: "v2",
         name: "De pollo (chicken katsu)",
         calories: 550, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pechuga de pollo", qty: 600, unit: "g" },
           { name: "Harina", qty: 100, unit: "g" },
@@ -1835,6 +1932,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con ternera",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz japonés", qty: 400, unit: "g" },
           { name: "Solomillo de ternera", qty: 400, unit: "g" },
@@ -1855,6 +1953,7 @@ const seedRecipes = [
         id: "v2",
         name: "Vegetariano",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "huevo", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Arroz japonés", qty: 400, unit: "g" },
           { name: "Tofu firme", qty: 300, unit: "g" },
@@ -1882,6 +1981,7 @@ const seedRecipes = [
         id: "v1",
         name: "De ternera",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Solomillo de ternera laminado", qty: 600, unit: "g" },
           { name: "Pera asiática (o manzana)", qty: 1, unit: "ud" },
@@ -1899,6 +1999,7 @@ const seedRecipes = [
         id: "v2",
         name: "De cerdo (dwaeji bulgogi)",
         calories: 500, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Panceta de cerdo laminada", qty: 600, unit: "g" },
           { name: "Gochujang", qty: 3, unit: "cda" },
@@ -1924,6 +2025,7 @@ const seedRecipes = [
         id: "v1",
         name: "Tradicional",
         calories: 420, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Fideos de batata (dangmyeon)", qty: 300, unit: "g" },
           { name: "Solomillo de ternera", qty: 300, unit: "g" },
@@ -1952,6 +2054,7 @@ const seedRecipes = [
         id: "v1",
         name: "Picante clásico",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "pescado", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pasteles de arroz (tteok)", qty: 500, unit: "g" },
           { name: "Pasta de pescado (eomuk)", qty: 200, unit: "g", opt: true },
@@ -1978,6 +2081,7 @@ const seedRecipes = [
         id: "v1",
         name: "Yangnyeom (dulce-picante)",
         calories: 650, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Alitas de pollo", qty: 1, unit: "kg" },
           { name: "Maicena", qty: 150, unit: "g" },
@@ -1995,6 +2099,7 @@ const seedRecipes = [
         id: "v2",
         name: "Soja y ajo",
         calories: 620, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "soja"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Alitas de pollo", qty: 1, unit: "kg" },
           { name: "Maicena", qty: 150, unit: "g" },
@@ -2021,6 +2126,7 @@ const seedRecipes = [
         id: "v1",
         name: "Tradicional (guanciale)",
         calories: 580, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Espaguetis", qty: 400, unit: "g" },
           { name: "Guanciale", qty: 200, unit: "g" },
@@ -2034,6 +2140,7 @@ const seedRecipes = [
         id: "v2",
         name: "Con bacon",
         calories: 560, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Espaguetis", qty: 400, unit: "g" },
           { name: "Bacon", qty: 200, unit: "g" },
@@ -2056,6 +2163,7 @@ const seedRecipes = [
         id: "v1",
         name: "Tradicional milanés",
         calories: 450, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Ossobuco de ternera", qty: 4, unit: "ud" },
           { name: "Harina", qty: 50, unit: "g" },
@@ -2084,6 +2192,7 @@ const seedRecipes = [
         id: "v1",
         name: "De pollo",
         calories: 480, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pechuga de pollo", qty: 600, unit: "g" },
           { name: "Yogur griego", qty: 200, unit: "g" },
@@ -2101,6 +2210,7 @@ const seedRecipes = [
         id: "v2",
         name: "De cerdo",
         calories: 500, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Solomillo de cerdo", qty: 600, unit: "g" },
           { name: "Aceite de oliva", qty: 4, unit: "cda" },
@@ -2125,6 +2235,7 @@ const seedRecipes = [
         id: "v1",
         name: "Tradicional de cordero",
         calories: 550, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Berenjenas grandes", qty: 3, unit: "ud" },
           { name: "Patata", qty: 3, unit: "ud" },
@@ -2146,6 +2257,7 @@ const seedRecipes = [
         id: "v2",
         name: "Con ternera",
         calories: 520, // kcal/ración (estimado)
+        allergens: ["gluten", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Berenjenas grandes", qty: 3, unit: "ud" },
           { name: "Patata", qty: 3, unit: "ud" },
@@ -2173,6 +2285,7 @@ const seedRecipes = [
         id: "v1",
         name: "Libanés",
         calories: 180, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Bulgur fino", qty: 150, unit: "g" },
           { name: "Perejil fresco", qty: 3, unit: "taza" },
@@ -2198,6 +2311,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con feta",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Huevos", qty: 6, unit: "ud" },
           { name: "Pimiento rojo", qty: 2, unit: "ud" },
@@ -2217,6 +2331,7 @@ const seedRecipes = [
         id: "v2",
         name: "Sencilla",
         calories: 320, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Huevos", qty: 6, unit: "ud" },
           { name: "Pimiento rojo", qty: 2, unit: "ud" },
@@ -2244,6 +2359,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con frutos rojos",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Yogur griego", qty: 4, unit: "ud" },
           { name: "Copos de avena", qty: 300, unit: "g" },
@@ -2269,6 +2385,7 @@ const seedRecipes = [
         id: "v1",
         name: "De limón",
         calories: 320, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Yogur natural", qty: 1, unit: "ud" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -2293,6 +2410,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con huevo poché",
         calories: 350, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pan de hogaza", qty: 4, unit: "ud" },
           { name: "Aguacate", qty: 2, unit: "ud" },
@@ -2308,6 +2426,7 @@ const seedRecipes = [
         id: "v2",
         name: "Con salmón ahumado",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten", "pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pan de hogaza", qty: 4, unit: "ud" },
           { name: "Aguacate", qty: 2, unit: "ud" },
@@ -2331,6 +2450,7 @@ const seedRecipes = [
         id: "v1",
         name: "Espinaca y plátano",
         calories: 220, // kcal/ración (estimado)
+        allergens: ["lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Espinacas frescas", qty: 2, unit: "taza" },
           { name: "Plátano", qty: 2, unit: "ud" },
@@ -2354,6 +2474,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con frosting",
         calories: 420, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo", "lacteos"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Zanahoria rallada", qty: 300, unit: "g" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -2372,6 +2493,7 @@ const seedRecipes = [
         id: "v2",
         name: "Sin frosting",
         calories: 320, // kcal/ración (estimado)
+        allergens: ["frutos_secos", "gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Zanahoria rallada", qty: 300, unit: "g" },
           { name: "Huevos", qty: 3, unit: "ud" },
@@ -2398,6 +2520,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con vino blanco",
         calories: 420, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Muslos de pollo", qty: 8, unit: "ud" },
           { name: "Ajo", qty: 8, unit: "diente" },
@@ -2423,6 +2546,7 @@ const seedRecipes = [
         id: "v1",
         name: "Extremeñas",
         calories: 550, // kcal/ración (estimado)
+        allergens: ["gluten"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pan del día anterior", qty: 500, unit: "g" },
           { name: "Chorizo", qty: 200, unit: "g" },
@@ -2448,6 +2572,7 @@ const seedRecipes = [
         id: "v1",
         name: "Tradicional",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["gluten", "pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Bacalao desalado", qty: 4, unit: "ud" },
           { name: "Cebolla", qty: 3, unit: "ud" },
@@ -2472,6 +2597,7 @@ const seedRecipes = [
         id: "v1",
         name: "De ajo con huevo",
         calories: 280, // kcal/ración (estimado)
+        allergens: ["gluten", "huevo"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Pan del día anterior", qty: 200, unit: "g" },
           { name: "Ajo", qty: 6, unit: "diente" },
@@ -2497,6 +2623,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con garbanzos del cocido",
         calories: 420, // kcal/ración (estimado)
+        allergens: [], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Carne cocida desmenuzada", qty: 500, unit: "g" },
           { name: "Garbanzos cocidos", qty: 300, unit: "g" },
@@ -2525,6 +2652,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con atún y huevo",
         calories: 420, // kcal/ración (estimado)
+        allergens: ["huevo", "pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Patata", qty: 800, unit: "g" },
           { name: "Cebolla morada", qty: 1, unit: "ud" },
@@ -2551,6 +2679,7 @@ const seedRecipes = [
         id: "v1",
         name: "Con cebolla morada",
         calories: 380, // kcal/ración (estimado)
+        allergens: ["pescado"], // estimado a partir de los ingredientes
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Atún en aceite", qty: 3, unit: "lata" },
@@ -2895,9 +3024,10 @@ function EmptyState({ kind, title, subtitle, children }) {
   );
 }
 
-// Rellena el campo "calories" en recetas ya guardadas que coincidan por id con la
-// biblioteca de fábrica (RECIPE_LIBRARY), solo cuando ese dato falta. Nunca toca
-// recetas propias del usuario (no están en la biblioteca) ni pisa un valor ya puesto.
+// Rellena "calories" y "allergens" en recetas ya guardadas que coincidan por id con la
+// biblioteca de fábrica (RECIPE_LIBRARY), solo cuando ese dato falta de verdad (undefined).
+// Nunca toca recetas propias del usuario (no están en la biblioteca) ni pisa un valor ya puesto,
+// ni siquiera un array de alérgenos vacío (eso significa "revisado, sin alérgenos", no "sin rellenar").
 function backfillCalories(storedRecipes) {
   let anyChanged = false;
   const next = storedRecipes.map((r) => {
@@ -2905,13 +3035,18 @@ function backfillCalories(storedRecipes) {
     if (!libRecipe) return r;
     let recipeChanged = false;
     const newVariants = r.variants.map((v) => {
-      if (v.calories != null) return v;
       const libVariant = libRecipe.variants.find((lv) => lv.id === v.id);
-      if (libVariant && libVariant.calories != null) {
+      if (!libVariant) return v;
+      let patch = {};
+      if (v.calories == null && libVariant.calories != null) {
+        patch.calories = libVariant.calories;
         recipeChanged = true;
-        return { ...v, calories: libVariant.calories };
       }
-      return v;
+      if (v.allergens === undefined && libVariant.allergens !== undefined) {
+        patch.allergens = libVariant.allergens;
+        recipeChanged = true;
+      }
+      return Object.keys(patch).length ? { ...v, ...patch } : v;
     });
     if (recipeChanged) anyChanged = true;
     return recipeChanged ? { ...r, variants: newVariants } : r;
@@ -3777,6 +3912,7 @@ function Planner({ monday, weekOffset, setWeekOffset, plan, recipeById, onCell, 
 function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, missingCount, onAddLibrary }) {
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState(null); // null = todas, "__fav" = favoritas
+  const [excludeAllergens, setExcludeAllergens] = useState([]); // alérgenos a excluir ("sin gluten"...)
 
   const categories = useMemo(() => {
     const s = new Set();
@@ -3784,12 +3920,22 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
     return [...s].sort((a, b) => a.localeCompare(b, "es"));
   }, [recipes]);
 
+  const toggleExcludeAllergen = (key) =>
+    setExcludeAllergens((prev) => (prev.includes(key) ? prev.filter((x) => x !== key) : [...prev, key]));
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return recipes
       .filter((r) => {
         if (cat === "__fav" && !r.fav) return false;
         if (cat && cat !== "__fav" && r.category !== cat) return false;
+        if (excludeAllergens.length > 0) {
+          // se enseña la receta si AL MENOS UNA opción no lleva ninguno de los alérgenos excluidos
+          const hasSafeVariant = r.variants.some(
+            (v) => !(v.allergens || []).some((a) => excludeAllergens.includes(a))
+          );
+          if (!hasSafeVariant) return false;
+        }
         if (!q) return true;
         const inName = r.name.toLowerCase().includes(q);
         const inIng = r.variants.some((v) =>
@@ -3798,7 +3944,7 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
         return inName || inIng;
       })
       .sort((a, b) => (b.fav ? 1 : 0) - (a.fav ? 1 : 0) || a.name.localeCompare(b.name, "es"));
-  }, [recipes, query, cat]);
+  }, [recipes, query, cat, excludeAllergens]);
 
   const favCount = recipes.filter((r) => r.fav).length;
 
@@ -3872,7 +4018,7 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
           </div>
 
           {/* filtros por categoría */}
-          <div style={{ display: "flex", gap: 7, overflowX: "auto", paddingBottom: 4, marginBottom: 14, WebkitOverflowScrolling: "touch" }}>
+          <div style={{ display: "flex", gap: 7, overflowX: "auto", paddingBottom: 4, marginBottom: 8, WebkitOverflowScrolling: "touch" }}>
             <button onClick={() => setCat(null)} style={chip(cat === null)}>Todas</button>
             {favCount > 0 && (
               <button onClick={() => setCat("__fav")} style={chip(cat === "__fav")}>
@@ -3882,6 +4028,32 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
             {categories.map((ct) => (
               <button key={ct} onClick={() => setCat(ct)} style={chip(cat === ct)}>{ct}</button>
             ))}
+          </div>
+
+          {/* filtros por alérgeno a excluir */}
+          <div style={{ display: "flex", gap: 7, overflowX: "auto", paddingBottom: 4, marginBottom: 14, WebkitOverflowScrolling: "touch" }}>
+            {ALLERGENS.map((a) => {
+              const active = excludeAllergens.includes(a.key);
+              return (
+                <button
+                  key={a.key}
+                  onClick={() => toggleExcludeAllergen(a.key)}
+                  style={{
+                    fontSize: 12,
+                    padding: "5px 11px",
+                    borderRadius: 20,
+                    border: `1px solid ${active ? c.paprika : c.line}`,
+                    background: active ? c.paprika : c.card,
+                    color: active ? "#fff" : c.muted,
+                    fontWeight: active ? 700 : 500,
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                  }}
+                >
+                  Sin {a.label.toLowerCase()}
+                </button>
+              );
+            })}
           </div>
 
           {filtered.length === 0 && (
@@ -3918,13 +4090,26 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
                     para {r.baseServings || 4}
                   </span>
                   {r.variants.map((v) => (
-                    <span
-                      key={v.id}
-                      style={{ fontSize: 11, color: c.herb, background: c.herbSoft, padding: "4px 9px", borderRadius: 20 }}
-                    >
-                      {v.name} · {v.ingredients.length} ing.
-                      {v.calories != null && <> · ~{v.calories} kcal</>}
-                    </span>
+                    <React.Fragment key={v.id}>
+                      <span
+                        style={{ fontSize: 11, color: c.herb, background: c.herbSoft, padding: "4px 9px", borderRadius: 20 }}
+                      >
+                        {v.name} · {v.ingredients.length} ing.
+                        {v.calories != null && <> · ~{v.calories} kcal</>}
+                      </span>
+                      {(v.allergens || []).map((ak) => {
+                        const a = ALLERGENS.find((x) => x.key === ak);
+                        if (!a) return null;
+                        return (
+                          <span
+                            key={ak}
+                            style={{ fontSize: 10, color: c.paprika, background: c.paprikaSoft, padding: "3px 8px", borderRadius: 20, fontWeight: 600 }}
+                          >
+                            {a.label}
+                          </span>
+                        );
+                      })}
+                    </React.Fragment>
                   ))}
                   {r.variants.length === 0 && (
                     <span style={{ fontSize: 12, color: c.paprika }}>Sin opciones de ingredientes</span>
@@ -4675,6 +4860,18 @@ function SlotPicker({ recipes, slot, plan, monday, dateKey, currentDishes, exist
                   {single ? "Elegir" : `${r.variants.length} opciones`}
                 </span>
               </button>
+              {single && (r.variants[0]?.allergens || []).length > 0 && (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 4, padding: "0 14px 10px" }}>
+                  {r.variants[0].allergens.map((ak) => {
+                    const a = ALLERGENS.find((x) => x.key === ak);
+                    return a ? (
+                      <span key={ak} style={{ fontSize: 10, color: c.paprika, background: c.paprikaSoft, padding: "2px 7px", borderRadius: 20, fontWeight: 600 }}>
+                        {a.label}
+                      </span>
+                    ) : null;
+                  })}
+                </div>
+              )}
               {open && !single && (
                 <div style={{ padding: "4px 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
                   {r.variants.map((v) => (
@@ -4693,6 +4890,18 @@ function SlotPicker({ recipes, slot, plan, monday, dateKey, currentDishes, exist
                       <div style={{ fontSize: 11, color: c.muted, marginTop: 2 }}>
                         {v.ingredients.map((x) => (x.opt ? `${x.name} (opc.)` : x.name)).join(", ") || "Sin ingredientes"}
                       </div>
+                      {(v.allergens || []).length > 0 && (
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 5 }}>
+                          {v.allergens.map((ak) => {
+                            const a = ALLERGENS.find((x) => x.key === ak);
+                            return a ? (
+                              <span key={ak} style={{ fontSize: 10, color: c.paprika, background: c.paprikaSoft, padding: "2px 7px", borderRadius: 20, fontWeight: 600 }}>
+                                {a.label}
+                              </span>
+                            ) : null;
+                          })}
+                        </div>
+                      )}
                     </button>
                   ))}
                 </div>
@@ -4818,6 +5027,44 @@ function RecipeEditor({ recipe, onClose, onSave }) {
                 style={{ ...inp, margin: 0, flex: 1, fontFamily: "'Special Elite', monospace" }}
               />
               <span style={{ fontSize: 12, color: c.muted, flexShrink: 0 }}>kcal</span>
+            </div>
+
+            <div style={{ marginBottom: 12 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+                <TriangleAlert size={14} style={{ color: c.paprika, flexShrink: 0 }} />
+                <span style={{ fontSize: 12, color: c.muted, fontWeight: 600 }}>Alérgenos presentes</span>
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {ALLERGENS.map((a) => {
+                  const active = (v.allergens || []).includes(a.key);
+                  return (
+                    <button
+                      key={a.key}
+                      onClick={() =>
+                        updateVariant(v.id, {
+                          allergens: active
+                            ? (v.allergens || []).filter((x) => x !== a.key)
+                            : [...(v.allergens || []), a.key],
+                        })
+                      }
+                      style={{
+                        fontSize: 12,
+                        padding: "5px 11px",
+                        borderRadius: 20,
+                        border: `1px solid ${active ? c.paprika : c.line}`,
+                        background: active ? c.paprikaSoft : c.card,
+                        color: active ? c.paprika : c.muted,
+                        fontWeight: active ? 700 : 500,
+                      }}
+                    >
+                      {a.label}
+                    </button>
+                  );
+                })}
+              </div>
+              <p style={{ fontSize: 11, color: c.muted, fontStyle: "italic", marginTop: 6, marginBottom: 0 }}>
+                Orientativo, revisado a partir de los ingredientes — no es un dato certificado. Si la alergia es grave, comprueba siempre las etiquetas.
+              </p>
             </div>
 
             {v.ingredients.map((ing, i) => (
