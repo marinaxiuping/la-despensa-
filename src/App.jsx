@@ -446,7 +446,7 @@ const seedRecipes = [
         id: "v1",
         name: "Estándar",
         calories: 480, // kcal/ración (estimado)
-        allergens: ["lacteos"], // estimado a partir de los ingredientes
+        allergens: [], // estimado a partir de los ingredientes (leche de coco no es lácteo)
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Leche de coco", qty: 1, unit: "lata" },
@@ -1113,7 +1113,7 @@ const seedRecipes = [
         id: "v1",
         name: "Clásico",
         calories: 350, // kcal/ración (estimado)
-        allergens: ["gluten"], // estimado a partir de los ingredientes
+        allergens: ["gluten", "frutos_secos"], // estimado a partir de los ingredientes (tahini es sésamo)
         ingredients: [
           { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
           { name: "Tahini", qty: 3, unit: "cda" },
@@ -2451,7 +2451,7 @@ const seedRecipes = [
         id: "v1",
         name: "Espinaca y plátano",
         calories: 220, // kcal/ración (estimado)
-        allergens: ["lacteos"], // estimado a partir de los ingredientes
+        allergens: [], // estimado a partir de los ingredientes (leche vegetal no es lácteo)
         ingredients: [
           { name: "Espinacas frescas", qty: 2, unit: "taza" },
           { name: "Plátano", qty: 2, unit: "ud" },
@@ -2692,6 +2692,1252 @@ const seedRecipes = [
           { name: "Limón", qty: 1, unit: "ud" },
           { name: "Aceite de oliva virgen", qty: 3, unit: "cda" },
           { name: "Sal", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+
+  /* ---------- INDIA / CURRIES ---------- */
+  {
+    id: "r86",
+    name: "Pollo tikka masala",
+    category: "India",
+    baseServings: 4,
+    notes: "Marinar el pollo en yogur y especias mínimo 1 h (mejor toda la noche). Dorar bien antes de añadir la salsa. Nata al final, fuera del hervor fuerte.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 480,
+        allergens: ["lacteos"],
+        ingredients: [
+          { name: "Pechuga de pollo", qty: 600, unit: "g" },
+          { name: "Yogur natural", qty: 150, unit: "g" },
+          { name: "Tomate triturado", qty: 400, unit: "g" },
+          { name: "Nata", qty: 100, unit: "ml" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Jengibre", qty: 1, unit: "cda" },
+          { name: "Garam masala", qty: 2, unit: "cdta" },
+          { name: "Comino", qty: 1, unit: "cdta" },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta" },
+          { name: "Arroz basmati", qty: 300, unit: "g" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r87",
+    name: "Dal de lentejas rojas",
+    category: "India",
+    baseServings: 4,
+    notes: "Vegano. Las lentejas rojas se deshacen solas, no hace falta remojo previo. 20-25 min a fuego suave removiendo de vez en cuando.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: [],
+        ingredients: [
+          { name: "Lentejas rojas", qty: 300, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Jengibre", qty: 1, unit: "cda" },
+          { name: "Tomate triturado", qty: 200, unit: "g" },
+          { name: "Leche de coco", qty: 1, unit: "lata" },
+          { name: "Cúrcuma", qty: 1, unit: "cdta" },
+          { name: "Comino", qty: 1, unit: "cdta" },
+          { name: "Cilantro fresco", qty: 1, unit: "cda", opt: true },
+          { name: "Arroz basmati", qty: 250, unit: "g" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r88",
+    name: "Palak paneer",
+    category: "India",
+    baseServings: 4,
+    notes: "Triturar parte de las espinacas para dar cremosidad, dejar otra parte entera. El paneer se dora ligero antes de añadirlo, así no se deshace.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 420,
+        allergens: ["lacteos"],
+        ingredients: [
+          { name: "Espinacas frescas", qty: 500, unit: "g" },
+          { name: "Paneer", qty: 250, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Jengibre", qty: 1, unit: "cda" },
+          { name: "Tomate triturado", qty: 100, unit: "g" },
+          { name: "Nata", qty: 80, unit: "ml", opt: true },
+          { name: "Garam masala", qty: 1, unit: "cdta" },
+          { name: "Comino", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r89",
+    name: "Biryani de pollo",
+    category: "India",
+    baseServings: 4,
+    notes: "Arroz y pollo se cuecen por separado y se montan en capas al final, con azafrán en leche caliente por encima. Reposar tapado 10 min antes de servir.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 550,
+        allergens: ["lacteos", "frutos_secos"],
+        ingredients: [
+          { name: "Arroz basmati", qty: 400, unit: "g" },
+          { name: "Muslos de pollo", qty: 600, unit: "g" },
+          { name: "Yogur natural", qty: 150, unit: "g" },
+          { name: "Cebolla", qty: 2, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Jengibre", qty: 1, unit: "cda" },
+          { name: "Garam masala", qty: 2, unit: "cdta" },
+          { name: "Azafrán", qty: 1, unit: "pinch" },
+          { name: "Anacardos", qty: 40, unit: "g", opt: true },
+          { name: "Pasas", qty: 30, unit: "g", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r90",
+    name: "Samosas de verduras",
+    category: "India",
+    baseServings: 6,
+    notes: "Relleno bien seco para que no reviente la masa al freír. Doblar en triángulo y sellar bien los bordes con agua.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 320,
+        allergens: ["gluten"],
+        ingredients: [
+          { name: "Obleas para samosas", qty: 12, unit: "ud" },
+          { name: "Patata", qty: 3, unit: "ud" },
+          { name: "Guisantes", qty: 150, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Comino", qty: 1, unit: "cdta" },
+          { name: "Garam masala", qty: 1, unit: "cdta" },
+          { name: "Cilantro fresco", qty: 1, unit: "cda", opt: true },
+          { name: "Aceite para freír", qty: 500, unit: "ml" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r91",
+    name: "Chana masala",
+    category: "India",
+    baseServings: 4,
+    notes: "Vegano. Aplastar un poco los garbanzos mientras se cuecen para que la salsa espese sola.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: [],
+        ingredients: [
+          { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
+          { name: "Tomate triturado", qty: 300, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Jengibre", qty: 1, unit: "cda" },
+          { name: "Garam masala", qty: 1, unit: "cdta" },
+          { name: "Comino", qty: 1, unit: "cdta" },
+          { name: "Cilantro fresco", qty: 1, unit: "cda", opt: true },
+          { name: "Arroz basmati", qty: 250, unit: "g" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r92",
+    name: "Curry de cordero",
+    category: "India",
+    baseServings: 4,
+    notes: "Estilo rogan josh. Cuanto más lento el guiso, más tierno queda el cordero — mínimo 1 h a fuego bajo.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 520,
+        allergens: ["lacteos"],
+        ingredients: [
+          { name: "Cordero para guisar", qty: 700, unit: "g" },
+          { name: "Yogur natural", qty: 150, unit: "g" },
+          { name: "Cebolla", qty: 2, unit: "ud" },
+          { name: "Ajo", qty: 4, unit: "diente" },
+          { name: "Jengibre", qty: 1, unit: "cda" },
+          { name: "Tomate triturado", qty: 300, unit: "g" },
+          { name: "Garam masala", qty: 2, unit: "cdta" },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta" },
+          { name: "Arroz basmati", qty: 300, unit: "g" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r93",
+    name: "Naan casero",
+    category: "India",
+    baseServings: 6,
+    notes: "Sartén o plancha muy caliente, 1-2 min por lado hasta que salgan burbujas doradas. Pincelar con mantequilla al sacarlo.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 250,
+        allergens: ["gluten", "lacteos"],
+        ingredients: [
+          { name: "Harina", qty: 400, unit: "g" },
+          { name: "Yogur natural", qty: 150, unit: "g" },
+          { name: "Levadura seca", qty: 1, unit: "cdta" },
+          { name: "Aceite de oliva", qty: 2, unit: "cda" },
+          { name: "Ajo", qty: 2, unit: "diente", opt: true },
+          { name: "Mantequilla", qty: 30, unit: "g", opt: true },
+          { name: "Sal", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+
+  /* ---------- FRANCESA ---------- */
+  {
+    id: "r94",
+    name: "Coq au vin",
+    category: "Francesa",
+    baseServings: 4,
+    notes: "Marinar el pollo en vino tinto un par de horas si hay tiempo. Guiso lento, mínimo 45 min, para que la salsa reduzca y espese.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 480,
+        allergens: ["gluten"],
+        ingredients: [
+          { name: "Muslos de pollo", qty: 8, unit: "ud" },
+          { name: "Vino tinto", qty: 400, unit: "ml" },
+          { name: "Panceta", qty: 150, unit: "g" },
+          { name: "Champiñones", qty: 250, unit: "g" },
+          { name: "Cebolla", qty: 2, unit: "ud" },
+          { name: "Zanahoria", qty: 2, unit: "ud" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Caldo de pollo", qty: 300, unit: "ml" },
+          { name: "Harina", qty: 2, unit: "cda" },
+          { name: "Laurel", qty: 1, unit: "ud", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r95",
+    name: "Ratatouille",
+    category: "Francesa",
+    baseServings: 4,
+    notes: "Vegano. Cortar todas las verduras en rodajas finas de grosor similar para que se hagan por igual. Horno a 180 ºC unos 40 min.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 200,
+        allergens: [],
+        ingredients: [
+          { name: "Berenjena", qty: 1, unit: "ud" },
+          { name: "Calabacín", qty: 2, unit: "ud" },
+          { name: "Pimiento rojo", qty: 1, unit: "ud" },
+          { name: "Tomate", qty: 4, unit: "ud" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Aceite de oliva", qty: 4, unit: "cda" },
+          { name: "Tomillo", qty: 1, unit: "cdta", opt: true },
+          { name: "Albahaca fresca", qty: 1, unit: "cda", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r96",
+    name: "Boeuf bourguignon",
+    category: "Francesa",
+    baseServings: 4,
+    notes: "El guiso francés por excelencia: cuanto más tiempo a fuego lento, mejor (mínimo 2 h). Mejor de un día para otro.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 520,
+        allergens: ["gluten"],
+        ingredients: [
+          { name: "Carne de ternera para guisar", qty: 800, unit: "g" },
+          { name: "Vino tinto", qty: 500, unit: "ml" },
+          { name: "Panceta", qty: 150, unit: "g" },
+          { name: "Champiñones", qty: 250, unit: "g" },
+          { name: "Zanahoria", qty: 2, unit: "ud" },
+          { name: "Cebolla", qty: 2, unit: "ud" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Caldo de carne", qty: 300, unit: "ml" },
+          { name: "Harina", qty: 2, unit: "cda" },
+          { name: "Laurel", qty: 1, unit: "ud", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r97",
+    name: "Crepes",
+    category: "Francesa",
+    baseServings: 4,
+    notes: "Dejar reposar la masa 30 min en la nevera antes de hacerlas, quedan más finas. Sartén bien caliente y poca cantidad de masa cada vez.",
+    variants: [
+      {
+        id: "v1",
+        name: "Dulces",
+        calories: 320,
+        allergens: ["gluten", "huevo", "lacteos"],
+        ingredients: [
+          { name: "Harina", qty: 250, unit: "g" },
+          { name: "Huevos", qty: 3, unit: "ud" },
+          { name: "Leche", qty: 500, unit: "ml" },
+          { name: "Mantequilla", qty: 30, unit: "g" },
+          { name: "Sal", qty: 1, unit: "pinch" },
+          { name: "Azúcar", qty: 1, unit: "cda", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r98",
+    name: "Sopa de cebolla francesa",
+    category: "Francesa",
+    baseServings: 4,
+    notes: "Pochar la cebolla muy despacio, mínimo 40 min, hasta que quede dorada y dulce — ahí está el sabor. Gratinar con el queso antes de servir.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 350,
+        allergens: ["gluten", "lacteos"],
+        ingredients: [
+          { name: "Cebolla", qty: 4, unit: "ud" },
+          { name: "Caldo de carne", qty: 1, unit: "l" },
+          { name: "Vino blanco", qty: 100, unit: "ml", opt: true },
+          { name: "Mantequilla", qty: 40, unit: "g" },
+          { name: "Pan", qty: 4, unit: "ud" },
+          { name: "Queso gruyère", qty: 120, unit: "g" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r99",
+    name: "Tarte tatin",
+    category: "Francesa",
+    baseServings: 6,
+    notes: "El caramelo se hace en la misma sartén antes de poner la masa y las manzanas. Se desmolda boca abajo, con cuidado, recién salida del horno.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: ["gluten", "lacteos"],
+        ingredients: [
+          { name: "Manzana reineta", qty: 6, unit: "ud" },
+          { name: "Masa quebrada", qty: 1, unit: "ud" },
+          { name: "Mantequilla", qty: 80, unit: "g" },
+          { name: "Azúcar", qty: 150, unit: "g" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r100",
+    name: "Croque monsieur",
+    category: "Francesa",
+    baseServings: 4,
+    notes: "La bechamel por encima es lo que lo distingue de un sándwich mixto normal. Horno o gratinador hasta que dore la superficie.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 450,
+        allergens: ["gluten", "lacteos"],
+        ingredients: [
+          { name: "Pan de molde", qty: 8, unit: "ud" },
+          { name: "Jamón cocido", qty: 200, unit: "g" },
+          { name: "Queso gruyère", qty: 150, unit: "g" },
+          { name: "Mantequilla", qty: 30, unit: "g" },
+          { name: "Harina", qty: 20, unit: "g" },
+          { name: "Leche", qty: 200, unit: "ml" },
+          { name: "Nuez moscada", qty: 1, unit: "pinch", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r101",
+    name: "Salade niçoise",
+    category: "Francesa",
+    baseServings: 4,
+    notes: "Todos los ingredientes por separado sobre la ensalada, sin mezclar del todo — así se presenta tradicionalmente.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: ["huevo", "pescado"],
+        ingredients: [
+          { name: "Atún en aceite", qty: 2, unit: "lata" },
+          { name: "Huevos", qty: 4, unit: "ud" },
+          { name: "Judía verde", qty: 200, unit: "g" },
+          { name: "Patata", qty: 3, unit: "ud" },
+          { name: "Tomate", qty: 2, unit: "ud" },
+          { name: "Aceitunas negras", qty: 80, unit: "g" },
+          { name: "Anchoas", qty: 8, unit: "ud", opt: true },
+          { name: "Aceite de oliva", qty: 4, unit: "cda" },
+          { name: "Vinagre", qty: 1, unit: "cda" },
+        ],
+      },
+    ],
+  },
+
+  /* ---------- VEGETARIANO / VEGANO A FONDO ---------- */
+  {
+    id: "r102",
+    name: "Buddha bowl vegano",
+    category: "Vegano",
+    baseServings: 4,
+    notes: "Cada ingrediente cocinado o cortado por separado y montado en el bol por secciones. Aliñar justo antes de comer.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 420,
+        allergens: ["frutos_secos"],
+        ingredients: [
+          { name: "Quinoa", qty: 250, unit: "g" },
+          { name: "Garbanzos cocidos", qty: 1, unit: "lata" },
+          { name: "Aguacate", qty: 1, unit: "ud" },
+          { name: "Zanahoria", qty: 2, unit: "ud" },
+          { name: "Col lombarda", qty: 150, unit: "g" },
+          { name: "Espinacas frescas", qty: 100, unit: "g" },
+          { name: "Tahini", qty: 2, unit: "cda" },
+          { name: "Limón", qty: 1, unit: "ud" },
+          { name: "Aceite de oliva", qty: 2, unit: "cda" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r103",
+    name: "Lasaña vegetal",
+    category: "Vegetariano",
+    baseServings: 4,
+    notes: "Asar antes la berenjena y el calabacín en el horno para que suelten agua y no quede aguada la lasaña. Horno final 200 ºC 25 min.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 450,
+        allergens: ["gluten", "lacteos"],
+        ingredients: [
+          { name: "Placas de lasaña", qty: 12, unit: "ud" },
+          { name: "Calabacín", qty: 2, unit: "ud" },
+          { name: "Berenjena", qty: 1, unit: "ud" },
+          { name: "Espinacas frescas", qty: 200, unit: "g" },
+          { name: "Tomate triturado", qty: 400, unit: "g" },
+          { name: "Mozzarella", qty: 150, unit: "g" },
+          { name: "Mantequilla", qty: 40, unit: "g" },
+          { name: "Harina", qty: 40, unit: "g" },
+          { name: "Leche", qty: 500, unit: "ml" },
+          { name: "Parmesano", qty: 50, unit: "g" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r104",
+    name: "Falafel con salsa de tahini",
+    category: "Vegano",
+    baseServings: 4,
+    notes: "Los garbanzos se usan remojados, NUNCA cocidos, o la masa queda demasiado blanda para freír. Reposar la masa 30 min antes de formar las bolitas.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 420,
+        allergens: ["gluten", "frutos_secos"],
+        ingredients: [
+          { name: "Garbanzos secos remojados", qty: 300, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Perejil fresco", qty: 1, unit: "taza" },
+          { name: "Cilantro fresco", qty: 1, unit: "taza", opt: true },
+          { name: "Comino", qty: 1, unit: "cdta" },
+          { name: "Harina", qty: 2, unit: "cda" },
+          { name: "Tahini", qty: 3, unit: "cda" },
+          { name: "Limón", qty: 1, unit: "ud" },
+          { name: "Aceite para freír", qty: 500, unit: "ml" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r105",
+    name: "Chili vegano de boniato y alubias",
+    category: "Vegano",
+    baseServings: 4,
+    notes: "El boniato en dados pequeños se cuece rápido. 25-30 min a fuego medio hasta que espese.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: [],
+        ingredients: [
+          { name: "Boniato", qty: 500, unit: "g" },
+          { name: "Alubias negras cocidas", qty: 2, unit: "lata" },
+          { name: "Tomate triturado", qty: 400, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Pimiento rojo", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Comino", qty: 1, unit: "cdta" },
+          { name: "Chile en polvo", qty: 1, unit: "cdta" },
+          { name: "Maíz dulce", qty: 1, unit: "lata", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r106",
+    name: "Hamburguesa vegana de garbanzos",
+    category: "Vegano",
+    baseServings: 4,
+    notes: "Triturar los garbanzos dejando algo de textura, no una pasta fina. Enfriar la masa 20 min antes de formar las hamburguesas para que no se rompan.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 450,
+        allergens: ["gluten"],
+        ingredients: [
+          { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
+          { name: "Copos de avena", qty: 60, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Comino", qty: 1, unit: "cdta" },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta" },
+          { name: "Pan de hamburguesa", qty: 4, unit: "ud" },
+          { name: "Lechuga", qty: 1, unit: "ud" },
+          { name: "Tomate", qty: 1, unit: "ud" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r107",
+    name: "Boloñesa vegana de lentejas",
+    category: "Vegano",
+    baseServings: 4,
+    notes: "Las lentejas cocidas hacen las veces de carne picada. Sofrito bien hecho de verdura, mínimo 15 min, para que dé cuerpo a la salsa.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 420,
+        allergens: ["gluten"],
+        ingredients: [
+          { name: "Lentejas cocidas", qty: 400, unit: "g" },
+          { name: "Zanahoria", qty: 2, unit: "ud" },
+          { name: "Apio", qty: 1, unit: "ud", opt: true },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Tomate triturado", qty: 400, unit: "g" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Espaguetis", qty: 350, unit: "g" },
+          { name: "Aceite de oliva", qty: 3, unit: "cda" },
+          { name: "Orégano", qty: 1, unit: "cdta", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r108",
+    name: "Tofu al horno con verduras asadas",
+    category: "Vegano",
+    baseServings: 4,
+    notes: "Prensar el tofu 15 min antes (con peso encima) para que suelte agua y coja mejor la marinada. Horno a 200 ºC unos 25 min.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 350,
+        allergens: ["gluten", "soja"],
+        ingredients: [
+          { name: "Tofu firme", qty: 400, unit: "g" },
+          { name: "Calabacín", qty: 2, unit: "ud" },
+          { name: "Pimiento rojo", qty: 1, unit: "ud" },
+          { name: "Berenjena", qty: 1, unit: "ud" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Salsa de soja", qty: 3, unit: "cda" },
+          { name: "Aceite de oliva", qty: 3, unit: "cda" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r109",
+    name: "Curry vegano de garbanzos y espinacas",
+    category: "Vegano",
+    baseServings: 4,
+    notes: "Sofreír bien las especias en el aceite antes de añadir el líquido, así sueltan todo el aroma.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: [],
+        ingredients: [
+          { name: "Garbanzos cocidos", qty: 2, unit: "lata" },
+          { name: "Espinacas frescas", qty: 200, unit: "g" },
+          { name: "Leche de coco", qty: 1, unit: "lata" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Jengibre", qty: 1, unit: "cda" },
+          { name: "Curry en polvo", qty: 2, unit: "cdta" },
+          { name: "Tomate triturado", qty: 200, unit: "g" },
+          { name: "Arroz basmati", qty: 250, unit: "g" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r110",
+    name: "Buñuelos de calabacín",
+    category: "Vegetariano",
+    baseServings: 4,
+    notes: "Escurrir bien el calabacín rallado (con un paño limpio, apretando) para que la masa no quede aguada. Freír en tandas pequeñas.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 320,
+        allergens: ["gluten", "huevo", "lacteos"],
+        ingredients: [
+          { name: "Calabacín", qty: 2, unit: "ud" },
+          { name: "Huevos", qty: 2, unit: "ud" },
+          { name: "Harina", qty: 100, unit: "g" },
+          { name: "Queso rallado", qty: 60, unit: "g" },
+          { name: "Ajo", qty: 1, unit: "diente" },
+          { name: "Perejil fresco", qty: 1, unit: "cda", opt: true },
+          { name: "Aceite para freír", qty: 300, unit: "ml" },
+        ],
+      },
+    ],
+  },
+
+  /* ---------- COMFORT FOOD / GUISOS DE CUCHARA ---------- */
+  {
+    id: "r111",
+    name: "Estofado de ternera con patatas",
+    category: "Guisos",
+    baseServings: 4,
+    notes: "Dorar bien la carne antes de mojar con el caldo, ahí está buena parte del sabor. Fuego lento mínimo 1 h 30 min.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 480,
+        allergens: [],
+        ingredients: [
+          { name: "Carne de ternera para guisar", qty: 800, unit: "g" },
+          { name: "Patata", qty: 4, unit: "ud" },
+          { name: "Zanahoria", qty: 3, unit: "ud" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Tomate triturado", qty: 200, unit: "g" },
+          { name: "Vino tinto", qty: 100, unit: "ml", opt: true },
+          { name: "Caldo de carne", qty: 500, unit: "ml" },
+          { name: "Laurel", qty: 1, unit: "ud", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r112",
+    name: "Callos a la madrileña",
+    category: "Guisos",
+    baseServings: 4,
+    notes: "Mejor de un día para otro, gana sabor reposado. Cocción larga y lenta, mínimo 2 h si los callos no vienen precocidos.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 450,
+        allergens: [],
+        ingredients: [
+          { name: "Callos de ternera cocidos", qty: 800, unit: "g" },
+          { name: "Morcilla", qty: 150, unit: "g" },
+          { name: "Chorizo", qty: 150, unit: "g" },
+          { name: "Garbanzos cocidos", qty: 1, unit: "lata" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Pimentón dulce", qty: 1, unit: "cda" },
+          { name: "Pimentón picante", qty: 1, unit: "cdta", opt: true },
+          { name: "Laurel", qty: 1, unit: "ud", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r113",
+    name: "Potaje de alubias con chorizo y morcilla",
+    category: "Guisos",
+    baseServings: 4,
+    notes: "Fuego suave y constante, sin que hierva a lo bruto o las alubias se rompen. Añadir la patata a media cocción.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 520,
+        allergens: [],
+        ingredients: [
+          { name: "Alubias blancas cocidas", qty: 500, unit: "g" },
+          { name: "Chorizo", qty: 150, unit: "g" },
+          { name: "Morcilla", qty: 150, unit: "g" },
+          { name: "Patata", qty: 2, unit: "ud" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta" },
+          { name: "Laurel", qty: 1, unit: "ud", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r114",
+    name: "Pastel de carne con puré",
+    category: "Guisos",
+    baseServings: 4,
+    notes: "Estilo cottage pie. El puré se marca con un tenedor por encima antes de hornear para que dore y quede crujiente en los picos.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 480,
+        allergens: ["lacteos"],
+        ingredients: [
+          { name: "Carne picada", qty: 500, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Zanahoria", qty: 1, unit: "ud" },
+          { name: "Guisantes", qty: 100, unit: "g" },
+          { name: "Caldo de carne", qty: 200, unit: "ml" },
+          { name: "Patata", qty: 800, unit: "g" },
+          { name: "Mantequilla", qty: 40, unit: "g" },
+          { name: "Leche", qty: 100, unit: "ml" },
+          { name: "Queso rallado", qty: 60, unit: "g", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r115",
+    name: "Sopa de pollo casera",
+    category: "Guisos",
+    baseServings: 4,
+    notes: "El remedio de siempre. Espumar bien el caldo al principio de la cocción para que quede limpio y transparente.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 250,
+        allergens: ["gluten"],
+        ingredients: [
+          { name: "Muslos de pollo", qty: 4, unit: "ud" },
+          { name: "Zanahoria", qty: 2, unit: "ud" },
+          { name: "Apio", qty: 1, unit: "ud" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Fideos finos", qty: 100, unit: "g" },
+          { name: "Caldo de pollo", qty: 1.5, unit: "l" },
+          { name: "Perejil", qty: 1, unit: "cda", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r116",
+    name: "Rabo de toro",
+    category: "Guisos",
+    baseServings: 4,
+    notes: "Guiso lento por excelencia, mínimo 2-3 h a fuego bajo hasta que la carne se despegue sola del hueso. Mejor de un día para otro.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 520,
+        allergens: [],
+        ingredients: [
+          { name: "Rabo de toro", qty: 1.2, unit: "kg" },
+          { name: "Cebolla", qty: 2, unit: "ud" },
+          { name: "Zanahoria", qty: 2, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Tomate triturado", qty: 300, unit: "g" },
+          { name: "Vino tinto", qty: 400, unit: "ml" },
+          { name: "Caldo de carne", qty: 300, unit: "ml" },
+          { name: "Laurel", qty: 1, unit: "ud", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r117",
+    name: "Judías verdes con patata y jamón",
+    category: "Guisos",
+    baseServings: 4,
+    notes: "Cocer la judía verde y la patata juntas hasta que estén tiernas, luego un sofrito rápido de ajo y jamón por encima.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 280,
+        allergens: [],
+        ingredients: [
+          { name: "Judía verde", qty: 500, unit: "g" },
+          { name: "Patata", qty: 3, unit: "ud" },
+          { name: "Jamón serrano", qty: 100, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Aceite de oliva", qty: 3, unit: "cda" },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r118",
+    name: "Arroz caldoso con costillas",
+    category: "Guisos",
+    baseServings: 4,
+    notes: "Más caldo que en una paella normal — el arroz debe quedar meloso, casi con sopa. Servir recién hecho, sigue cociendo fuera del fuego.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 480,
+        allergens: [],
+        ingredients: [
+          { name: "Arroz", qty: 300, unit: "g" },
+          { name: "Costillas de cerdo", qty: 500, unit: "g" },
+          { name: "Pimiento rojo", qty: 1, unit: "ud" },
+          { name: "Tomate triturado", qty: 200, unit: "g" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Caldo de carne", qty: 1.2, unit: "l" },
+          { name: "Azafrán", qty: 1, unit: "pinch", opt: true },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+
+  /* ---------- PARRILLA Y BARBACOA ---------- */
+  {
+    id: "r119",
+    name: "Costillas de cerdo a la barbacoa",
+    category: "Parrilla",
+    baseServings: 4,
+    notes: "Al horno bajo (150 ºC) tapadas con papel de aluminio 2 h, luego a la parrilla o grill fuerte 10 min con la salsa para que caramelice.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 550,
+        allergens: [],
+        ingredients: [
+          { name: "Costillar de cerdo", qty: 1.5, unit: "kg" },
+          { name: "Salsa barbacoa", qty: 200, unit: "g" },
+          { name: "Azúcar moreno", qty: 2, unit: "cda" },
+          { name: "Pimentón ahumado", qty: 1, unit: "cda" },
+          { name: "Ajo en polvo", qty: 1, unit: "cdta" },
+          { name: "Sal", qty: 1, unit: "cdta" },
+          { name: "Pimienta", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r120",
+    name: "Chuletón a la parrilla",
+    category: "Parrilla",
+    baseServings: 4,
+    notes: "Sacar de la nevera 1 h antes para que esté a temperatura ambiente. Parrilla muy caliente, pocos minutos por lado, reposar antes de cortar.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 500,
+        allergens: [],
+        ingredients: [
+          { name: "Chuletón de ternera", qty: 1.2, unit: "kg" },
+          { name: "Sal gorda", qty: 1, unit: "cda" },
+          { name: "Aceite de oliva", qty: 2, unit: "cda" },
+          { name: "Ajo", qty: 2, unit: "diente", opt: true },
+          { name: "Romero", qty: 1, unit: "cdta", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r121",
+    name: "Pollo a la brasa",
+    category: "Parrilla",
+    baseServings: 4,
+    notes: "Marinar mínimo 2 h (mejor toda la noche). Brasa o parrilla a fuego medio para que se haga por dentro sin quemarse fuera.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 420,
+        allergens: [],
+        ingredients: [
+          { name: "Pollo troceado", qty: 1.5, unit: "kg" },
+          { name: "Limón", qty: 2, unit: "ud" },
+          { name: "Ajo", qty: 4, unit: "diente" },
+          { name: "Pimentón dulce", qty: 1, unit: "cda" },
+          { name: "Orégano", qty: 1, unit: "cdta" },
+          { name: "Aceite de oliva", qty: 3, unit: "cda" },
+          { name: "Sal", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r122",
+    name: "Brochetas de solomillo",
+    category: "Parrilla",
+    baseServings: 4,
+    notes: "Cortar la carne en dados de tamaño uniforme para que se hagan por igual. Parrilla fuerte, poco tiempo, para que quede jugosa por dentro.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: [],
+        ingredients: [
+          { name: "Solomillo de ternera", qty: 600, unit: "g" },
+          { name: "Pimiento rojo", qty: 1, unit: "ud" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Aceite de oliva", qty: 2, unit: "cda" },
+          { name: "Ajo", qty: 2, unit: "diente" },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r123",
+    name: "Panceta a la parrilla",
+    category: "Parrilla",
+    baseServings: 4,
+    notes: "Fuego medio para que la grasa se derrita despacio y quede crujiente sin quemarse. Vigilar de cerca, se dora rápido al final.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 450,
+        allergens: [],
+        ingredients: [
+          { name: "Panceta de cerdo en lonchas", qty: 600, unit: "g" },
+          { name: "Sal", qty: 1, unit: "cdta" },
+          { name: "Pimienta", qty: 1, unit: "cdta" },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r124",
+    name: "Choripán",
+    category: "Parrilla",
+    baseServings: 4,
+    notes: "Clásico argentino de asador. El chorizo se abre en mariposa antes de la parrilla para que se haga más rápido y quede crujiente.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 480,
+        allergens: ["gluten"],
+        ingredients: [
+          { name: "Chorizo parrillero", qty: 4, unit: "ud" },
+          { name: "Pan de baguette", qty: 4, unit: "ud" },
+          { name: "Perejil fresco", qty: 1, unit: "taza" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Vinagre", qty: 2, unit: "cda" },
+          { name: "Aceite de oliva", qty: 4, unit: "cda" },
+          { name: "Orégano", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r125",
+    name: "Costillar de cordero a la parrilla",
+    category: "Parrilla",
+    baseServings: 4,
+    notes: "Marinar mínimo 1 h con ajo, romero y limón. Parrilla a fuego medio-fuerte, pocos minutos por lado para que quede rosado por dentro.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 520,
+        allergens: [],
+        ingredients: [
+          { name: "Costillar de cordero", qty: 1, unit: "kg" },
+          { name: "Ajo", qty: 4, unit: "diente" },
+          { name: "Romero", qty: 1, unit: "cda" },
+          { name: "Aceite de oliva", qty: 3, unit: "cda" },
+          { name: "Limón", qty: 1, unit: "ud" },
+          { name: "Sal", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r126",
+    name: "Maíz asado a la parrilla",
+    category: "Parrilla",
+    baseServings: 4,
+    notes: "Con la piel puesta al principio para que se cueza al vapor por dentro, luego sin piel unos minutos más para que dore.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 220,
+        allergens: ["lacteos"],
+        ingredients: [
+          { name: "Mazorcas de maíz", qty: 4, unit: "ud" },
+          { name: "Mantequilla", qty: 40, unit: "g" },
+          { name: "Sal", qty: 1, unit: "cdta" },
+          { name: "Pimentón dulce", qty: 1, unit: "cdta", opt: true },
+          { name: "Queso rallado", qty: 40, unit: "g", opt: true },
+        ],
+      },
+    ],
+  },
+
+  /* ---------- SORPRÉNDEME ---------- */
+  {
+    id: "r127",
+    name: "Ceviche peruano",
+    category: "Peruana",
+    baseServings: 4,
+    notes: "El pescado se \"cuece\" con el ácido de la lima, no con calor — 10-15 min en la nevera es suficiente. Servir muy frío.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 250,
+        allergens: ["pescado"],
+        ingredients: [
+          { name: "Pescado blanco fresco", qty: 600, unit: "g" },
+          { name: "Lima", qty: 6, unit: "ud" },
+          { name: "Cebolla morada", qty: 1, unit: "ud" },
+          { name: "Cilantro fresco", qty: 1, unit: "taza" },
+          { name: "Ají o chile fresco", qty: 1, unit: "ud", opt: true },
+          { name: "Boniato", qty: 1, unit: "ud", opt: true },
+          { name: "Maíz dulce", qty: 1, unit: "lata", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r128",
+    name: "Empanadas argentinas de carne",
+    category: "Argentina",
+    baseServings: 6,
+    notes: "Repulgue (el borde trenzado) bien apretado para que no se abran al hornear. Horno a 200 ºC unos 20 min hasta dorar.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: ["gluten", "huevo"],
+        ingredients: [
+          { name: "Masa de empanada", qty: 12, unit: "ud" },
+          { name: "Carne picada", qty: 500, unit: "g" },
+          { name: "Cebolla", qty: 2, unit: "ud" },
+          { name: "Pimiento rojo", qty: 1, unit: "ud" },
+          { name: "Huevo duro", qty: 2, unit: "ud", opt: true },
+          { name: "Aceitunas", qty: 60, unit: "g", opt: true },
+          { name: "Pimentón dulce", qty: 1, unit: "cda" },
+          { name: "Comino", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r129",
+    name: "Feijoada brasileña",
+    category: "Brasileña",
+    baseServings: 4,
+    notes: "Guiso lento, mínimo 1 h 30 min, para que las carnes queden tiernas y las alubias absorban el sabor. Se sirve con arroz blanco y naranja.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 550,
+        allergens: [],
+        ingredients: [
+          { name: "Alubias negras cocidas", qty: 600, unit: "g" },
+          { name: "Panceta", qty: 200, unit: "g" },
+          { name: "Chorizo", qty: 200, unit: "g" },
+          { name: "Costillas de cerdo", qty: 300, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+          { name: "Laurel", qty: 1, unit: "ud", opt: true },
+          { name: "Naranja", qty: 1, unit: "ud", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r130",
+    name: "Pierogi polacos",
+    category: "Polaca",
+    baseServings: 4,
+    notes: "Masa fina, no demasiado harinosa al estirar. Se cuecen en agua hirviendo hasta que suben a la superficie, luego un pase por la sartén con mantequilla.",
+    variants: [
+      {
+        id: "v1",
+        name: "De patata y queso",
+        calories: 420,
+        allergens: ["gluten", "lacteos"],
+        ingredients: [
+          { name: "Harina", qty: 400, unit: "g" },
+          { name: "Patata", qty: 500, unit: "g" },
+          { name: "Queso", qty: 150, unit: "g" },
+          { name: "Cebolla", qty: 1, unit: "ud" },
+          { name: "Mantequilla", qty: 50, unit: "g" },
+          { name: "Sal", qty: 1, unit: "cdta" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r131",
+    name: "Baklava",
+    category: "Postres",
+    baseServings: 12,
+    notes: "Pincelar cada capa de masa filo con mantequilla derretida, sin saltarse ninguna. El almíbar de miel se vierte frío sobre el baklava recién horneado y caliente.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 320,
+        allergens: ["gluten", "frutos_secos", "lacteos"],
+        ingredients: [
+          { name: "Masa filo", qty: 500, unit: "g" },
+          { name: "Nueces", qty: 200, unit: "g" },
+          { name: "Pistachos", qty: 100, unit: "g" },
+          { name: "Mantequilla", qty: 200, unit: "g" },
+          { name: "Miel", qty: 200, unit: "g" },
+          { name: "Canela", qty: 1, unit: "cdta", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r132",
+    name: "Pad see ew",
+    category: "Asiática",
+    baseServings: 4,
+    notes: "Wok muy caliente, fideos anchos con cuidado al remover para que no se rompan. Todo el proceso es rápido, tener los ingredientes preparados antes.",
+    variants: [
+      {
+        id: "v1",
+        name: "De ternera",
+        calories: 450,
+        allergens: ["gluten", "huevo", "soja"],
+        ingredients: [
+          { name: "Fideos de arroz anchos", qty: 350, unit: "g" },
+          { name: "Solomillo de ternera", qty: 300, unit: "g" },
+          { name: "Brócoli", qty: 200, unit: "g" },
+          { name: "Huevos", qty: 2, unit: "ud" },
+          { name: "Salsa de soja", qty: 4, unit: "cda" },
+          { name: "Ajo", qty: 3, unit: "diente" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r133",
+    name: "Tostones",
+    category: "Latina",
+    baseServings: 4,
+    notes: "Fritura doble: primero para cocer el plátano, se aplasta, y segunda fritura más fuerte para que quede crujiente por fuera.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 220,
+        allergens: [],
+        ingredients: [
+          { name: "Plátano macho", qty: 3, unit: "ud" },
+          { name: "Aceite para freír", qty: 400, unit: "ml" },
+          { name: "Sal", qty: 1, unit: "cdta" },
+          { name: "Ajo", qty: 1, unit: "diente", opt: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r134",
+    name: "Churros con chocolate",
+    category: "Postres",
+    baseServings: 4,
+    notes: "La masa se escalfa en agua hirviendo con sal antes de freír. Chocolate a la taza bien espeso, con maicena o harina para que ligue.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 380,
+        allergens: ["gluten", "lacteos"],
+        ingredients: [
+          { name: "Harina", qty: 250, unit: "g" },
+          { name: "Agua", qty: 250, unit: "ml" },
+          { name: "Sal", qty: 1, unit: "pinch" },
+          { name: "Aceite para freír", qty: 500, unit: "ml" },
+          { name: "Chocolate negro", qty: 150, unit: "g" },
+          { name: "Leche", qty: 400, unit: "ml" },
+          { name: "Azúcar", qty: 2, unit: "cda" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "r135",
+    name: "Poutine canadiense",
+    category: "Canadiense",
+    baseServings: 4,
+    notes: "Las patatas fritas deben quedar muy crujientes para aguantar la salsa sin ablandarse del todo. La salsa gravy y el queso van bien calientes, encima justo antes de servir.",
+    variants: [
+      {
+        id: "v1",
+        name: "Estándar",
+        calories: 550,
+        allergens: ["gluten", "lacteos"],
+        ingredients: [
+          { name: "Patata", qty: 800, unit: "g" },
+          { name: "Queso en grano", qty: 200, unit: "g" },
+          { name: "Caldo de carne", qty: 300, unit: "ml" },
+          { name: "Harina", qty: 2, unit: "cda" },
+          { name: "Mantequilla", qty: 30, unit: "g" },
+          { name: "Aceite para freír", qty: 500, unit: "ml" },
         ],
       },
     ],
@@ -3082,6 +4328,56 @@ function backfillCalories(storedRecipes) {
   return { next, changed: anyChanged };
 }
 
+// Corrige un fallo de una versión anterior: "leche de coco" y otras leches vegetales
+// contienen la palabra "leche" y se marcaron por error como lácteos. Solo quita la
+// etiqueta si NINGÚN otro ingrediente de esa opción es lácteo de verdad, y solo si esa
+// opción tiene realmente un ingrediente de leche vegetal (no toca nada más).
+function fixPlantMilkFalsePositive(storedRecipes) {
+  const PLANT_MILK = ["leche de coco", "leche vegetal", "leche de almendra", "leche de avena", "leche de arroz", "leche de soja"];
+  const REAL_DAIRY_WORDS = ["queso", "mantequilla", "nata", "yogur", "quesito", "mozzarella", "parmesano", "feta", "helado", "pecorino"];
+  let anyChanged = false;
+  const next = storedRecipes.map((r) => {
+    let recipeChanged = false;
+    const newVariants = r.variants.map((v) => {
+      if (!v.allergens || !v.allergens.includes("lacteos")) return v;
+      const hasPlantMilk = (v.ingredients || []).some((ing) =>
+        PLANT_MILK.some((p) => ing.name.toLowerCase().includes(p))
+      );
+      if (!hasPlantMilk) return v;
+      const hasRealDairy = (v.ingredients || []).some((ing) => {
+        const low = ing.name.toLowerCase();
+        if (PLANT_MILK.some((p) => low.includes(p))) return false;
+        return REAL_DAIRY_WORDS.some((d) => low.includes(d)) || /\bleche\b/.test(low);
+      });
+      if (hasRealDairy) return v;
+      recipeChanged = true;
+      return { ...v, allergens: v.allergens.filter((a) => a !== "lacteos") };
+    });
+    if (recipeChanged) anyChanged = true;
+    return recipeChanged ? { ...r, variants: newVariants } : r;
+  });
+  return { next, changed: anyChanged };
+}
+
+// Corrige otro descuido: el tahini (pasta de sésamo) no se marcaba como fruto seco/sésamo.
+// Añade "frutos_secos" solo cuando la opción lleva tahini de verdad y aún no estaba marcada.
+function fixMissingSesameAllergen(storedRecipes) {
+  let anyChanged = false;
+  const next = storedRecipes.map((r) => {
+    let recipeChanged = false;
+    const newVariants = r.variants.map((v) => {
+      if (!v.allergens || v.allergens.includes("frutos_secos")) return v;
+      const hasTahini = (v.ingredients || []).some((ing) => ing.name.toLowerCase().includes("tahini"));
+      if (!hasTahini) return v;
+      recipeChanged = true;
+      return { ...v, allergens: [...v.allergens, "frutos_secos"] };
+    });
+    if (recipeChanged) anyChanged = true;
+    return recipeChanged ? { ...r, variants: newVariants } : r;
+  });
+  return { next, changed: anyChanged };
+}
+
 export default function App() {
   const [view, setView] = useState("menu");
   const [recipes, setRecipes] = useState([]);
@@ -3127,10 +4423,12 @@ export default function App() {
       setRecipes(r || seedRecipes);
       if (!r) saveKey("recipes", seedRecipes);
       else {
-        const { next: recipesWithCalories, changed: caloriesFilled } = backfillCalories(r);
-        if (caloriesFilled) {
-          setRecipes(recipesWithCalories);
-          saveKey("recipes", recipesWithCalories);
+        const { next: step1, changed: c1 } = backfillCalories(r);
+        const { next: step2, changed: c2 } = fixPlantMilkFalsePositive(step1);
+        const { next: step3, changed: c3 } = fixMissingSesameAllergen(step2);
+        if (c1 || c2 || c3) {
+          setRecipes(step3);
+          saveKey("recipes", step3);
         }
       }
       setPlan(p);
