@@ -51,7 +51,7 @@ const ruled = {
 };
 
 const SLOTS = ["Desayuno", "Comida", "Cena"];
-const DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 const UNITS = ["ud", "g", "kg", "ml", "l", "cda", "cdta", "taza", "diente", "lata", "al gusto"];
 const ALLERGENS = [
   { key: "gluten", label: "Gluten" },
