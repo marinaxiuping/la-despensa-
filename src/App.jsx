@@ -24,6 +24,7 @@ import {
   ClipboardCheck,
   Flame,
   TriangleAlert,
+  ChefHat,
 } from "lucide-react";
 
 /* ---------- paleta y tipografía: Cuaderno de cocina ---------- */
@@ -51,7 +52,7 @@ const ruled = {
 };
 
 const SLOTS = ["Desayuno", "Comida", "Cena"];
-const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+const DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 const UNITS = ["ud", "g", "kg", "ml", "l", "cda", "cdta", "taza", "diente", "lata", "al gusto"];
 const ALLERGENS = [
   { key: "gluten", label: "Gluten" },
@@ -2743,6 +2744,33 @@ function convertQty(qty, fromUnit, toUnit) {
   if (!sameGroup) return null;
   return (qty * toBase[fromUnit]) / toBase[toUnit];
 }
+// Compara los ingredientes NO opcionales de una variante con lo que hay en la despensa.
+// Devuelve cuántos están cubiertos, cuáles faltan (o están cortos de cantidad), y si se
+// puede hacer el plato entero tal cual está la despensa ahora mismo.
+function pantryMatchScore(variant, pantryItems) {
+  const required = variant.ingredients.filter((i) => !i.opt);
+  if (required.length === 0) return { canMake: true, missing: [], have: 0, total: 0 };
+  let have = 0;
+  const missing = [];
+  for (const ing of required) {
+    const matches = pantryItems.filter(
+      (p) => p.name.trim().toLowerCase() === ing.name.trim().toLowerCase()
+    );
+    const alwaysHave = matches.some((p) => p.qty == null);
+    if (alwaysHave) {
+      have++;
+      continue;
+    }
+    let available = 0;
+    for (const p of matches) {
+      const converted = convertQty(p.qty, p.unit, ing.unit);
+      if (converted != null) available += converted;
+    }
+    if (available + 1e-6 >= ing.qty) have++;
+    else missing.push(ing.name);
+  }
+  return { canMake: missing.length === 0, missing, have, total: required.length };
+}
 
 /* ---------- clasificación de platos para el recomendador ---------- */
 // Rol de cada categoría: primer/segundo plato, plato único, postre, desayuno.
@@ -3504,6 +3532,7 @@ export default function App() {
         {view === "recetas" && (
           <Library
             recipes={recipes}
+            pantryItems={pantryItems}
             onAdd={() => setEditing({ id: uid(), name: "", category: "", notes: "", baseServings: 4, variants: [{ id: uid(), name: "Estándar", ingredients: [{ name: "", qty: 1, unit: "ud" }] }], _new: true })}
             onEdit={(r) => setEditing(JSON.parse(JSON.stringify(r)))}
             onDelete={(id) => persistRecipes(recipes.filter((r) => r.id !== id))}
@@ -3535,6 +3564,7 @@ export default function App() {
         {view === "despensa" && (
           <Pantry
             items={pantryItems}
+            recipes={recipes}
             onAdd={addPantryItem}
             onUpdate={updatePantryItem}
             onRemove={removePantryItem}
@@ -3909,10 +3939,11 @@ function Planner({ monday, weekOffset, setWeekOffset, plan, recipeById, onCell, 
 }
 
 /* ===================== BIBLIOTECA DE RECETAS ===================== */
-function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, missingCount, onAddLibrary }) {
+function Library({ recipes, pantryItems, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, missingCount, onAddLibrary }) {
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState(null); // null = todas, "__fav" = favoritas
   const [excludeAllergens, setExcludeAllergens] = useState([]); // alérgenos a excluir ("sin gluten"...)
+  const [onlyCookable, setOnlyCookable] = useState(false); // solo "puedo hacerlo ya" con la despensa
 
   const categories = useMemo(() => {
     const s = new Set();
@@ -3936,6 +3967,10 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
           );
           if (!hasSafeVariant) return false;
         }
+        if (onlyCookable) {
+          const canMakeAny = r.variants.some((v) => pantryMatchScore(v, pantryItems || []).canMake);
+          if (!canMakeAny) return false;
+        }
         if (!q) return true;
         const inName = r.name.toLowerCase().includes(q);
         const inIng = r.variants.some((v) =>
@@ -3944,7 +3979,7 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
         return inName || inIng;
       })
       .sort((a, b) => (b.fav ? 1 : 0) - (a.fav ? 1 : 0) || a.name.localeCompare(b.name, "es"));
-  }, [recipes, query, cat, excludeAllergens]);
+  }, [recipes, query, cat, excludeAllergens, onlyCookable, pantryItems]);
 
   const favCount = recipes.filter((r) => r.fav).length;
 
@@ -4025,6 +4060,25 @@ function Library({ recipes, onAdd, onEdit, onDelete, onDuplicate, onToggleFav, m
                 ★ Favoritas
               </button>
             )}
+            <button
+              onClick={() => setOnlyCookable(!onlyCookable)}
+              style={{
+                fontSize: 13,
+                padding: "6px 12px",
+                borderRadius: 20,
+                border: `1px solid ${onlyCookable ? c.herb : c.line}`,
+                background: onlyCookable ? c.herb : c.card,
+                color: onlyCookable ? "#fff" : c.ink,
+                whiteSpace: "nowrap",
+                fontWeight: onlyCookable ? 700 : 500,
+                flexShrink: 0,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 4,
+              }}
+            >
+              <ChefHat size={13} /> Puedo hacerlo
+            </button>
             {categories.map((ct) => (
               <button key={ct} onClick={() => setCat(ct)} style={chip(cat === ct)}>{ct}</button>
             ))}
@@ -4407,18 +4461,41 @@ function Shopping({ items, range, checked, setChecked, quickAddToPantry, quickRe
   );
 }
 /* ===================== MI DESPENSA ===================== */
-function Pantry({ items, onAdd, onUpdate, onRemove }) {
+function Pantry({ items, recipes, onAdd, onUpdate, onRemove }) {
   const [name, setName] = useState("");
   const [qty, setQty] = useState("");
   const [unit, setUnit] = useState("ud");
   const [editingId, setEditingId] = useState(null);
   const [editQty, setEditQty] = useState("");
   const [editUnit, setEditUnit] = useState("ud");
+  const [expandedDish, setExpandedDish] = useState(null); // `${recipeId}-${variantId}` expandido
 
   const sorted = useMemo(
     () => [...items].sort((a, b) => a.name.localeCompare(b.name, "es")),
     [items]
   );
+
+  // Qué se puede cocinar ya (o casi) con lo que hay en la despensa ahora mismo.
+  const { canMakeList, almostList } = useMemo(() => {
+    const canMake = [];
+    const almost = [];
+    for (const r of recipes || []) {
+      for (const v of r.variants) {
+        const score = pantryMatchScore(v, items);
+        if (score.total === 0) continue; // receta sin ingredientes obligatorios, no aporta
+        const entry = { recipe: r, variant: v, score };
+        if (score.canMake) canMake.push(entry);
+        else if (score.missing.length <= 2) almost.push(entry);
+      }
+    }
+    const sortFn = (a, b) =>
+      (b.recipe.fav ? 1 : 0) - (a.recipe.fav ? 1 : 0) ||
+      a.score.missing.length - b.score.missing.length ||
+      a.recipe.name.localeCompare(b.recipe.name, "es");
+    canMake.sort(sortFn);
+    almost.sort(sortFn);
+    return { canMakeList: canMake.slice(0, 8), almostList: almost.sort(sortFn).slice(0, 6) };
+  }, [items, recipes]);
 
   const submitAdd = () => {
     if (!name.trim()) return;
@@ -4447,6 +4524,136 @@ function Pantry({ items, onAdd, onUpdate, onRemove }) {
       <p style={{ fontSize: 13, color: c.muted, marginTop: 4, marginBottom: 16, fontStyle: "italic" }}>
         Lo que anotes aquí se descuenta de la lista de la compra. Sin cantidad = "siempre lo tengo" (sal, aceite, especias…). Con cantidad, la compra solo te pedirá lo que te falte.
       </p>
+
+      {(canMakeList.length > 0 || almostList.length > 0) && (
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+            <ChefHat size={16} style={{ color: c.paprika }} />
+            <span style={{ fontFamily: display, fontSize: 18, fontWeight: 700, color: c.ink }}>
+              Con esto puedes cocinar
+            </span>
+          </div>
+
+          {canMakeList.length > 0 && (
+            <div
+              style={{
+                display: "flex",
+                gap: 6,
+                overflowX: "auto",
+                WebkitOverflowScrolling: "touch",
+                margin: "0 -14px",
+                padding: "6px 14px 10px",
+              }}
+            >
+              {canMakeList.map(({ recipe, variant }, idx) => {
+                const key = `${recipe.id}-${variant.id}`;
+                const rotations = [-3, 2.2, -1.6, 2.8, -2.2, 1.8, -3.2, 2.4];
+                const colors = [c.highlight, "#F6C99A", "#E6EEDD", "#F1DA8B"];
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setExpandedDish(expandedDish === key ? null : key)}
+                    className="post-it"
+                    style={{
+                      flexShrink: 0,
+                      width: 138,
+                      minHeight: 84,
+                      background: colors[idx % colors.length],
+                      border: `1px solid ${c.line}`,
+                      borderRadius: "2px 2px 2px 14px",
+                      padding: "9px 10px 10px",
+                      textAlign: "left",
+                      transform: `rotate(${rotations[idx % rotations.length]}deg)`,
+                      boxShadow: "2px 3px 6px rgba(44,54,80,0.15)",
+                      animation: `postItLand 0.4s cubic-bezier(.34,1.3,.64,1) both`,
+                      animationDelay: `${idx * 60}ms`,
+                    }}
+                  >
+                    <span style={{ fontFamily: display, fontSize: 16, fontWeight: 700, color: c.ink, lineHeight: 1.05, display: "block" }}>
+                      {recipe.name}
+                    </span>
+                    {recipe.variants.length > 1 && (
+                      <span style={{ fontSize: 10, color: c.herb, fontWeight: 600 }}>{variant.name}</span>
+                    )}
+                    <span style={{ display: "block", fontSize: 10, color: c.herb, background: "rgba(255,255,255,0.6)", padding: "2px 6px", borderRadius: 10, marginTop: 5, fontWeight: 700, width: "fit-content" }}>
+                      ✓ lo tienes todo
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {almostList.length > 0 && (
+            <>
+              <div style={{ fontSize: 12, color: c.muted, fontWeight: 600, margin: "10px 0 6px" }}>
+                Te falta poco
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                {almostList.map(({ recipe, variant, score }) => {
+                  const key = `${recipe.id}-${variant.id}`;
+                  const open = expandedDish === key;
+                  return (
+                    <div key={key} style={{ background: c.card, border: `1px solid ${c.line}`, borderRadius: 10, overflow: "hidden" }}>
+                      <button
+                        onClick={() => setExpandedDish(open ? null : key)}
+                        style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, padding: "10px 12px", background: "none", border: "none", textAlign: "left" }}
+                      >
+                        <span style={{ minWidth: 0 }}>
+                          <span style={{ fontSize: 14, fontWeight: 600, color: c.ink }}>{recipe.name}</span>
+                          {recipe.variants.length > 1 && (
+                            <span style={{ fontSize: 11, color: c.herb, marginLeft: 6 }}>{variant.name}</span>
+                          )}
+                        </span>
+                        <span style={{ fontSize: 11, color: c.paprika, fontWeight: 600, flexShrink: 0 }}>
+                          falta: {score.missing.join(", ")}
+                        </span>
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+          {expandedDish && (() => {
+            const found =
+              canMakeList.find((e) => `${e.recipe.id}-${e.variant.id}` === expandedDish) ||
+              almostList.find((e) => `${e.recipe.id}-${e.variant.id}` === expandedDish);
+            if (!found) return null;
+            const { recipe, variant } = found;
+            return (
+              <div style={{ background: c.card, border: `1px solid ${c.herb}`, borderRadius: 12, padding: 13, marginTop: 10 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+                  <span style={{ fontFamily: display, fontSize: 16, fontWeight: 700, color: c.ink }}>
+                    {recipe.name}{recipe.variants.length > 1 && <span style={{ fontSize: 12, color: c.herb, marginLeft: 6 }}>{variant.name}</span>}
+                  </span>
+                  <button onClick={() => setExpandedDish(null)} style={iconBtn}><X size={15} /></button>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  {variant.ingredients.map((ing, i) => {
+                    const matches = items.filter((p) => p.name.trim().toLowerCase() === ing.name.trim().toLowerCase());
+                    const alwaysHave = matches.some((p) => p.qty == null);
+                    let available = 0;
+                    for (const p of matches) {
+                      const conv = convertQty(p.qty, p.unit, ing.unit);
+                      if (conv != null) available += conv;
+                    }
+                    const covered = ing.opt || alwaysHave || available + 1e-6 >= ing.qty;
+                    return (
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13 }}>
+                        {covered ? <Check size={14} style={{ color: c.herb, flexShrink: 0 }} /> : <X size={14} style={{ color: c.paprika, flexShrink: 0 }} />}
+                        <span style={{ color: covered ? c.ink : c.paprika }}>
+                          {ing.name} <span style={{ color: c.muted }}>({fmtQty(ing.qty)} {ing.unit}{ing.opt ? ", opcional" : ""})</span>
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      )}
 
       {/* alta de producto */}
       <div style={{ background: c.card, border: `1px solid ${c.line}`, borderRadius: 12, padding: 14, marginBottom: 18 }}>
