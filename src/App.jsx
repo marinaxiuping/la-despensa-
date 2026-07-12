@@ -70,6 +70,14 @@ const seedRecipes = [
     name: "Lentejas",
     category: "Legumbres",
     notes: "Pochar la verdura 10 min antes de añadir las lentejas. Cocer a fuego lento 35-40 min. Si quedan secas, añadir caldo caliente.",
+    steps: [
+      "Picar la cebolla, la zanahoria y la patata en dados pequeños.",
+      "Sofreír la cebolla y la zanahoria en un chorrito de aceite a fuego medio 8-10 min, hasta que estén blandas.",
+      "Añadir el pimentón fuera del fuego, remover unos segundos para que no se queme y volver a poner al fuego.",
+      "Incorporar las lentejas, la patata y cubrir con agua unos tres dedos por encima. Si es la versión con chorizo, añadirlo entero aquí.",
+      "Cocer a fuego lento 35-40 min con la olla semitapada, removiendo de vez en cuando.",
+      "Si quedan secas, añadir agua o caldo caliente. Rectificar de sal al final.",
+    ],
     variants: [
       {
         id: "v1",
@@ -102,6 +110,13 @@ const seedRecipes = [
     id: "r2",
     name: "Pasta al pesto",
     category: "Pasta",
+    steps: [
+      "Cocer la pasta en agua abundante con sal según el tiempo del paquete, hasta que esté al dente.",
+      "Mientras, triturar la albahaca, los piñones, el ajo y el parmesano con un buen chorro de aceite hasta obtener una pasta homogénea.",
+      "Reservar un vaso del agua de cocción antes de escurrir la pasta.",
+      "Mezclar la pasta escurrida con el pesto fuera del fuego, añadiendo agua de cocción poco a poco hasta que quede cremoso.",
+      "Servir enseguida con parmesano extra por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -122,6 +137,13 @@ const seedRecipes = [
     id: "r3",
     name: "Ensalada César",
     category: "Ensaladas",
+    steps: [
+      "Cortar el pan en dados y tostarlo en la sartén con un poco de aceite hasta que quede dorado y crujiente.",
+      "Hacer el pollo a la plancha con sal y pimienta, 4-5 min por lado, y dejarlo reposar 5 min antes de cortarlo en tiras.",
+      "Trocear la lechuga romana en trozos no muy pequeños.",
+      "Mezclar la lechuga con el pollo, los picatostes y el parmesano en lascas.",
+      "Aliñar con la salsa césar justo antes de servir para que la lechuga no se ablande.",
+    ],
     variants: [
       {
         id: "v1",
@@ -142,6 +164,14 @@ const seedRecipes = [
     name: "Tortilla de patatas",
     category: "Huevos",
     notes: "Freír la patata a fuego medio hasta que esté blanda, sin dorar. Cuajar al gusto: 1-2 min por lado para jugosa.",
+    steps: [
+      "Pelar y cortar las patatas en láminas finas (y la cebolla en juliana, si se usa).",
+      "Freír a fuego medio-bajo en abundante aceite de oliva 15-20 min, hasta que estén blandas sin dorarse demasiado.",
+      "Escurrir bien el aceite y mezclar las patatas calientes con los huevos batidos y sal.",
+      "Dejar reposar la mezcla 5 min para que la patata suelte el almidón y ligue mejor.",
+      "Cuajar en una sartén antiadherente con una gota de aceite, 2-3 min por el primer lado a fuego medio.",
+      "Dar la vuelta con un plato y cuajar el otro lado 1-2 min más, para que quede jugosa por dentro.",
+    ],
     variants: [
       {
         id: "v1",
@@ -175,6 +205,13 @@ const seedRecipes = [
     name: "Gazpacho",
     category: "Sopas frías",
     notes: "Triturar todo bien fino y colar si lo quieres muy suave. Mejor de un día para otro. Servir muy frío.",
+    steps: [
+      "Lavar y trocear el tomate, el pepino y el pimiento verde.",
+      "Poner las verduras en la batidora con el ajo, el pan (remojado unos minutos), el aceite y el vinagre.",
+      "Triturar a máxima potencia varios minutos hasta que quede totalmente fino.",
+      "Colar si se quiere una textura muy lisa, y rectificar de sal.",
+      "Enfriar en la nevera mínimo 2 h y servir muy frío.",
+    ],
     variants: [
       {
         id: "v1",
@@ -198,6 +235,13 @@ const seedRecipes = [
     name: "Garbanzos con espinacas",
     category: "Legumbres",
     notes: "Sofreír ajo y pimentón, añadir espinacas y garbanzos cocidos. Un chorrito de caldo y 10 min a fuego lento.",
+    steps: [
+      "Picar el ajo y sofreírlo en aceite de oliva a fuego suave, sin que llegue a dorarse del todo.",
+      "Añadir el pimentón y el comino fuera del fuego, remover unos segundos para que no se quemen.",
+      "Incorporar las espinacas y dejar que se pochen 3-4 min hasta que reduzcan de volumen.",
+      "Añadir los garbanzos cocidos y un chorrito de caldo o agua.",
+      "Cocer 10 min a fuego suave para que se integren los sabores. Rectificar de sal.",
+    ],
     variants: [
       {
         id: "v1",
@@ -220,6 +264,13 @@ const seedRecipes = [
     name: "Macarrones con tomate",
     category: "Pasta",
     notes: "Reservar un poco del agua de cocción para ligar la salsa.",
+    steps: [
+      "Cocer los macarrones en agua con sal según el tiempo del paquete, hasta que estén al dente.",
+      "Mientras, pochar la cebolla picada en aceite de oliva 8 min a fuego medio.",
+      "En la versión con atún, añadir el atún desmigado y rehogar 1 min; en la vegetariana, añadir el calabacín en dados y cocinar 5 min.",
+      "Incorporar el tomate triturado y cocer a fuego suave 10 min.",
+      "Mezclar la pasta escurrida con la salsa y el queso rallado, removiendo hasta que se funda ligeramente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -254,6 +305,13 @@ const seedRecipes = [
     name: "Arroz con verduras",
     category: "Arroz",
     notes: "Sofreír la verdura, nacarar el arroz 1 min y añadir el doble de caldo. 18 min y reposar 5.",
+    steps: [
+      "Cortar todas las verduras en dados pequeños y uniformes.",
+      "Sofreír la cebolla en aceite 5 min, añadir el pimiento y el calabacín y cocinar 5 min más.",
+      "Añadir el arroz y nacarar (remover 1-2 min para que se impregne del sofrito).",
+      "Incorporar los guisantes y el doble de volumen de caldo caliente que de arroz.",
+      "Cocer a fuego medio-bajo 18 min sin remover, y dejar reposar tapado 5 min antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -276,6 +334,13 @@ const seedRecipes = [
     name: "Pollo al horno con patatas",
     category: "Carne",
     notes: "Horno a 200 ºC, unos 45-50 min. Regar con su jugo a mitad de cocción.",
+    steps: [
+      "Precalentar el horno a 200 ºC.",
+      "Cortar las patatas en cuartos y la cebolla en gajos, colocar en una bandeja de horno.",
+      "Salpimentar el pollo y colocarlo sobre las patatas, con el limón en rodajas y el romero repartido por encima.",
+      "Regar todo con aceite de oliva.",
+      "Hornear 45-50 min, regando con el jugo de la bandeja a media cocción, hasta que el pollo esté dorado y las patatas tiernas.",
+    ],
     variants: [
       {
         id: "v1",
@@ -298,6 +363,13 @@ const seedRecipes = [
     name: "Salmón al horno",
     category: "Pescado",
     notes: "200 ºC durante 12-15 min. Queda jugoso si lo sacas cuando el centro aún esté algo translúcido.",
+    steps: [
+      "Precalentar el horno a 200 ºC.",
+      "Colocar el salmón en una bandeja con papel de horno y salpimentar.",
+      "Repartir el ajo picado y el eneldo por encima, regar con aceite de oliva y unas rodajas de limón.",
+      "Hornear 12-15 min según el grosor, hasta que el centro esté jugoso y ligeramente translúcido.",
+      "Dejar reposar 2 min antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -319,6 +391,13 @@ const seedRecipes = [
     name: "Fajitas",
     category: "Tex-Mex",
     notes: "Marcar a fuego fuerte para que la verdura quede crujiente. Calentar las tortillas justo antes de servir.",
+    steps: [
+      "Cortar el pollo (o los champiñones, en la versión vegetal) y los pimientos en tiras finas.",
+      "Marcar el pollo en una sartén o plancha muy caliente con las especias de fajita, 5-6 min hasta que esté dorado y hecho por dentro.",
+      "En la misma sartén, saltear los pimientos y la cebolla 4-5 min hasta que estén tiernos con un punto crujiente.",
+      "Calentar las tortillas de trigo en una sartén seca o en el microondas unos segundos.",
+      "Montar las fajitas rellenando las tortillas con el pollo y las verduras.",
+    ],
     variants: [
       {
         id: "v1",
@@ -355,6 +434,13 @@ const seedRecipes = [
     name: "Crema de calabacín",
     category: "Cremas y sopas",
     notes: "Triturar con la quesita para dar cremosidad. Ajustar el caldo según lo espesa que la quieras.",
+    steps: [
+      "Pelar y trocear la patata y el calabacín, picar la cebolla.",
+      "Rehogar la cebolla en un poco de aceite 5 min, añadir el calabacín y la patata y cocinar 3 min más.",
+      "Cubrir con el caldo de verduras y cocer 15-20 min hasta que las verduras estén blandas.",
+      "Triturar con la batidora hasta que quede fino, añadiendo el quesito para dar cremosidad.",
+      "Rectificar de sal y servir caliente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -376,6 +462,13 @@ const seedRecipes = [
     name: "Hamburguesa casera",
     category: "Carne",
     notes: "No apretar la carne al formar. Marcar 3 min por lado a fuego fuerte.",
+    steps: [
+      "Formar las hamburguesas con la carne picada, salpimentando sin amasar demasiado para que no queden duras.",
+      "Marcar en una sartén o plancha muy caliente 3 min por lado para un punto jugoso (más tiempo si se prefiere bien hecha).",
+      "En el último minuto, poner una loncha de queso encima para que se funda con el calor residual.",
+      "Tostar ligeramente el pan de hamburguesa por dentro.",
+      "Montar con la lechuga, el tomate y la cebolla al gusto.",
+    ],
     variants: [
       {
         id: "v1",
@@ -398,6 +491,13 @@ const seedRecipes = [
     name: "Pisto",
     category: "Verduras",
     notes: "Cocinar cada verdura por separado y unir al final con el tomate. Sin prisa, a fuego suave.",
+    steps: [
+      "Cortar todas las verduras en dados de tamaño similar.",
+      "Pochar la cebolla y el pimiento en aceite de oliva a fuego medio-bajo 10 min.",
+      "Añadir el calabacín y cocinar 8-10 min más, hasta que esté tierno.",
+      "Incorporar el tomate triturado y cocer a fuego suave 15-20 min, removiendo de vez en cuando, hasta que espese.",
+      "Rectificar de sal y servir templado o caliente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -420,6 +520,13 @@ const seedRecipes = [
     name: "Merluza a la plancha",
     category: "Pescado",
     notes: "Secar bien el pescado antes de la plancha para que dore. Acompañar con verdura o ensalada.",
+    steps: [
+      "Secar bien los lomos de merluza con papel de cocina para que la plancha les dé color.",
+      "Calentar la plancha o sartén con un poco de aceite a fuego fuerte.",
+      "Cocinar la merluza 2-3 min por el lado de la piel y 1-2 min por el otro, según el grosor.",
+      "En el mismo aceite, dorar el ajo laminado y el perejil picado unos segundos.",
+      "Servir la merluza con el ajo y perejil por encima y un chorrito de limón.",
+    ],
     variants: [
       {
         id: "v1",
@@ -441,6 +548,13 @@ const seedRecipes = [
     name: "Curry de garbanzos",
     category: "Legumbres",
     notes: "Vegano. Sofreír la pasta de curry, añadir tomate y leche de coco, luego los garbanzos. 15 min.",
+    steps: [
+      "Picar la cebolla y sofreírla en un poco de aceite 5 min.",
+      "Añadir la pasta de curry y remover 1 min para que suelte el aroma.",
+      "Incorporar el tomate triturado y la leche de coco, remover bien.",
+      "Añadir los garbanzos cocidos y cocer a fuego suave 15 min para que espese.",
+      "Servir con el arroz basmati cocido aparte.",
+    ],
     variants: [
       {
         id: "v1",
@@ -465,6 +579,14 @@ const seedRecipes = [
     name: "Paella",
     category: "Arroz",
     notes: "El sofrito al principio es clave. Añadir el caldo caliente, hervir 10 min fuerte y 8 min suave. Reposar tapada 5 min.",
+    steps: [
+      "Sofreír el pollo troceado en el aceite de la paellera hasta dorar (en la versión mixta).",
+      "Añadir el pimiento y el ajo picado, sofreír 3-4 min.",
+      "Incorporar el tomate triturado y cocinar 5 min hasta que se reduzca.",
+      "Añadir el arroz y nacarar 1-2 min, luego el caldo caliente con el azafrán y el pimentón disueltos.",
+      "Cocer a fuego fuerte los primeros 10 min sin remover, bajar el fuego y cocer 8 min más. En la mixta, añadir las gambas y mejillones los últimos 5 min.",
+      "Dejar reposar 5 min fuera del fuego antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -508,6 +630,13 @@ const seedRecipes = [
     name: "Fabada asturiana",
     category: "Legumbres",
     notes: "Remojar las fabes la noche antes. Cocer a fuego suave 2 h, sin remover; mover la cazuela con cuidado para que no se rompan.",
+    steps: [
+      "Poner las fabes en remojo la noche anterior.",
+      "Cubrir las fabes con agua fría en una olla junto con el chorizo, la morcilla, la panceta, el laurel y el azafrán.",
+      "Llevar a ebullición y retirar la espuma que suba a la superficie.",
+      "Bajar el fuego al mínimo y cocer 1 h 30 min - 2 h, añadiendo agua fría (\"asustando\" el guiso) si rompe a hervir fuerte.",
+      "Rectificar de sal al final y dejar reposar antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -533,6 +662,13 @@ const seedRecipes = [
     name: "Salmorejo",
     category: "Sopas frías",
     notes: "Triturar todo bien y emulsionar con el aceite al final. Mejor reposado en nevera 1 h. Servir con jamón y huevo duro picado.",
+    steps: [
+      "Trocear el tomate y el pan, sin corteza (remojado unos minutos si está muy duro).",
+      "Triturar el tomate, el pan, el ajo y la sal en la batidora a máxima potencia.",
+      "Ir añadiendo el aceite en hilo mientras se sigue triturando, para que emulsione y quede cremoso.",
+      "Añadir el vinagre y triturar de nuevo, rectificando de sal.",
+      "Enfriar en la nevera mínimo 1 h y servir con el jamón y el huevo duro picados por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -557,6 +693,14 @@ const seedRecipes = [
     name: "Croquetas de jamón",
     category: "Tapas",
     notes: "La bechamel debe quedar espesa. Enfriar bien antes de bolear. Freír en aceite muy caliente, poca cantidad cada vez.",
+    steps: [
+      "Picar la cebolla muy fina y pocharla en la mantequilla a fuego suave 5 min.",
+      "Añadir la harina y cocinar 2 min sin dejar de remover, para que pierda el sabor a crudo.",
+      "Verter la leche caliente poco a poco, sin dejar de remover, hasta conseguir una bechamel espesa sin grumos.",
+      "Incorporar el jamón (o el pollo) picado y la nuez moscada, cocinar 3-4 min más.",
+      "Extender la masa en una bandeja y enfriar en la nevera mínimo 3 h (mejor de un día para otro).",
+      "Formar las croquetas, pasarlas por huevo y pan rallado, y freír en aceite bien caliente hasta dorar.",
+    ],
     variants: [
       {
         id: "v1",
@@ -596,6 +740,12 @@ const seedRecipes = [
     name: "Patatas bravas",
     category: "Tapas",
     notes: "Cocer las patatas a fuego suave en aceite, luego subir el fuego para que doren. Salsa brava: tomate, pimentón picante y un toque de vinagre.",
+    steps: [
+      "Cortar la patata en dados y freír en abundante aceite a fuego medio 10 min, hasta que estén casi tiernas.",
+      "Subir el fuego los últimos minutos para que doren y queden crujientes por fuera.",
+      "Para la salsa brava, sofreír el ajo, añadir el tomate triturado, el pimentón dulce y picante, y el vinagre; cocer 10 min a fuego suave.",
+      "Escurrir bien las patatas y servir con la salsa brava y el alioli o mayonesa por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -620,6 +770,13 @@ const seedRecipes = [
     name: "Albóndigas en salsa",
     category: "Carne",
     notes: "Reposar la masa 15 min antes de bolear. Dorar las albóndigas y cocinarlas dentro de la salsa 15-20 min.",
+    steps: [
+      "Mezclar la carne picada con el pan rallado remojado en leche o agua, el huevo, el ajo y el perejil picados. Salpimentar.",
+      "Formar las albóndigas con las manos húmedas y dorarlas en una sartén con aceite por todos los lados.",
+      "Retirar las albóndigas y en el mismo aceite hacer el sofrito de cebolla (y almendras majadas, en la versión con salsa de almendras).",
+      "Añadir el tomate triturado (o el caldo con las almendras trituradas) y el vino blanco, cocer 5 min.",
+      "Devolver las albóndigas a la salsa y cocer todo junto 15-20 min a fuego suave hasta que espese.",
+    ],
     variants: [
       {
         id: "v1",
@@ -660,6 +817,14 @@ const seedRecipes = [
     name: "Empanada gallega",
     category: "Hornear",
     notes: "El relleno frío antes de montar, así no humedece la masa. Horno a 200 ºC unos 35 min, pintar con huevo batido.",
+    steps: [
+      "Precalentar el horno a 200 ºC.",
+      "Pochar la cebolla y el pimiento en aceite 10-12 min hasta que estén bien blandos.",
+      "Añadir el tomate triturado y el pimentón, cocer 5 min. Incorporar el atún desmigado (o la carne ya cocinada) y mezclar.",
+      "Extender una base de masa en la bandeja, repartir el relleno y cubrir con la segunda masa, sellando bien los bordes.",
+      "Pincelar con huevo batido y hacer unos cortes para que salga el vapor.",
+      "Hornear 30-35 min hasta que esté dorada.",
+    ],
     variants: [
       {
         id: "v1",
@@ -699,6 +864,14 @@ const seedRecipes = [
     name: "Cocido madrileño",
     category: "Legumbres",
     notes: "Tres vuelcos: caldo con fideos, garbanzos con verduras, carnes. Cocer a fuego suave al menos 2 h.",
+    steps: [
+      "Poner los garbanzos en remojo la noche anterior.",
+      "Cocer en una olla grande la gallina, el morcillo, el hueso de jamón y los garbanzos, cubiertos de agua, 1 h 30 min - 2 h a fuego suave, espumando de vez en cuando.",
+      "Añadir el chorizo y la morcilla los últimos 30 min.",
+      "Aparte, cocer la patata, la zanahoria y el repollo hasta que estén tiernos.",
+      "Colar parte del caldo, llevarlo a hervor y cocer los fideos 5 min para la sopa.",
+      "Servir en tres vuelcos: sopa de fideos, verdura con garbanzos, y las carnes.",
+    ],
     variants: [
       {
         id: "v1",
@@ -725,6 +898,13 @@ const seedRecipes = [
     name: "Escalivada",
     category: "Verduras",
     notes: "Asar las verduras enteras en horno a 200 ºC unos 45 min, dejar enfriar y pelar. Servir con buen aceite y sal en escamas.",
+    steps: [
+      "Precalentar el horno a 200 ºC.",
+      "Colocar la berenjena y el pimiento enteros en una bandeja con la cebolla, regar con un poco de aceite.",
+      "Asar 40-45 min, dando la vuelta a mitad de cocción, hasta que la piel esté arrugada y la carne tierna.",
+      "Dejar templar, pelar las verduras y cortarlas en tiras.",
+      "Aliñar con el ajo picado, aceite de oliva virgen y sal en escamas.",
+    ],
     variants: [
       {
         id: "v1",
@@ -747,6 +927,13 @@ const seedRecipes = [
     name: "Pulpo a la gallega",
     category: "Pescado",
     notes: "Cocer el pulpo 35-40 min y dejar reposar 10 min en su agua. Cortar en rodajas con tijeras, sobre patata cocida. Aceite, sal gorda y pimentón al final.",
+    steps: [
+      "Cocer el pulpo en agua hirviendo, sin sal, 35-40 min según el tamaño, hasta que esté tierno al pincharlo.",
+      "Dejar reposar el pulpo en su agua de cocción 10 min.",
+      "Cocer las patatas en la misma agua hasta que estén tiernas, y cortarlas en rodajas gruesas para la base del plato.",
+      "Cortar el pulpo con tijeras en rodajas y colocarlo sobre las patatas.",
+      "Aliñar con aceite de oliva virgen, sal gorda y pimentón dulce (y picante, si se quiere) por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -769,6 +956,13 @@ const seedRecipes = [
     name: "Arroz al horno",
     category: "Arroz",
     notes: "Cazuela de barro mejor. Sofreír todo, añadir caldo hirviendo, al horno a 200 ºC unos 20 min sin remover.",
+    steps: [
+      "Precalentar el horno a 200 ºC.",
+      "En una cazuela apta para horno, dorar las costillas y la morcilla en aceite.",
+      "Añadir el ajo, la patata en rodajas y el tomate, sofreír 5 min.",
+      "Incorporar el arroz y los garbanzos, mezclar, y cubrir con el caldo caliente con el pimentón disuelto.",
+      "Hornear 20 min sin remover, hasta que el arroz esté en su punto y ligeramente dorado por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -794,6 +988,13 @@ const seedRecipes = [
     name: "Pimientos rellenos",
     category: "Verduras",
     notes: "Asar los pimientos antes para ablandar. Horno a 180 ºC unos 25 min con el relleno dentro.",
+    steps: [
+      "Precalentar el horno a 180 ºC.",
+      "Para el relleno de carne: sofreír la cebolla y el ajo, añadir la carne picada y dorar; incorporar el arroz precocido, el tomate y el queso.",
+      "Para el de verduras: sofreír la cebolla, el calabacín y los champiñones, añadir el arroz precocido, el tomate y el queso.",
+      "Rellenar los pimientos, previamente vaciados, con la mezcla.",
+      "Hornear 25-30 min hasta que los pimientos estén tiernos y el relleno dorado por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -834,6 +1035,13 @@ const seedRecipes = [
     name: "Pizza casera",
     category: "Pizza",
     notes: "Si haces la masa, dejarla levar 1 h. Horno al máximo (240 ºC) con la bandeja precalentada para que la base quede crujiente.",
+    steps: [
+      "Precalentar el horno al máximo que alcance, con la bandeja dentro para que se caliente.",
+      "Estirar la masa de pizza sobre papel de horno.",
+      "Cubrir con el tomate triturado, dejando un borde libre.",
+      "Repartir la mozzarella y los ingredientes de cada variante: albahaca; los cuatro quesos; o el pepperoni, bacon y chorizo.",
+      "Deslizar la pizza, con el papel, sobre la bandeja caliente y hornear 8-10 min hasta que el borde esté dorado y el queso burbujeante.",
+    ],
     variants: [
       {
         id: "v1",
@@ -884,6 +1092,14 @@ const seedRecipes = [
     name: "Lasaña boloñesa",
     category: "Pasta",
     notes: "La boloñesa, lo más lenta posible (mín. 45 min). Capas: salsa-pasta-bechamel-queso. Horno 200 ºC unos 30 min.",
+    steps: [
+      "Sofreír la cebolla, la zanahoria y el apio picados en aceite 8 min.",
+      "Añadir la carne picada y dorar bien, deshaciendo los grumos.",
+      "Incorporar el vino tinto y dejar que reduzca, luego el tomate triturado; cocer a fuego suave 30-40 min.",
+      "Para la bechamel: fundir la mantequilla, añadir la harina y cocinar 2 min, luego la leche poco a poco hasta espesar.",
+      "Montar la lasaña en capas —boloñesa, placas, bechamel— repitiendo, y terminar con bechamel y queso rallado por encima.",
+      "Hornear a 200 ºC 25-30 min hasta que esté dorada por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -911,6 +1127,14 @@ const seedRecipes = [
     name: "Risotto de setas",
     category: "Arroz",
     notes: "Caldo siempre caliente, cucharón a cucharón. Mantecar al final con mantequilla y parmesano fuera del fuego.",
+    steps: [
+      "Sofreír la cebolla picada en mantequilla a fuego suave 5 min.",
+      "Añadir el arroz y nacarar 1-2 min removiendo.",
+      "Verter el vino blanco y dejar que se evapore el alcohol.",
+      "Añadir el caldo caliente poco a poco, un cucharón cada vez, esperando a que se absorba antes de añadir más (unos 18 min en total).",
+      "A media cocción, añadir las setas salteadas aparte.",
+      "Fuera del fuego, mantecar con mantequilla y parmesano hasta que quede cremoso.",
+    ],
     variants: [
       {
         id: "v1",
@@ -935,6 +1159,13 @@ const seedRecipes = [
     name: "Pad thai",
     category: "Asiática",
     notes: "Wok a fuego muy fuerte. Tener todos los ingredientes preparados antes de empezar.",
+    steps: [
+      "Remojar los fideos de arroz en agua caliente 10 min, hasta que estén flexibles, y escurrir.",
+      "Calentar el wok a fuego muy fuerte con un poco de aceite; saltear las gambas (o el pollo) hasta que estén hechos.",
+      "Apartar a un lado del wok y cuajar el huevo batido en el hueco libre.",
+      "Añadir los fideos, los brotes de soja, la salsa de pescado, la salsa de soja y el azúcar; saltear todo junto 2-3 min.",
+      "Servir con los cacahuetes picados y lima por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -979,6 +1210,13 @@ const seedRecipes = [
     name: "Tacos al pastor",
     category: "Tex-Mex",
     notes: "Marinar el cerdo al menos 2 h con adobo. Servir con piña asada, cebolla y cilantro picado.",
+    steps: [
+      "Marinar el lomo de cerdo cortado en filetes finos con el pimentón, el comino y el orégano mínimo 2 h.",
+      "Marcar la carne en una plancha o sartén muy caliente hasta que esté dorada y hecha.",
+      "En la misma plancha, dorar unas rodajas de piña.",
+      "Picar la carne y la piña en trozos pequeños.",
+      "Calentar las tortillas de maíz y rellenar con la carne, la piña, la cebolla morada y el cilantro picados, con un chorro de lima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1004,6 +1242,13 @@ const seedRecipes = [
     name: "Chili con carne",
     category: "Tex-Mex",
     notes: "Cuanto más se cocine a fuego suave, mejor. Mínimo 30 min. Servir con arroz blanco o nachos.",
+    steps: [
+      "Sofreír la cebolla y el pimiento en aceite 8 min.",
+      "Añadir el ajo y la carne picada, dorar bien deshaciendo los grumos.",
+      "Incorporar el comino y el chile en polvo, remover 1 min.",
+      "Añadir el tomate triturado y las alubias, cocer a fuego suave 25-30 min hasta que espese.",
+      "Servir con cilantro fresco picado por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1029,6 +1274,13 @@ const seedRecipes = [
     name: "Cuscús con verduras",
     category: "Marroquí",
     notes: "Hidratar el cuscús con agua hirviendo y un chorrito de aceite. Las verduras estofadas a fuego lento con las especias.",
+    steps: [
+      "Cortar la calabaza, el calabacín y la zanahoria en dados.",
+      "Sofreír la cebolla, añadir las verduras y el ras el hanout, rehogar 5 min (en la versión de pollo, añadir el pollo troceado desde el principio).",
+      "Cubrir con el caldo y cocer 15-20 min hasta que las verduras estén tiernas.",
+      "Aparte, hidratar el cuscús con la misma cantidad de agua o caldo hirviendo, tapado 5 min, y soltar los granos con un tenedor.",
+      "Servir el cuscús con las verduras y su caldo por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1068,6 +1320,13 @@ const seedRecipes = [
     name: "Poke bowl",
     category: "Asiática",
     notes: "Marinar el pescado 15 min en soja y sésamo. Montar el bol justo antes de servir.",
+    steps: [
+      "Cocer el arroz para sushi y aliñarlo con un poco de vinagre de arroz mientras aún está caliente.",
+      "Cortar el salmón (o el atún) fresco en dados, y el aguacate y el pepino en láminas.",
+      "Repartir el arroz en boles y colocar encima el pescado y las verduras por secciones.",
+      "Aliñar con la salsa de soja y espolvorear el sésamo por encima.",
+      "Servir frío, recién montado.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1108,6 +1367,13 @@ const seedRecipes = [
     name: "Hummus con crudités",
     category: "Tapas",
     notes: "Triturar los garbanzos hasta que esté muy cremoso. Aceite generoso y un toque de pimentón por encima al servir.",
+    steps: [
+      "Escurrir bien los garbanzos cocidos.",
+      "Triturar los garbanzos con el tahini, el ajo, el zumo de limón, el comino y un poco de agua hasta obtener una crema fina.",
+      "Ir añadiendo aceite de oliva en hilo mientras se tritura, hasta la textura deseada.",
+      "Rectificar de sal y limón al gusto.",
+      "Servir con un chorro de aceite por encima, las verduras cortadas en bastones y el pan de pita.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1133,6 +1399,13 @@ const seedRecipes = [
     name: "Wok de fideos con verduras",
     category: "Asiática",
     notes: "Tener todo cortado antes de empezar. Wok a fuego máximo, ir añadiendo por orden de cocción.",
+    steps: [
+      "Cocer los fideos chinos según el paquete y reservar.",
+      "Calentar el wok a fuego muy fuerte con aceite; saltear el pollo (o el tofu) hasta que esté dorado.",
+      "Añadir el brócoli, la zanahoria y el pimiento, saltear 3-4 min para que queden al dente.",
+      "Incorporar los fideos, la salsa de soja, el jengibre y el ajo, saltear todo junto 2 min.",
+      "Terminar con un chorrito de aceite de sésamo y servir caliente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1174,6 +1447,13 @@ const seedRecipes = [
     name: "Goulash húngaro",
     category: "Carne",
     notes: "Mucha cebolla, fuego suave. Mínimo 1,5 h para que la carne quede tierna. El pimentón ahumado marca la diferencia.",
+    steps: [
+      "Dorar la carne de ternera en una olla con un poco de aceite, por tandas para que selle bien.",
+      "En la misma olla, sofreír la cebolla y el pimiento 8 min.",
+      "Añadir el pimentón dulce y ahumado fuera del fuego, remover y volver a poner al fuego.",
+      "Incorporar el tomate triturado, la carne dorada, la patata y el caldo.",
+      "Cocer a fuego lento 1 h 30 min - 2 h, hasta que la carne esté muy tierna.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1199,6 +1479,14 @@ const seedRecipes = [
     name: "Quiche lorraine",
     category: "Hornear",
     notes: "Hornear la masa sola 10 min antes de añadir el relleno (así no se humedece). Horno a 180 ºC unos 35 min.",
+    steps: [
+      "Precalentar el horno a 200 ºC. Forrar un molde con la masa quebrada y pincharla con un tenedor.",
+      "Hornear la masa sola (\"en blanco\") 10 min para que no quede cruda por debajo.",
+      "Dorar el bacon en una sartén (o pochar el puerro, en la otra versión).",
+      "Batir los huevos con la nata y salpimentar.",
+      "Repartir el bacon (o puerro) y el queso sobre la masa, cubrir con la mezcla de huevo y nata.",
+      "Hornear 30-35 min a 180 ºC hasta que esté cuajada y dorada.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1238,6 +1526,13 @@ const seedRecipes = [
     name: "Sándwich club",
     category: "Rápidas",
     notes: "Tostar el pan justo antes de montar. Cortar en triángulos y pinchar con palillo para que no se desmonte.",
+    steps: [
+      "Tostar el pan de molde.",
+      "Hacer el pollo a la plancha salpimentado, 4-5 min por lado, y cortarlo en tiras. Freír el bacon hasta que esté crujiente.",
+      "Cocer el huevo si se quiere añadir en rodajas.",
+      "Montar por capas: pan, mayonesa, lechuga, tomate, pollo, otro pan, bacon, huevo, y el pan final.",
+      "Sujetar con palillos y cortar en triángulos.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1261,6 +1556,13 @@ const seedRecipes = [
     name: "Wrap de pollo",
     category: "Rápidas",
     notes: "Calentar la tortilla unos segundos antes de rellenar para que sea flexible. Enrollar bien apretado.",
+    steps: [
+      "Hacer el pollo a la plancha salpimentado y cortarlo en tiras (o usar pollo ya cocinado).",
+      "Calentar la tortilla de trigo unos segundos para que quede flexible.",
+      "Rellenar con el pollo y, en la versión césar, la lechuga, el parmesano y la salsa césar; en la mexicana, el aguacate, el maíz, el tomate y el queso.",
+      "Enrollar bien apretado, doblando los extremos hacia dentro.",
+      "Cortar por la mitad en diagonal para servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1297,6 +1599,13 @@ const seedRecipes = [
     name: "Ensalada de quinoa",
     category: "Ensaladas",
     notes: "Cocer la quinoa 15 min, enfriar antes de aliñar. Aguanta perfecta 2 días en nevera.",
+    steps: [
+      "Cocer la quinoa en agua con sal 15 min, hasta que los granos se abran, y dejar enfriar.",
+      "Cortar el tomate cherry, el pepino y el aguacate.",
+      "Mezclar la quinoa fría con las verduras, los garbanzos, la feta y las aceitunas.",
+      "Aliñar con el zumo de limón y el aceite de oliva.",
+      "Remover bien y servir fresca.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1322,6 +1631,13 @@ const seedRecipes = [
     name: "Brochetas de pollo y verduras",
     category: "Carne",
     notes: "Marinar el pollo 15 min mínimo. Plancha o parrilla fuerte, 4 min por lado.",
+    steps: [
+      "Cortar el pollo y las verduras en dados de tamaño similar.",
+      "Marinar con aceite, limón, orégano y romero mínimo 30 min.",
+      "Montar las brochetas alternando pollo y verduras.",
+      "Asar a la plancha o parrilla a fuego medio-alto, 3-4 min por cada lado, girando para que se doren por igual.",
+      "Servir con un chorro de limón.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1347,6 +1663,13 @@ const seedRecipes = [
     name: "Gambas al ajillo",
     category: "Pescado",
     notes: "Cazuela de barro y aceite generoso. El ajo dorado, no quemado. Apagar el fuego antes de añadir las gambas para que no se pasen.",
+    steps: [
+      "Calentar el aceite en una cazuela de barro o sartén a fuego medio con el ajo laminado y la guindilla.",
+      "Dorar el ajo despacio, sin que llegue a quemarse.",
+      "Subir el fuego y añadir las gambas, salteando 1-2 min hasta que cambien de color.",
+      "Añadir un chorrito de vino blanco si se usa, dejar evaporar el alcohol unos segundos.",
+      "Espolvorear con perejil picado y servir muy caliente, con pan para mojar.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1369,6 +1692,13 @@ const seedRecipes = [
     name: "Bocadillo de calamares",
     category: "Rápidas",
     notes: "Calamares en aros, harina y fritos en aceite muy caliente. Pan crujiente y unas gotas de limón.",
+    steps: [
+      "Cortar los calamares en anillas y secarlos bien con papel de cocina.",
+      "Pasar las anillas por harina, sacudiendo el exceso.",
+      "Freír en aceite bien caliente en tandas pequeñas, 1-2 min hasta que estén dorados y crujientes.",
+      "Escurrir sobre papel absorbente y salar al momento.",
+      "Rellenar el pan con los calamares, un chorro de limón y alioli al gusto.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1391,6 +1721,13 @@ const seedRecipes = [
     name: "Tortilla francesa con relleno",
     category: "Huevos",
     notes: "Fuego medio-fuerte, batir bien los huevos. Doblar en cuanto cuaje por fuera y aún esté algo cremosa por dentro.",
+    steps: [
+      "Batir los huevos con una pizca de sal.",
+      "Calentar la mantequilla en una sartén a fuego medio-alto.",
+      "En la versión de queso y jamón: verter el huevo, y cuando empiece a cuajar por los bordes, añadir el jamón y el queso en el centro.",
+      "En la de champiñones: saltear los champiñones con ajo antes de añadir el huevo.",
+      "Doblar la tortilla por la mitad en cuanto esté cuajada por fuera y aún cremosa por dentro, y servir enseguida.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1424,6 +1761,13 @@ const seedRecipes = [
     name: "Sopa de fideos",
     category: "Cremas y sopas",
     notes: "Caldo bueno, fideos los justos. 5-6 min y listo. Un huevo escalfado por encima la convierte en plato único.",
+    steps: [
+      "Calentar el caldo de pollo en una olla.",
+      "Añadir la zanahoria y el apio en rodajas finas, cocer 8-10 min.",
+      "Incorporar los fideos finos y cocer 5-6 min más, hasta que estén tiernos.",
+      "Añadir el pollo cocido desmenuzado y calentar 2 min.",
+      "Servir bien caliente con perejil picado por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1448,6 +1792,13 @@ const seedRecipes = [
     name: "Tostadas con tomate",
     category: "Desayuno",
     notes: "Pan tostado, ajo restregado, tomate rallado, aceite generoso y sal. El básico andaluz.",
+    steps: [
+      "Tostar el pan de hogaza hasta que esté crujiente.",
+      "Restregar un diente de ajo por la superficie de cada tostada.",
+      "Rallar el tomate maduro y repartirlo sobre el pan.",
+      "Regar con un buen chorro de aceite de oliva virgen y una pizca de sal.",
+      "En la versión con jamón, añadir unas lonchas por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1483,6 +1834,12 @@ const seedRecipes = [
     name: "Porridge de avena",
     category: "Desayuno",
     notes: "Avena con el doble de líquido, fuego suave 5 min removiendo. Personalizar con fruta y un toque de canela.",
+    steps: [
+      "Poner los copos de avena y la leche en un cazo a fuego medio.",
+      "Cocer 5 min removiendo, hasta que espese a la textura deseada.",
+      "Retirar del fuego y añadir la miel.",
+      "Servir con el plátano en rodajas y canela por encima, o con los frutos rojos y las almendras en la otra versión.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1520,6 +1877,13 @@ const seedRecipes = [
     name: "Arroz con leche",
     category: "Postres",
     notes: "Fuego muy suave y remover a menudo. Aroma con piel de limón y canela en rama, retirar antes de servir.",
+    steps: [
+      "Poner la leche a calentar con la piel de limón y la canela en rama.",
+      "Cuando rompa a hervir, añadir el arroz y bajar a fuego muy suave.",
+      "Cocer 35-40 min removiendo a menudo, para que no se pegue, hasta que el arroz esté cremoso.",
+      "Añadir el azúcar los últimos 10 min de cocción.",
+      "Retirar la piel de limón y la canela en rama, servir templado o frío con canela en polvo por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1542,6 +1906,13 @@ const seedRecipes = [
     name: "Manzana al horno",
     category: "Postres",
     notes: "Quitar el corazón, rellenar con azúcar y mantequilla. Horno 180 ºC unos 30-35 min. Mejor templada que caliente.",
+    steps: [
+      "Precalentar el horno a 180 ºC.",
+      "Quitar el corazón de las manzanas con un descorazonador o cuchillo, sin llegar a la base.",
+      "Rellenar el hueco con las nueces picadas, el azúcar moreno y un trozo de mantequilla.",
+      "Colocar en una bandeja con un fondo de agua, y hornear 30-35 min hasta que estén tiernas.",
+      "Servir templadas con un chorrito de miel y canela por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1567,6 +1938,13 @@ const seedRecipes = [
     category: "China",
     baseServings: 4,
     notes: "Marinar el pollo 15 min en soja y maicena. Wok muy fuerte, saltear rápido. La salsa al final, justo para napar.",
+    steps: [
+      "Cortar el pollo en dados y marinarlo con un poco de salsa de soja y maicena 15 min.",
+      "Calentar el wok a fuego fuerte con aceite, saltear el pollo hasta que esté dorado, y reservar.",
+      "En el mismo wok, saltear el pimiento, el jengibre, el ajo y el chile seco 1-2 min.",
+      "Devolver el pollo al wok, añadir la salsa de soja, el vinagre y el azúcar disueltos, saltear todo junto 2 min.",
+      "Añadir los cacahuetes al final y servir enseguida.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1595,6 +1973,13 @@ const seedRecipes = [
     category: "China",
     baseServings: 4,
     notes: "Mejor con arroz cocido del día anterior, frío. Wok caliente, ir añadiendo por orden: huevo, verdura, jamón, gambas, arroz al final.",
+    steps: [
+      "Usar arroz cocido y frío, mejor del día anterior.",
+      "Calentar el wok a fuego fuerte con aceite, cuajar el huevo batido y reservarlo troceado.",
+      "Saltear las gambas y el jamón (versión tradicional) o los guisantes y el maíz (vegetariana) 2 min.",
+      "Añadir el arroz, los guisantes y la zanahoria, saltear todo junto 3-4 min.",
+      "Incorporar el huevo troceado y la salsa de soja, mezclar bien y servir caliente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1636,6 +2021,13 @@ const seedRecipes = [
     category: "China",
     baseServings: 4,
     notes: "Cortar la ternera muy fina contra la fibra. Marinar 20 min. El brócoli escaldado 1 min antes de saltear para que quede al dente.",
+    steps: [
+      "Cortar la ternera en tiras finas contra la fibra y marinarla con un poco de maicena y salsa de soja 15 min.",
+      "Escaldar el brócoli en agua hirviendo 1 min y escurrir.",
+      "Calentar el wok a fuego fuerte, saltear la ternera hasta que esté dorada, y reservar.",
+      "En el mismo wok, saltear el ajo y el jengibre, añadir el brócoli y la ternera.",
+      "Incorporar la salsa de ostras, la salsa de soja y el azúcar, saltear todo junto 2 min y servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1662,6 +2054,13 @@ const seedRecipes = [
     category: "China",
     baseServings: 4,
     notes: "Rebozar el cerdo dos veces para que quede crujiente. La salsa por encima al final, no antes (perdería el crujiente).",
+    steps: [
+      "Cortar el lomo de cerdo en dados y pasarlos por huevo batido y maicena.",
+      "Freír en aceite caliente hasta que estén dorados y crujientes, y escurrir.",
+      "En un wok, saltear los pimientos y la piña.",
+      "Mezclar el vinagre de arroz, el azúcar, el ketchup y la salsa de soja, añadir al wok y dejar que espese ligeramente.",
+      "Incorporar el cerdo frito, mezclar bien para que se impregne de la salsa, y servir enseguida.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1689,6 +2088,13 @@ const seedRecipes = [
     category: "China",
     baseServings: 4,
     notes: "Cocer los tallarines al dente. El salteado al wok muy rápido, todo dentro y mezclar bien.",
+    steps: [
+      "Cocer los tallarines chinos al huevo según el paquete y escurrir.",
+      "Calentar el wok a fuego fuerte, saltear el pollo (o las gambas) hasta que esté hecho.",
+      "Añadir la col china y la zanahoria, saltear 2-3 min.",
+      "Incorporar los tallarines, la salsa de soja, la salsa de ostras y el aceite de sésamo.",
+      "Saltear todo junto 2 min hasta que se integren los sabores y servir caliente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1733,6 +2139,13 @@ const seedRecipes = [
     category: "Japonesa",
     baseServings: 4,
     notes: "Caldo concentrado, mejor cocido 1 h. Cocer fideos justos antes de servir y montar el bol al momento.",
+    steps: [
+      "Preparar el caldo: cocer el caldo de pollo (o de verduras) con la salsa de soja, el mirin, el jengibre y el ajo, 30-40 min a fuego suave.",
+      "Cocer los fideos ramen según el paquete, justo antes de servir.",
+      "En la versión de cerdo, calentar la panceta ya cocinada en lonchas; en la de miso, disolver la pasta de miso en el caldo y saltear el tofu y los champiñones.",
+      "Preparar un huevo por persona, cocido o escalfado.",
+      "Montar el bol: caldo, fideos, la proteína, el huevo, el alga nori y la cebolleta picada por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1777,6 +2190,13 @@ const seedRecipes = [
     category: "Japonesa",
     baseServings: 4,
     notes: "Sellar bien las gyoza para que no se abran. Plancha primero (3 min) y luego añadir agua y tapar para vapor.",
+    steps: [
+      "Mezclar la carne picada de cerdo (o las gambas picadas) con la col china, la cebolleta, el ajo y el jengibre picados, la salsa de soja y el aceite de sésamo.",
+      "Poner una cucharadita de relleno en el centro de cada oblea, humedecer el borde y sellar en forma de media luna con pliegues.",
+      "Calentar una sartén con un poco de aceite y colocar las gyozas, dorando la base 2-3 min.",
+      "Añadir un chorrito de agua y tapar, dejando que se cuezan al vapor 4-5 min.",
+      "Destapar y dejar que se evapore el agua para que la base quede crujiente. Servir con vinagre de arroz.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1818,6 +2238,13 @@ const seedRecipes = [
     category: "Japonesa",
     baseServings: 4,
     notes: "Pollo y huevo sobre arroz: oyako significa 'padre e hijo'. Cocer el huevo apenas, debe quedar cremoso, no cuajado del todo.",
+    steps: [
+      "Cocer el arroz japonés.",
+      "Pochar la cebolla en el caldo dashi con la salsa de soja y el mirin.",
+      "Añadir el pollo troceado y cocer 5-6 min hasta que esté hecho.",
+      "Verter el huevo batido por encima, tapar y dejar que cuaje ligeramente, 1-2 min, quedando cremoso.",
+      "Servir sobre un bol de arroz, con la cebolleta picada por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1844,6 +2271,14 @@ const seedRecipes = [
     category: "Japonesa",
     baseServings: 4,
     notes: "Arroz bien condimentado con vinagre, azúcar y sal mientras está caliente. Esterilla de bambú envuelta en film para enrollar sin pegarse.",
+    steps: [
+      "Cocer el arroz para sushi y aliñarlo con vinagre de arroz y azúcar mientras está caliente; dejar enfriar a temperatura ambiente.",
+      "Colocar una lámina de alga nori sobre una esterilla de bambú envuelta en film.",
+      "Extender una capa fina de arroz sobre el alga, dejando un borde libre en el extremo superior.",
+      "Colocar el relleno —surimi y aguacate, o salmón y aguacate— en una línea en el centro.",
+      "Enrollar con ayuda de la esterilla, apretando bien, y sellar humedeciendo el borde libre.",
+      "Cortar el rollo en 6-8 trozos con un cuchillo mojado y servir con salsa de soja.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1886,6 +2321,13 @@ const seedRecipes = [
     category: "Japonesa",
     baseServings: 4,
     notes: "Pasar el cerdo por harina, huevo y panko en ese orden. Aceite a 170 ºC, 4 min por lado. Cortar en tiras antes de servir.",
+    steps: [
+      "Salpimentar los filetes de cerdo (o pollo) y darles unos golpes suaves para ablandar la fibra.",
+      "Pasarlos por harina, luego por huevo batido, y finalmente por panko, presionando para que se adhiera bien.",
+      "Freír en aceite bien caliente 3-4 min por lado, hasta que estén dorados y crujientes.",
+      "Escurrir sobre papel absorbente y dejar reposar 2 min.",
+      "Cortar en tiras y servir sobre col blanca en juliana, con la salsa tonkatsu por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1928,6 +2370,14 @@ const seedRecipes = [
     category: "Coreana",
     baseServings: 4,
     notes: "Saltear cada verdura por separado y reservar. Montar el bol con arroz, verduras en sectores, huevo en el centro. Salsa al gusto.",
+    steps: [
+      "Cocer el arroz japonés.",
+      "Saltear cada verdura por separado —espinacas, zanahoria, calabacín, setas, brotes de soja—, sazonando cada una con un poco de sal y aceite de sésamo.",
+      "Marcar la ternera (o el tofu) en tiras a fuego fuerte.",
+      "Freír un huevo por persona, dejando la yema líquida.",
+      "Montar el bol: arroz en la base, las verduras y la carne repartidas por secciones, el huevo en el centro y el gochujang al lado.",
+      "Mezclar todo justo antes de comer.",
+    ],
     variants: [
       {
         id: "v1",
@@ -1977,6 +2427,13 @@ const seedRecipes = [
     category: "Coreana",
     baseServings: 4,
     notes: "Marinar la ternera cortada muy fina mínimo 30 min (mejor 2 h). Plancha o sartén muy caliente, vuelta y vuelta.",
+    steps: [
+      "Marinar la ternera (o el cerdo) laminada muy fina con la pera rallada, la salsa de soja, el azúcar, el aceite de sésamo, el ajo y el jengibre, mínimo 30 min (mejor 2 h).",
+      "Cocer el arroz japonés.",
+      "Calentar una sartén o plancha a fuego fuerte y saltear la carne marinada por tandas, 2-3 min hasta que esté dorada.",
+      "Espolvorear con sésamo y cebolleta picada.",
+      "Servir sobre el arroz.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2021,6 +2478,13 @@ const seedRecipes = [
     category: "Coreana",
     baseServings: 4,
     notes: "Cocer los fideos de batata 6 min, escurrir y aclarar con agua fría. Saltear cada verdura por separado y mezclar al final con la salsa.",
+    steps: [
+      "Cocer los fideos de batata en agua hirviendo 6 min, escurrir y aclarar con agua fría.",
+      "Saltear la ternera en tiras a fuego fuerte hasta que esté dorada, y reservar.",
+      "Saltear cada verdura por separado —espinacas, zanahoria, pimiento, setas— para que no suelten demasiada agua.",
+      "Mezclar los fideos con la salsa de soja, el azúcar y el aceite de sésamo.",
+      "Juntar todo en el wok, saltear 2 min para que se integren los sabores, y terminar con sésamo por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2050,6 +2514,13 @@ const seedRecipes = [
     category: "Coreana",
     baseServings: 4,
     notes: "Remojar los pasteles de arroz 10 min si están secos. Cocer 8 min en la salsa hasta que espese. Picante: ajustar el gochujang al gusto.",
+    steps: [
+      "Si los pasteles de arroz están duros, remojarlos en agua templada 10 min.",
+      "Calentar el caldo dashi en una sartén con el gochujang, el gochugaru, la salsa de soja y el azúcar, disolviendo bien.",
+      "Añadir los pasteles de arroz y la pasta de pescado, cocer a fuego medio 8 min, removiendo para que no se peguen.",
+      "Dejar que la salsa espese y se adhiera a los pasteles.",
+      "Servir con cebolleta y sésamo por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2077,6 +2548,13 @@ const seedRecipes = [
     category: "Coreana",
     baseServings: 4,
     notes: "Doble fritura es la clave: primera a 160 ºC para cocinar, segunda a 190 ºC para que quede ultracrujiente. Glaseado caliente al final.",
+    steps: [
+      "Cortar las alitas de pollo y pasarlas por maicena.",
+      "Freír en aceite a 160 ºC unos 8 min hasta que estén cocidas por dentro.",
+      "Subir el aceite a 190 ºC y freír de nuevo 2-3 min para que queden muy crujientes.",
+      "Mientras, calentar en una sartén la salsa —gochujang, ketchup, miel y ajo; o soja, miel y ajo— hasta que espese ligeramente.",
+      "Mezclar el pollo frito con la salsa caliente hasta que quede bien cubierto, y espolvorear con sésamo.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2122,6 +2600,14 @@ const seedRecipes = [
     category: "Pasta",
     baseServings: 4,
     notes: "Sin nata. La clave: fuera del fuego para mezclar la pasta con el huevo, así cuaja sedosa sin cortarse. Reservar agua de cocción para ligar.",
+    steps: [
+      "Cocer la pasta en agua con sal hasta que esté al dente.",
+      "Mientras, dorar el guanciale (o el bacon) en una sartén sin aceite, hasta que suelte su grasa y quede crujiente.",
+      "Batir las yemas, el huevo entero y el queso rallado en un bol.",
+      "Escurrir la pasta reservando un poco del agua de cocción, y mezclarla con el guanciale fuera del fuego.",
+      "Añadir la mezcla de huevo y queso, removiendo rápido para que se cree una crema sedosa sin que cuaje en grumos, añadiendo agua de cocción si hace falta.",
+      "Servir con pimienta negra recién molida.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2159,6 +2645,14 @@ const seedRecipes = [
     category: "Italiana",
     baseServings: 4,
     notes: "Guisado lento a fuego suave, 90 min mínimo. Al servir, gremolata por encima: ralladura de limón, ajo y perejil picado.",
+    steps: [
+      "Salpimentar los ossobuco y pasarlos por harina.",
+      "Dorar en una cazuela con mantequilla por ambos lados, y reservar.",
+      "En la misma cazuela, sofreír la cebolla, la zanahoria y el apio 8 min.",
+      "Devolver la carne, añadir el vino blanco y dejar reducir, luego el tomate triturado y el caldo.",
+      "Cocer tapado a fuego lento 1 h 30 min - 2 h, hasta que la carne se despegue del hueso.",
+      "Servir con la gremolata: ralladura de limón, ajo y perejil picados por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2188,6 +2682,13 @@ const seedRecipes = [
     category: "Griega",
     baseServings: 4,
     notes: "Marinar la carne mínimo 2 h en yogur y limón (mejor toda la noche). Brochetas a fuego fuerte, 3-4 min por lado. Servir con pita, tzatziki y ensalada.",
+    steps: [
+      "Marinar el pollo (o el cerdo) en dados con el yogur, el limón, el ajo, el orégano y el comino, mínimo 2 h (mejor toda la noche).",
+      "Montar en brochetas.",
+      "Asar a la plancha o parrilla a fuego medio-alto, 3-4 min por lado, hasta que esté dorado y hecho por dentro.",
+      "Calentar el pan de pita.",
+      "Servir las brochetas con el pan, la salsa tzatziki y la cebolla morada.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2231,6 +2732,15 @@ const seedRecipes = [
     category: "Griega",
     baseServings: 6,
     notes: "Freír o asar las berenjenas antes (mejor la víspera para que escurran aceite). Bechamel espesa arriba. Horno 200 ºC unos 30 min hasta dorar.",
+    steps: [
+      "Cortar la berenjena y la patata en láminas; salar la berenjena y dejarla reposar 15 min para que suelte el amargor, luego secarla.",
+      "Freír o asar las láminas de berenjena y patata hasta que estén doradas.",
+      "Sofreír la cebolla y el ajo, añadir la carne picada y dorar bien.",
+      "Incorporar el tomate triturado, la canela y la nuez moscada, cocer 20 min a fuego suave.",
+      "Para la bechamel: fundir la mantequilla, añadir la harina, cocinar 2 min, y añadir la leche poco a poco hasta espesar; mezclar con el queso feta (o el huevo, según la versión).",
+      "Montar en capas en una fuente: patata, berenjena, la carne, y cubrir con la bechamel.",
+      "Hornear a 200 ºC 30 min hasta que esté dorada por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2281,6 +2791,13 @@ const seedRecipes = [
     category: "Ensaladas",
     baseServings: 4,
     notes: "Hidratar el bulgur 15 min con agua caliente. La proporción libanesa: MUCHÍSIMO perejil (casi verde), poco bulgur. Servir frío.",
+    steps: [
+      "Hidratar el bulgur con agua caliente 15 min, hasta que esté tierno, y escurrir bien.",
+      "Picar muy fino el perejil, la menta, el tomate y la cebolla tierna.",
+      "Mezclar el bulgur con las hierbas y verduras picadas.",
+      "Aliñar con el zumo de limón, el aceite de oliva y sal.",
+      "Dejar reposar en la nevera al menos 30 min antes de servir para que se integren los sabores.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2307,6 +2824,14 @@ const seedRecipes = [
     category: "Huevos",
     baseServings: 4,
     notes: "Pochar bien el pimiento y la cebolla (15 min a fuego suave). Hacer huecos en la salsa y romper los huevos dentro; tapar hasta que cuajen.",
+    steps: [
+      "Sofreír el pimiento y la cebolla en aceite de oliva a fuego medio 10-12 min, hasta que estén blandos.",
+      "Añadir el ajo, el comino y el pimentón, remover 1 min.",
+      "Incorporar el tomate triturado y cocer a fuego suave 10-12 min hasta que espese.",
+      "Hacer huecos en la salsa con una cuchara y cascar un huevo en cada uno.",
+      "Tapar y cocer 5-7 min a fuego suave hasta que las claras cuajen y las yemas queden líquidas.",
+      "En la versión con feta, desmigar el queso por encima antes de tapar. Servir con pan de pita.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2355,6 +2880,13 @@ const seedRecipes = [
     category: "Desayuno",
     baseServings: 4,
     notes: "Granola en horno a 160 ºC unos 25 min removiendo cada 8. Se guarda 2-3 semanas en tarro cerrado, sirve para muchos desayunos.",
+    steps: [
+      "Precalentar el horno a 160 ºC.",
+      "Mezclar los copos de avena con las nueces, las almendras, las semillas de girasol, la miel, el aceite de coco y la canela.",
+      "Extender en una bandeja y hornear 25 min, removiendo cada 8 min, hasta que esté dorada y crujiente.",
+      "Dejar enfriar completamente; se endurece al enfriar.",
+      "Servir el yogur con la granola y los frutos rojos por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2381,6 +2913,13 @@ const seedRecipes = [
     category: "Merienda",
     baseServings: 8,
     notes: "El clásico 1-2-3: 1 yogur, 2 vasos de yogur de azúcar, 3 de harina, 1 de aceite. Horno 180 ºC unos 40 min hasta que pinche seco.",
+    steps: [
+      "Precalentar el horno a 180 ºC y engrasar un molde.",
+      "Batir el yogur, los huevos, el azúcar y el aceite hasta que estén bien integrados.",
+      "Añadir la harina tamizada con la levadura y la ralladura de limón, mezclando con movimientos envolventes.",
+      "Verter en el molde y hornear 35-40 min, hasta que al pinchar con un palillo salga limpio.",
+      "Dejar enfriar antes de desmoldar.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2406,6 +2945,13 @@ const seedRecipes = [
     category: "Desayuno",
     baseServings: 2,
     notes: "Aguacate aplastado con limón y sal en escamas. Huevo poché por encima (2 min en agua hirviendo con un chorro de vinagre).",
+    steps: [
+      "Tostar el pan de hogaza.",
+      "Aplastar el aguacate con un tenedor, el zumo de limón y sal.",
+      "Para el huevo poché: llevar agua a ebullición suave con un chorro de vinagre, crear un remolino y verter el huevo con cuidado; cocer 2-3 min y retirar con espumadera.",
+      "Extender el aguacate sobre el pan y colocar el huevo poché encima (o el salmón ahumado, en la otra versión).",
+      "Terminar con sal en escamas y un toque de chile en escamas.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2446,6 +2992,13 @@ const seedRecipes = [
     category: "Desayuno",
     baseServings: 2,
     notes: "La espinaca cruda no se nota, con la fruta se disimula. Los dátiles endulzan de forma natural, sin azúcar añadido.",
+    steps: [
+      "Lavar las espinacas.",
+      "Poner todos los ingredientes en la batidora: espinacas, plátano, manzana, dátiles, jengibre y la leche vegetal.",
+      "Triturar a máxima potencia hasta que quede totalmente liso.",
+      "Añadir más leche vegetal si queda muy espeso.",
+      "Servir enseguida, con las semillas de chía por encima si se desea.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2470,6 +3023,14 @@ const seedRecipes = [
     category: "Merienda",
     baseServings: 8,
     notes: "La zanahoria aporta jugosidad, no hay que ablandarla. Frosting de queso crema por encima si te apetece un plus.",
+    steps: [
+      "Precalentar el horno a 180 ºC y engrasar un molde.",
+      "Batir los huevos con el azúcar moreno y el aceite hasta que blanqueen un poco.",
+      "Añadir la zanahoria rallada y mezclar.",
+      "Incorporar la harina tamizada con la levadura y la canela, con movimientos envolventes.",
+      "Verter en el molde y hornear 40-45 min, hasta que al pinchar salga limpio.",
+      "Dejar enfriar del todo antes de cubrir con el frosting de queso crema, si se usa.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2516,6 +3077,13 @@ const seedRecipes = [
     category: "Carne",
     baseServings: 4,
     notes: "Dorar bien el pollo primero. Ajos aplastados sin pelar. Reducir el vino hasta que la salsa espese; queda una salsita marrón brillante.",
+    steps: [
+      "Salpimentar el pollo y dorarlo en una cazuela con aceite hasta que esté bien dorado por todos los lados.",
+      "Añadir los ajos enteros sin pelar y el laurel, rehogar 2 min.",
+      "Verter el vino blanco (y el coñac, si se usa) y dejar que reduzca a fuego medio.",
+      "Tapar y cocer a fuego suave 20-25 min, hasta que el pollo esté tierno y la salsa haya espesado.",
+      "Espolvorear con perejil picado antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2542,6 +3110,13 @@ const seedRecipes = [
     category: "Tradicional",
     baseServings: 4,
     notes: "Pan del día anterior (mejor duro). Humedecer con agua salada la noche antes. Fuego suave, mucho tiempo y remover con paciencia.",
+    steps: [
+      "Desmigar el pan del día anterior en trozos pequeños y humedecerlo con agua salada unas horas antes, tapado con un paño.",
+      "Dorar el chorizo y la panceta troceados en una sartén con aceite, y reservar.",
+      "En el mismo aceite, dorar los ajos y el pimiento verde.",
+      "Añadir el pan humedecido y el pimentón, cocinar a fuego suave 20-25 min, removiendo a menudo para que se suelte y no se pegue.",
+      "Devolver el chorizo y la panceta a la sartén, mezclar bien y servir con uvas si se desea.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2568,6 +3143,13 @@ const seedRecipes = [
     category: "Pescado",
     baseServings: 4,
     notes: "Desalar el bacalao 24-36 h en agua fría, cambiando el agua 3 veces. La salsa: cebolla y pulpa de choricero, sin tomate en la versión pura.",
+    steps: [
+      "Desalar el bacalao 24-36 h en agua fría, cambiando el agua 3 veces.",
+      "Sofreír la cebolla y el ajo a fuego suave 15-20 min, hasta que estén muy blandos.",
+      "Añadir la pulpa de pimiento choricero y el tomate, cocer 10 min.",
+      "Triturar la salsa con el pan frito hasta que quede fina, y añadir el caldo de pescado si hace falta aligerar.",
+      "Incorporar el bacalao a la salsa y cocer a fuego suave 8-10 min, sin que hierva fuerte, hasta que esté hecho.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2593,6 +3175,13 @@ const seedRecipes = [
     category: "Cremas y sopas",
     baseServings: 4,
     notes: "Ajo dorado sin quemar (si se quema, empezar de nuevo). El huevo se rompe dentro de la sopa caliente para que escalfe solo.",
+    steps: [
+      "Dorar los ajos laminados en aceite de oliva a fuego suave, sin que se quemen.",
+      "Añadir el pimentón fuera del fuego, remover y volver a poner al fuego.",
+      "Incorporar el jamón en taquitos y el pan troceado, rehogar 2 min.",
+      "Añadir el caldo de pollo y el laurel, cocer 15 min a fuego suave.",
+      "Cascar los huevos directamente en la sopa hirviendo y dejar que cuajen 3-4 min. Servir muy caliente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2619,6 +3208,13 @@ const seedRecipes = [
     category: "Tradicional",
     baseServings: 4,
     notes: "Perfecta para aprovechar la carne del cocido. Sofrito bien hecho (mínimo 20 min), luego la carne y los garbanzos.",
+    steps: [
+      "Sofreír la cebolla, el ajo y los pimientos en aceite de oliva a fuego medio 15-20 min, hasta que estén muy blandos.",
+      "Añadir el pimentón y el comino, remover 1 min.",
+      "Incorporar el tomate triturado y cocer 10 min.",
+      "Añadir la carne desmenuzada y los garbanzos, mezclar bien.",
+      "Cocer todo junto a fuego suave 15 min para que se integren los sabores.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2648,6 +3244,13 @@ const seedRecipes = [
     category: "Ensaladas",
     baseServings: 4,
     notes: "La patata cocida y templada absorbe mejor el aliño. Vinagre de Jerez y buen aceite de oliva marcan la diferencia.",
+    steps: [
+      "Cocer las patatas con piel hasta que estén tiernas, dejar templar y cortar en dados.",
+      "Cocer los huevos 10 min, enfriar y pelar.",
+      "Cortar la cebolla morada, el tomate y el pimiento verde en dados pequeños.",
+      "Mezclar la patata templada con las verduras, el atún desmigado y las aceitunas.",
+      "Aliñar con el vinagre de Jerez y el aceite de oliva virgen, y añadir el huevo en cuartos por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2675,6 +3278,13 @@ const seedRecipes = [
     category: "Ensaladas",
     baseServings: 4,
     notes: "Excelente para tupper: aguanta perfecta 2 días en nevera. Aliñar en el momento de servir para que el atún no se seque.",
+    steps: [
+      "Escurrir bien los garbanzos cocidos y el atún.",
+      "Cortar el tomate cherry por la mitad, el pepino en dados y la cebolla morada en juliana fina.",
+      "Mezclar los garbanzos con las verduras, el atún y las aceitunas.",
+      "Aliñar con el zumo de limón y el aceite de oliva virgen.",
+      "Dejar reposar 10 min en la nevera antes de servir para que se integren los sabores.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2704,6 +3314,14 @@ const seedRecipes = [
     category: "India",
     baseServings: 4,
     notes: "Marinar el pollo en yogur y especias mínimo 1 h (mejor toda la noche). Dorar bien antes de añadir la salsa. Nata al final, fuera del hervor fuerte.",
+    steps: [
+      "Cortar el pollo en dados y marinarlo con el yogur, el ajo, el jengibre y parte de las especias, mínimo 1 h (mejor toda la noche).",
+      "Dorar el pollo marinado en una sartén con un poco de aceite, por tandas, y reservar.",
+      "En la misma sartén, sofreír la cebolla, añadir el resto de especias y remover 1 min.",
+      "Incorporar el tomate triturado y cocer 10 min.",
+      "Devolver el pollo a la salsa, añadir la nata y cocer a fuego suave 10 min más, sin que hierva fuerte.",
+      "Servir con el arroz basmati cocido aparte.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2732,6 +3350,13 @@ const seedRecipes = [
     category: "India",
     baseServings: 4,
     notes: "Vegano. Las lentejas rojas se deshacen solas, no hace falta remojo previo. 20-25 min a fuego suave removiendo de vez en cuando.",
+    steps: [
+      "Sofreír la cebolla, el ajo y el jengibre en aceite 5 min.",
+      "Añadir la cúrcuma y el comino, remover unos segundos.",
+      "Incorporar las lentejas rojas, el tomate triturado y la leche de coco.",
+      "Cubrir con agua si hace falta y cocer a fuego medio 20-25 min, removiendo de vez en cuando, hasta que las lentejas se deshagan y espese.",
+      "Servir con el arroz basmati y el cilantro fresco por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2759,6 +3384,14 @@ const seedRecipes = [
     category: "India",
     baseServings: 4,
     notes: "Triturar parte de las espinacas para dar cremosidad, dejar otra parte entera. El paneer se dora ligero antes de añadirlo, así no se deshace.",
+    steps: [
+      "Escaldar las espinacas 2 min en agua hirviendo, escurrir y triturar la mitad hasta obtener un puré, dejando la otra mitad entera.",
+      "Cortar el paneer en dados y dorarlo ligeramente en una sartén con un poco de aceite; reservar.",
+      "Sofreír la cebolla, el ajo y el jengibre 5 min, añadir el comino y el garam masala.",
+      "Incorporar el tomate triturado y cocer 5 min.",
+      "Añadir las espinacas, el puré y las enteras, y la nata, cocer 5 min a fuego suave.",
+      "Incorporar el paneer dorado, calentar 2 min más y servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2785,6 +3418,14 @@ const seedRecipes = [
     category: "India",
     baseServings: 4,
     notes: "Arroz y pollo se cuecen por separado y se montan en capas al final, con azafrán en leche caliente por encima. Reposar tapado 10 min antes de servir.",
+    steps: [
+      "Marinar el pollo con el yogur, el ajo, el jengibre y el garam masala mínimo 1 h.",
+      "Cocer el arroz basmati en agua con sal hasta que esté a medio hacer, unos 6-7 min, y escurrir.",
+      "Sofreír la cebolla hasta que esté bien dorada y caramelizada; reservar la mitad para decorar.",
+      "Dorar el pollo marinado en una cazuela con el resto de la cebolla.",
+      "Disponer el arroz a medio cocer sobre el pollo en capas, con el azafrán disuelto en un poco de leche caliente por encima, los anacardos y las pasas.",
+      "Tapar bien y cocer a fuego muy bajo 20-25 min para que se termine de hacer al vapor. Dejar reposar 10 min antes de abrir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2812,6 +3453,13 @@ const seedRecipes = [
     category: "India",
     baseServings: 6,
     notes: "Relleno bien seco para que no reviente la masa al freír. Doblar en triángulo y sellar bien los bordes con agua.",
+    steps: [
+      "Cocer la patata en dados hasta que esté tierna, escurrir.",
+      "Sofreír la cebolla, añadir los guisantes, el comino y el garam masala, rehogar 3-4 min.",
+      "Incorporar la patata cocida, aplastando un poco, y el cilantro fresco.",
+      "Doblar cada oblea en forma de cono, rellenar con la mezcla y sellar el borde con agua, formando un triángulo.",
+      "Freír en aceite caliente 3-4 min hasta que estén doradas y crujientes por todos los lados.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2837,6 +3485,13 @@ const seedRecipes = [
     category: "India",
     baseServings: 4,
     notes: "Vegano. Aplastar un poco los garbanzos mientras se cuecen para que la salsa espese sola.",
+    steps: [
+      "Sofreír la cebolla, el ajo y el jengibre en aceite 5 min.",
+      "Añadir el garam masala y el comino, remover unos segundos.",
+      "Incorporar el tomate triturado y cocer 8 min hasta que espese.",
+      "Añadir los garbanzos cocidos, aplastando algunos con el dorso de la cuchara para espesar la salsa.",
+      "Cocer a fuego suave 15 min, y servir con el arroz basmati y el cilantro por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2863,6 +3518,14 @@ const seedRecipes = [
     category: "India",
     baseServings: 4,
     notes: "Estilo rogan josh. Cuanto más lento el guiso, más tierno queda el cordero — mínimo 1 h a fuego bajo.",
+    steps: [
+      "Marinar el cordero con el yogur mínimo 1 h.",
+      "Dorar el cordero marinado en una cazuela con un poco de aceite, por tandas, y reservar.",
+      "Sofreír la cebolla, el ajo y el jengibre 8 min, añadir el garam masala y el pimentón.",
+      "Incorporar el tomate triturado y el cordero dorado.",
+      "Cubrir con agua o caldo y cocer tapado a fuego lento 1 h, hasta que el cordero esté muy tierno.",
+      "Servir con el arroz basmati.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2889,6 +3552,14 @@ const seedRecipes = [
     category: "India",
     baseServings: 6,
     notes: "Sartén o plancha muy caliente, 1-2 min por lado hasta que salgan burbujas doradas. Pincelar con mantequilla al sacarlo.",
+    steps: [
+      "Disolver la levadura en un poco de agua templada y dejar activar 10 min.",
+      "Mezclar la harina, el yogur, el aceite, la sal y la levadura activada, amasando hasta obtener una masa lisa.",
+      "Dejar reposar tapada en un lugar cálido 1 h, hasta que doble su tamaño.",
+      "Dividir en porciones y estirar cada una en forma ovalada.",
+      "Cocinar en una sartén o plancha muy caliente, 1-2 min por lado hasta que salgan burbujas doradas.",
+      "Pincelar con mantequilla, y ajo picado si se usa, recién salidos de la sartén.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2915,6 +3586,13 @@ const seedRecipes = [
     category: "Francesa",
     baseServings: 4,
     notes: "Marinar el pollo en vino tinto un par de horas si hay tiempo. Guiso lento, mínimo 45 min, para que la salsa reduzca y espese.",
+    steps: [
+      "Dorar el pollo en una cazuela con un poco de aceite, por tandas, y reservar.",
+      "En la misma cazuela, dorar la panceta, luego sofreír la cebolla, la zanahoria y el ajo.",
+      "Añadir la harina, remover 1 min, y verter el vino tinto poco a poco, removiendo para que no se formen grumos.",
+      "Devolver el pollo a la cazuela, añadir el caldo y el laurel.",
+      "Cocer tapado a fuego lento 45 min, añadiendo los champiñones los últimos 15 min, hasta que la salsa espese y el pollo esté muy tierno.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2942,6 +3620,14 @@ const seedRecipes = [
     category: "Francesa",
     baseServings: 4,
     notes: "Vegano. Cortar todas las verduras en rodajas finas de grosor similar para que se hagan por igual. Horno a 180 ºC unos 40 min.",
+    steps: [
+      "Cortar todas las verduras en rodajas finas de grosor similar.",
+      "Hacer una base de tomate triturado con la cebolla y el ajo pochados en el fondo de una fuente de horno.",
+      "Colocar las rodajas de berenjena, calabacín y tomate intercaladas verticalmente, en espiral.",
+      "Regar con aceite de oliva y espolvorear con tomillo.",
+      "Cubrir con papel de aluminio y hornear a 180 ºC 30 min; destapar y hornear 10-15 min más hasta que estén tiernas y ligeramente doradas.",
+      "Terminar con albahaca fresca por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2968,6 +3654,13 @@ const seedRecipes = [
     category: "Francesa",
     baseServings: 4,
     notes: "El guiso francés por excelencia: cuanto más tiempo a fuego lento, mejor (mínimo 2 h). Mejor de un día para otro.",
+    steps: [
+      "Dorar la carne de ternera en una cazuela con un poco de aceite, por tandas, y reservar.",
+      "En la misma cazuela, dorar la panceta, luego sofreír la cebolla, la zanahoria y el ajo.",
+      "Añadir la harina, remover 1 min, y verter el vino tinto poco a poco.",
+      "Devolver la carne a la cazuela, añadir el caldo y el laurel.",
+      "Cocer tapado a fuego lento 2 h, añadiendo los champiñones los últimos 20 min, hasta que la carne esté muy tierna y la salsa espesa.",
+    ],
     variants: [
       {
         id: "v1",
@@ -2995,6 +3688,14 @@ const seedRecipes = [
     category: "Francesa",
     baseServings: 4,
     notes: "Dejar reposar la masa 30 min en la nevera antes de hacerlas, quedan más finas. Sartén bien caliente y poca cantidad de masa cada vez.",
+    steps: [
+      "Batir la harina, los huevos, la leche, la mantequilla derretida y la sal hasta obtener una masa lisa, sin grumos.",
+      "Dejar reposar la masa en la nevera 30 min.",
+      "Calentar una sartén antiadherente a fuego medio-alto con una gota de mantequilla.",
+      "Verter un cucharón de masa, repartiéndola por toda la base con un movimiento circular.",
+      "Cocinar 1-2 min hasta que se despegue de los bordes, dar la vuelta y cocinar 1 min más.",
+      "Rellenar o cubrir al gusto y servir calientes.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3018,6 +3719,14 @@ const seedRecipes = [
     category: "Francesa",
     baseServings: 4,
     notes: "Pochar la cebolla muy despacio, mínimo 40 min, hasta que quede dorada y dulce — ahí está el sabor. Gratinar con el queso antes de servir.",
+    steps: [
+      "Cortar la cebolla en juliana fina.",
+      "Pocharla en mantequilla a fuego muy suave 40 min, removiendo de vez en cuando, hasta que quede dorada y muy tierna.",
+      "Añadir el vino blanco y dejar que reduzca.",
+      "Verter el caldo de carne y cocer 20 min a fuego suave.",
+      "Repartir la sopa en boles individuales, colocar una tostada de pan por encima y cubrir con el queso gruyère.",
+      "Gratinar en el horno o con un soplete hasta que el queso se funda y dore.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3041,6 +3750,15 @@ const seedRecipes = [
     category: "Francesa",
     baseServings: 6,
     notes: "El caramelo se hace en la misma sartén antes de poner la masa y las manzanas. Se desmolda boca abajo, con cuidado, recién salida del horno.",
+    steps: [
+      "Precalentar el horno a 180 ºC.",
+      "Pelar y cortar las manzanas por la mitad, quitando el corazón.",
+      "Derretir el azúcar en una sartén apta para horno hasta obtener un caramelo dorado, y añadir la mantequilla.",
+      "Colocar las manzanas boca abajo sobre el caramelo, bien apretadas.",
+      "Cubrir con la masa quebrada, remetiendo los bordes hacia dentro.",
+      "Hornear 30-35 min hasta que la masa esté dorada.",
+      "Dejar templar 5 min y desmoldar volcando sobre un plato, con cuidado porque el caramelo quema.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3062,6 +3780,12 @@ const seedRecipes = [
     category: "Francesa",
     baseServings: 4,
     notes: "La bechamel por encima es lo que lo distingue de un sándwich mixto normal. Horno o gratinador hasta que dore la superficie.",
+    steps: [
+      "Hacer una bechamel: fundir la mantequilla, añadir la harina, cocinar 2 min, y añadir la leche poco a poco hasta espesar; sazonar con nuez moscada.",
+      "Montar el sándwich: pan, jamón cocido, queso gruyère, y otro pan.",
+      "Cubrir la parte superior con la bechamel y espolvorear más queso.",
+      "Hornear o gratinar a 200 ºC 8-10 min, hasta que la superficie esté dorada y burbujeante.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3086,6 +3810,13 @@ const seedRecipes = [
     category: "Francesa",
     baseServings: 4,
     notes: "Todos los ingredientes por separado sobre la ensalada, sin mezclar del todo — así se presenta tradicionalmente.",
+    steps: [
+      "Cocer las patatas con piel hasta que estén tiernas, dejar templar y cortar en rodajas.",
+      "Cocer la judía verde 4-5 min en agua hirviendo, hasta que esté al dente, y enfriar en agua con hielo para que mantenga el color.",
+      "Cocer los huevos 9-10 min, enfriar y cortar en cuartos.",
+      "Disponer en una fuente el atún, las patatas, la judía verde, el tomate en gajos, las aceitunas, los huevos y las anchoas, por secciones sin mezclar.",
+      "Aliñar con el aceite de oliva y el vinagre justo antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3114,6 +3845,13 @@ const seedRecipes = [
     category: "Vegano",
     baseServings: 4,
     notes: "Cada ingrediente cocinado o cortado por separado y montado en el bol por secciones. Aliñar justo antes de comer.",
+    steps: [
+      "Cocer la quinoa según el paquete y dejar enfriar.",
+      "Cortar la zanahoria en tiras finas, la col lombarda en juliana y el aguacate en láminas.",
+      "Mezclar el tahini con el zumo de limón y un poco de agua hasta obtener una salsa fluida.",
+      "Repartir la quinoa en boles y colocar encima los garbanzos, la zanahoria, la col, las espinacas y el aguacate por secciones.",
+      "Aliñar con la salsa de tahini y el aceite de oliva.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3140,6 +3878,14 @@ const seedRecipes = [
     category: "Vegetariano",
     baseServings: 4,
     notes: "Asar antes la berenjena y el calabacín en el horno para que suelten agua y no quede aguada la lasaña. Horno final 200 ºC 25 min.",
+    steps: [
+      "Precalentar el horno a 200 ºC.",
+      "Cortar el calabacín y la berenjena en láminas y asarlas en el horno 15 min hasta que suelten agua y estén tiernas.",
+      "Saltear las espinacas hasta que reduzcan de volumen.",
+      "Hacer la bechamel: fundir la mantequilla, añadir la harina, cocinar 2 min, y añadir la leche poco a poco hasta espesar.",
+      "Montar en capas: tomate, placas, verduras asadas, bechamel, repitiendo, y terminar con mozzarella y parmesano por encima.",
+      "Hornear 25 min a 200 ºC hasta que esté dorada por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3167,6 +3913,14 @@ const seedRecipes = [
     category: "Vegano",
     baseServings: 4,
     notes: "Los garbanzos se usan remojados, NUNCA cocidos, o la masa queda demasiado blanda para freír. Reposar la masa 30 min antes de formar las bolitas.",
+    steps: [
+      "Escurrir bien los garbanzos remojados, sin cocer.",
+      "Triturar los garbanzos con la cebolla, el ajo, el perejil, el cilantro y el comino, hasta obtener una masa granulada, no una pasta fina.",
+      "Añadir la harina para ligar y dejar reposar la masa 30 min en la nevera.",
+      "Formar bolitas con las manos húmedas.",
+      "Freír en aceite bien caliente 3-4 min hasta que estén doradas por fuera y hechas por dentro.",
+      "Mezclar el tahini con el zumo de limón y agua para la salsa, y servir junto a los falafel.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3194,6 +3948,13 @@ const seedRecipes = [
     category: "Vegano",
     baseServings: 4,
     notes: "El boniato en dados pequeños se cuece rápido. 25-30 min a fuego medio hasta que espese.",
+    steps: [
+      "Cortar el boniato en dados pequeños.",
+      "Sofreír la cebolla, el pimiento y el ajo en aceite 8 min.",
+      "Añadir el comino y el chile en polvo, remover 1 min.",
+      "Incorporar el boniato, el tomate triturado y las alubias negras.",
+      "Cocer a fuego suave 25-30 min, hasta que el boniato esté tierno y el chili haya espesado. Añadir el maíz los últimos 5 min si se usa.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3220,6 +3981,13 @@ const seedRecipes = [
     category: "Vegano",
     baseServings: 4,
     notes: "Triturar los garbanzos dejando algo de textura, no una pasta fina. Enfriar la masa 20 min antes de formar las hamburguesas para que no se rompan.",
+    steps: [
+      "Triturar los garbanzos con la avena, la cebolla, el ajo, el comino y el pimentón, dejando algo de textura.",
+      "Formar las hamburguesas y dejarlas enfriar en la nevera 20 min para que no se rompan.",
+      "Cocinar en una sartén con un poco de aceite, 4-5 min por lado, hasta que estén doradas y firmes.",
+      "Tostar ligeramente el pan de hamburguesa.",
+      "Montar con la lechuga y el tomate al gusto.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3246,6 +4014,13 @@ const seedRecipes = [
     category: "Vegano",
     baseServings: 4,
     notes: "Las lentejas cocidas hacen las veces de carne picada. Sofrito bien hecho de verdura, mínimo 15 min, para que dé cuerpo a la salsa.",
+    steps: [
+      "Picar la zanahoria, el apio y la cebolla muy finos.",
+      "Sofreír en aceite de oliva a fuego medio 10-12 min, hasta que estén bien blandos.",
+      "Añadir el ajo y las lentejas cocidas, rehogar 2 min.",
+      "Incorporar el tomate triturado y cocer a fuego suave 20-25 min, hasta que espese como una boloñesa.",
+      "Cocer los espaguetis en agua con sal y servir con la salsa por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3272,6 +4047,13 @@ const seedRecipes = [
     category: "Vegano",
     baseServings: 4,
     notes: "Prensar el tofu 15 min antes (con peso encima) para que suelte agua y coja mejor la marinada. Horno a 200 ºC unos 25 min.",
+    steps: [
+      "Prensar el tofu con un peso encima 15 min para que suelte agua.",
+      "Cortar el tofu en dados y marinarlo con la salsa de soja y el ajo 15 min.",
+      "Cortar el calabacín, el pimiento y la berenjena en dados.",
+      "Colocar el tofu y las verduras en una bandeja, regar con aceite de oliva.",
+      "Hornear a 200 ºC 25 min, dando la vuelta a mitad de cocción, hasta que estén dorados.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3297,6 +4079,13 @@ const seedRecipes = [
     category: "Vegano",
     baseServings: 4,
     notes: "Sofreír bien las especias en el aceite antes de añadir el líquido, así sueltan todo el aroma.",
+    steps: [
+      "Sofreír la cebolla, el ajo y el jengibre en aceite 5 min.",
+      "Añadir el curry en polvo, remover unos segundos.",
+      "Incorporar el tomate triturado y la leche de coco, cocer 5 min.",
+      "Añadir los garbanzos cocidos y las espinacas, cocer a fuego suave 10-12 min hasta que las espinacas reduzcan y la salsa espese.",
+      "Servir con el arroz basmati.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3323,6 +4112,13 @@ const seedRecipes = [
     category: "Vegetariano",
     baseServings: 4,
     notes: "Escurrir bien el calabacín rallado (con un paño limpio, apretando) para que la masa no quede aguada. Freír en tandas pequeñas.",
+    steps: [
+      "Rallar el calabacín y escurrirlo bien con un paño limpio, apretando para quitar el exceso de agua.",
+      "Mezclar el calabacín con los huevos, la harina, el queso rallado, el ajo picado y el perejil, hasta obtener una masa espesa.",
+      "Calentar aceite abundante en una sartén.",
+      "Freír cucharadas de la masa en tandas pequeñas, 2-3 min por lado, hasta que estén dorados.",
+      "Escurrir sobre papel absorbente y servir calientes.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3349,6 +4145,13 @@ const seedRecipes = [
     category: "Guisos",
     baseServings: 4,
     notes: "Dorar bien la carne antes de mojar con el caldo, ahí está buena parte del sabor. Fuego lento mínimo 1 h 30 min.",
+    steps: [
+      "Salpimentar la carne y dorarla en una olla con aceite, por tandas, hasta que esté bien sellada.",
+      "En la misma olla, sofreír la cebolla y el ajo 5 min.",
+      "Devolver la carne, añadir el tomate triturado y el vino tinto, dejar reducir.",
+      "Incorporar el caldo de carne y el laurel, cocer tapado a fuego lento 1 h.",
+      "Añadir la patata y la zanahoria en trozos grandes, y cocer 30 min más, hasta que todo esté tierno.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3375,6 +4178,13 @@ const seedRecipes = [
     category: "Guisos",
     baseServings: 4,
     notes: "Mejor de un día para otro, gana sabor reposado. Cocción larga y lenta, mínimo 2 h si los callos no vienen precocidos.",
+    steps: [
+      "Si los callos no vienen cocidos, cocerlos en agua con laurel 2-3 h hasta que estén tiernos, y escurrir.",
+      "Sofreír la cebolla y el ajo en una cazuela.",
+      "Añadir el pimentón fuera del fuego, remover y volver a poner al fuego.",
+      "Incorporar los callos, el chorizo, la morcilla y los garbanzos, cubrir con agua o caldo.",
+      "Cocer a fuego lento 45-60 min, hasta que todo esté meloso e integrado. Mejor reposado de un día para otro.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3401,6 +4211,13 @@ const seedRecipes = [
     category: "Guisos",
     baseServings: 4,
     notes: "Fuego suave y constante, sin que hierva a lo bruto o las alubias se rompen. Añadir la patata a media cocción.",
+    steps: [
+      "Sofreír la cebolla y el ajo en una olla con un poco de aceite.",
+      "Añadir el pimentón fuera del fuego, remover y volver a poner al fuego.",
+      "Incorporar las alubias cocidas, el chorizo, la morcilla y el laurel, cubrir con agua o caldo.",
+      "Cocer a fuego suave 20 min, añadiendo la patata en trozos a media cocción.",
+      "Dejar reposar unos minutos antes de servir para que espese ligeramente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3426,6 +4243,14 @@ const seedRecipes = [
     category: "Guisos",
     baseServings: 4,
     notes: "Estilo cottage pie. El puré se marca con un tenedor por encima antes de hornear para que dore y quede crujiente en los picos.",
+    steps: [
+      "Precalentar el horno a 200 ºC.",
+      "Sofreír la cebolla y la zanahoria, añadir la carne picada y dorar bien.",
+      "Incorporar los guisantes y el caldo de carne, cocer 10 min hasta que reduzca.",
+      "Cocer la patata hasta que esté tierna, hacer un puré con la mantequilla y la leche.",
+      "Extender la carne en una fuente, cubrir con el puré marcando la superficie con un tenedor, y espolvorear queso si se usa.",
+      "Hornear 20-25 min hasta que la superficie esté dorada.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3452,6 +4277,13 @@ const seedRecipes = [
     category: "Guisos",
     baseServings: 4,
     notes: "El remedio de siempre. Espumar bien el caldo al principio de la cocción para que quede limpio y transparente.",
+    steps: [
+      "Poner el pollo, la zanahoria, el apio y la cebolla en una olla con agua fría.",
+      "Llevar a ebullición y espumar la superficie para que el caldo quede limpio.",
+      "Cocer a fuego suave 45-60 min, hasta que el pollo esté muy tierno.",
+      "Retirar el pollo, desmenuzarlo y colar el caldo si se desea más limpio.",
+      "Añadir los fideos finos al caldo y cocer 6-8 min, devolver el pollo desmenuzado y calentar 2 min más.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3476,6 +4308,13 @@ const seedRecipes = [
     category: "Guisos",
     baseServings: 4,
     notes: "Guiso lento por excelencia, mínimo 2-3 h a fuego bajo hasta que la carne se despegue sola del hueso. Mejor de un día para otro.",
+    steps: [
+      "Salpimentar el rabo y dorarlo en una olla con aceite por todos los lados.",
+      "Añadir la cebolla, la zanahoria y el ajo, sofreír 10 min.",
+      "Incorporar el tomate triturado y el vino tinto, dejar reducir a fuego medio 10 min.",
+      "Cubrir con el caldo de carne y el laurel, cocer tapado a fuego muy lento 2-3 h, hasta que la carne se despegue del hueso.",
+      "Si se quiere, dejar enfriar y retirar el exceso de grasa antes de recalentar y servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3501,6 +4340,13 @@ const seedRecipes = [
     category: "Guisos",
     baseServings: 4,
     notes: "Cocer la judía verde y la patata juntas hasta que estén tiernas, luego un sofrito rápido de ajo y jamón por encima.",
+    steps: [
+      "Limpiar las judías verdes, quitando las puntas y las hebras.",
+      "Cocer las judías y la patata en trozos en agua con sal, 15-18 min, hasta que estén tiernas.",
+      "Escurrir bien.",
+      "Sofreír el ajo y la cebolla en aceite, añadir el jamón en taquitos y rehogar 2 min.",
+      "Mezclar las judías y la patata con el sofrito, y espolvorear con pimentón si se desea.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3525,6 +4371,13 @@ const seedRecipes = [
     category: "Guisos",
     baseServings: 4,
     notes: "Más caldo que en una paella normal — el arroz debe quedar meloso, casi con sopa. Servir recién hecho, sigue cociendo fuera del fuego.",
+    steps: [
+      "Dorar las costillas en una olla con aceite hasta que estén bien selladas.",
+      "Añadir el pimiento y el ajo, sofreír 5 min.",
+      "Incorporar el tomate triturado y el pimentón, cocer 5 min.",
+      "Añadir el arroz y el caldo caliente con el azafrán disuelto.",
+      "Cocer a fuego medio 18-20 min sin tapar, removiendo de vez en cuando, hasta que el arroz esté meloso y caldoso. Servir enseguida.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3552,6 +4405,13 @@ const seedRecipes = [
     category: "Parrilla",
     baseServings: 4,
     notes: "Al horno bajo (150 ºC) tapadas con papel de aluminio 2 h, luego a la parrilla o grill fuerte 10 min con la salsa para que caramelice.",
+    steps: [
+      "Precalentar el horno a 150 ºC.",
+      "Mezclar el pimentón ahumado, el ajo en polvo, la sal y la pimienta, y frotar el costillar con la mezcla.",
+      "Envolver en papel de aluminio y hornear 2 h, hasta que la carne esté muy tierna.",
+      "Destapar y pincelar con la salsa barbacoa mezclada con el azúcar moreno.",
+      "Terminar en el grill del horno o en la parrilla 8-10 min, pincelando de nuevo, hasta que la salsa caramelice.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3576,6 +4436,13 @@ const seedRecipes = [
     category: "Parrilla",
     baseServings: 4,
     notes: "Sacar de la nevera 1 h antes para que esté a temperatura ambiente. Parrilla muy caliente, pocos minutos por lado, reposar antes de cortar.",
+    steps: [
+      "Sacar el chuletón de la nevera 1 h antes para que esté a temperatura ambiente.",
+      "Calentar la parrilla o plancha al máximo.",
+      "Salar la carne justo antes de ponerla, y marcar 3-4 min por lado para un punto poco hecho, más tiempo si se prefiere más hecho.",
+      "Poner de pie sobre el hueso unos minutos para que se haga por igual.",
+      "Dejar reposar 5 min antes de cortar, para que los jugos se redistribuyan.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3598,6 +4465,13 @@ const seedRecipes = [
     category: "Parrilla",
     baseServings: 4,
     notes: "Marinar mínimo 2 h (mejor toda la noche). Brasa o parrilla a fuego medio para que se haga por dentro sin quemarse fuera.",
+    steps: [
+      "Mezclar el zumo de limón, el ajo, el pimentón, el orégano y el aceite para la marinada.",
+      "Marinar el pollo troceado mínimo 2 h, mejor toda la noche.",
+      "Preparar la brasa o parrilla a fuego medio.",
+      "Asar el pollo 25-30 min, dando vueltas, hasta que esté dorado por fuera y hecho por dentro.",
+      "Dejar reposar unos minutos antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3622,6 +4496,13 @@ const seedRecipes = [
     category: "Parrilla",
     baseServings: 4,
     notes: "Cortar la carne en dados de tamaño uniforme para que se hagan por igual. Parrilla fuerte, poco tiempo, para que quede jugosa por dentro.",
+    steps: [
+      "Cortar el solomillo, el pimiento y la cebolla en dados de tamaño similar.",
+      "Marinar la carne con el aceite, el ajo y el pimentón 30 min.",
+      "Montar las brochetas alternando carne y verdura.",
+      "Asar a la parrilla a fuego fuerte 2-3 min por cada lado, para que quede jugosa por dentro.",
+      "Dejar reposar 3 min antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3645,6 +4526,13 @@ const seedRecipes = [
     category: "Parrilla",
     baseServings: 4,
     notes: "Fuego medio para que la grasa se derrita despacio y quede crujiente sin quemarse. Vigilar de cerca, se dora rápido al final.",
+    steps: [
+      "Salpimentar las lonchas de panceta.",
+      "Calentar la parrilla a fuego medio.",
+      "Colocar la panceta y cocinar 3-4 min por lado, vigilando de cerca porque la grasa se dora rápido al final.",
+      "Espolvorear con pimentón si se desea, justo antes de retirar.",
+      "Escurrir sobre papel absorbente y servir caliente y crujiente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3666,6 +4554,13 @@ const seedRecipes = [
     category: "Parrilla",
     baseServings: 4,
     notes: "Clásico argentino de asador. El chorizo se abre en mariposa antes de la parrilla para que se haga más rápido y quede crujiente.",
+    steps: [
+      "Abrir el chorizo en mariposa, sin llegar a cortarlo del todo.",
+      "Preparar el chimichurri: mezclar el perejil y el ajo picados con el vinagre, el aceite y el orégano.",
+      "Asar el chorizo a la parrilla a fuego medio, 4-5 min por lado, hasta que esté bien hecho y dorado.",
+      "Tostar el pan de baguette ligeramente en la parrilla.",
+      "Montar el choripán con el chorizo dentro del pan y el chimichurri por encima.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3690,6 +4585,13 @@ const seedRecipes = [
     category: "Parrilla",
     baseServings: 4,
     notes: "Marinar mínimo 1 h con ajo, romero y limón. Parrilla a fuego medio-fuerte, pocos minutos por lado para que quede rosado por dentro.",
+    steps: [
+      "Mezclar el ajo picado, el romero, el aceite y el zumo de limón para la marinada.",
+      "Marinar el costillar mínimo 1 h.",
+      "Calentar la parrilla a fuego medio-fuerte.",
+      "Asar el costillar 4-5 min por lado, hasta que esté dorado por fuera y rosado por dentro.",
+      "Dejar reposar 5 min antes de cortar entre los huesos.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3713,6 +4615,13 @@ const seedRecipes = [
     category: "Parrilla",
     baseServings: 4,
     notes: "Con la piel puesta al principio para que se cueza al vapor por dentro, luego sin piel unos minutos más para que dore.",
+    steps: [
+      "Calentar la parrilla a fuego medio.",
+      "Asar las mazorcas con su piel 15 min, dando vueltas, para que se cuezan al vapor por dentro.",
+      "Retirar la piel y asar sin ella 5 min más, hasta que dore ligeramente.",
+      "Untar con mantequilla mientras aún están calientes.",
+      "Espolvorear con sal, pimentón y queso rallado si se desea.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3737,6 +4646,13 @@ const seedRecipes = [
     category: "Peruana",
     baseServings: 4,
     notes: "El pescado se \"cuece\" con el ácido de la lima, no con calor — 10-15 min en la nevera es suficiente. Servir muy frío.",
+    steps: [
+      "Cortar el pescado en dados no muy grandes.",
+      "Colocar el pescado en un bol y cubrir con el zumo de lima recién exprimido.",
+      "Añadir la cebolla morada en juliana fina, el cilantro picado y el chile si se usa.",
+      "Dejar marinar en la nevera 10-15 min, hasta que el pescado se vea opaco: se \"cuece\" con el ácido.",
+      "Servir muy frío, con el boniato cocido y el maíz por encima si se desea.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3761,6 +4677,14 @@ const seedRecipes = [
     category: "Argentina",
     baseServings: 6,
     notes: "Repulgue (el borde trenzado) bien apretado para que no se abran al hornear. Horno a 200 ºC unos 20 min hasta dorar.",
+    steps: [
+      "Sofreír la cebolla y el pimiento en aceite hasta que estén blandos.",
+      "Añadir la carne picada, el pimentón y el comino, dorar bien.",
+      "Dejar enfriar el relleno por completo antes de montar las empanadas, así no humedece la masa.",
+      "Rellenar cada disco de masa con el relleno, el huevo duro y las aceitunas picadas.",
+      "Doblar por la mitad y hacer el repulgue, apretando bien el borde.",
+      "Hornear a 200 ºC 18-20 min hasta que estén doradas.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3786,6 +4710,13 @@ const seedRecipes = [
     category: "Brasileña",
     baseServings: 4,
     notes: "Guiso lento, mínimo 1 h 30 min, para que las carnes queden tiernas y las alubias absorban el sabor. Se sirve con arroz blanco y naranja.",
+    steps: [
+      "Dorar la panceta, el chorizo y las costillas en una olla grande con un poco de aceite.",
+      "Añadir la cebolla y el ajo, sofreír 5 min.",
+      "Incorporar las alubias negras cocidas y el laurel, cubrir con agua o caldo.",
+      "Cocer a fuego lento 1 h 30 min, removiendo de vez en cuando, hasta que las carnes estén muy tiernas y el guiso espese.",
+      "Servir con arroz blanco y gajos de naranja.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3811,6 +4742,14 @@ const seedRecipes = [
     category: "Polaca",
     baseServings: 4,
     notes: "Masa fina, no demasiado harinosa al estirar. Se cuecen en agua hirviendo hasta que suben a la superficie, luego un pase por la sartén con mantequilla.",
+    steps: [
+      "Cocer la patata hasta que esté tierna y hacer un puré, mezclándolo con el queso y la cebolla pochada.",
+      "Amasar la harina con agua y sal hasta obtener una masa lisa y elástica; dejar reposar 20 min.",
+      "Estirar la masa fina y cortar círculos con un vaso o cortapastas.",
+      "Rellenar cada círculo con el puré, doblar por la mitad y sellar bien los bordes.",
+      "Cocer en agua hirviendo hasta que suban a la superficie, unos 3-4 min.",
+      "Saltear en mantequilla unos minutos antes de servir para que doren ligeramente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3834,6 +4773,15 @@ const seedRecipes = [
     category: "Postres",
     baseServings: 12,
     notes: "Pincelar cada capa de masa filo con mantequilla derretida, sin saltarse ninguna. El almíbar de miel se vierte frío sobre el baklava recién horneado y caliente.",
+    steps: [
+      "Precalentar el horno a 170 ºC.",
+      "Picar las nueces y los pistachos, mezclar con la canela.",
+      "Engrasar un molde y colocar una capa de masa filo, pincelando con mantequilla derretida; repetir con varias capas.",
+      "Repartir la mitad de los frutos secos, añadir más capas de masa filo pincelada, y repetir con el resto del relleno.",
+      "Terminar con varias capas más de masa filo pincelada, y cortar en forma de rombos antes de hornear.",
+      "Hornear 40-45 min hasta que esté dorado.",
+      "Preparar un almíbar con la miel calentada, y verterlo frío sobre el baklava recién horneado y caliente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3857,6 +4805,14 @@ const seedRecipes = [
     category: "Asiática",
     baseServings: 4,
     notes: "Wok muy caliente, fideos anchos con cuidado al remover para que no se rompan. Todo el proceso es rápido, tener los ingredientes preparados antes.",
+    steps: [
+      "Marinar la ternera en tiras con un poco de salsa de soja 10 min.",
+      "Calentar el wok a fuego muy fuerte, saltear la ternera hasta que esté dorada, y reservar.",
+      "Saltear el ajo y el brócoli 2 min.",
+      "Apartar a un lado y cuajar el huevo batido en el hueco libre.",
+      "Añadir los fideos de arroz anchos y la salsa de soja, saltear todo junto con cuidado para no romper los fideos, 2-3 min.",
+      "Devolver la ternera, mezclar bien y servir caliente.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3880,6 +4836,13 @@ const seedRecipes = [
     category: "Latina",
     baseServings: 4,
     notes: "Fritura doble: primero para cocer el plátano, se aplasta, y segunda fritura más fuerte para que quede crujiente por fuera.",
+    steps: [
+      "Pelar el plátano macho y cortarlo en rodajas gruesas.",
+      "Freír en aceite a fuego medio 3-4 min por lado, hasta que estén tiernos pero sin dorar del todo.",
+      "Retirar y aplastar cada rodaja con un plato o prensa de tostones, hasta que queden aplanadas.",
+      "Freír de nuevo en aceite bien caliente 2-3 min por lado, hasta que estén crujientes y dorados.",
+      "Escurrir sobre papel absorbente y salar al momento.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3901,6 +4864,14 @@ const seedRecipes = [
     category: "Postres",
     baseServings: 4,
     notes: "La masa se escalfa en agua hirviendo con sal antes de freír. Chocolate a la taza bien espeso, con maicena o harina para que ligue.",
+    steps: [
+      "Llevar el agua a ebullición con una pizca de sal.",
+      "Añadir la harina de golpe fuera del fuego, removiendo enérgicamente hasta obtener una masa lisa que se despegue de las paredes.",
+      "Dejar templar la masa unos minutos y meterla en una manga con boquilla de estrella.",
+      "Formar los churros directamente sobre el aceite bien caliente, cortando con unas tijeras.",
+      "Freír 3-4 min hasta que estén dorados y crujientes, escurrir y espolvorear con azúcar si se desea.",
+      "Para el chocolate, calentar la leche con el chocolate troceado y el azúcar, removiendo hasta que espese.",
+    ],
     variants: [
       {
         id: "v1",
@@ -3925,6 +4896,13 @@ const seedRecipes = [
     category: "Canadiense",
     baseServings: 4,
     notes: "Las patatas fritas deben quedar muy crujientes para aguantar la salsa sin ablandarse del todo. La salsa gravy y el queso van bien calientes, encima justo antes de servir.",
+    steps: [
+      "Cortar las patatas en bastones y freírlas en dos tandas: primero a fuego medio para cocerlas por dentro, luego a fuego fuerte para que doren y queden crujientes.",
+      "Preparar la salsa gravy: fundir la mantequilla, añadir la harina, cocinar 1 min, y añadir el caldo de carne poco a poco hasta espesar.",
+      "Escurrir las patatas fritas sobre papel absorbente y salar.",
+      "Repartir el queso en grano sobre las patatas calientes para que empiece a fundirse.",
+      "Cubrir con la salsa gravy bien caliente justo antes de servir.",
+    ],
     variants: [
       {
         id: "v1",
@@ -4378,6 +5356,21 @@ function fixMissingSesameAllergen(storedRecipes) {
   return { next, changed: anyChanged };
 }
 
+// Rellena "steps" (preparación paso a paso) en recetas ya guardadas que coincidan por id
+// con la biblioteca de fábrica, solo cuando ese dato falta (undefined). Igual que con
+// calorías y alérgenos: nunca toca recetas propias ni pisa unos pasos que ya hubiera.
+function backfillSteps(storedRecipes) {
+  let anyChanged = false;
+  const next = storedRecipes.map((r) => {
+    if (r.steps !== undefined) return r;
+    const libRecipe = RECIPE_LIBRARY.find((lr) => lr.id === r.id);
+    if (!libRecipe || libRecipe.steps === undefined) return r;
+    anyChanged = true;
+    return { ...r, steps: libRecipe.steps };
+  });
+  return { next, changed: anyChanged };
+}
+
 export default function App() {
   const [view, setView] = useState("menu");
   const [recipes, setRecipes] = useState([]);
@@ -4426,9 +5419,10 @@ export default function App() {
         const { next: step1, changed: c1 } = backfillCalories(r);
         const { next: step2, changed: c2 } = fixPlantMilkFalsePositive(step1);
         const { next: step3, changed: c3 } = fixMissingSesameAllergen(step2);
-        if (c1 || c2 || c3) {
-          setRecipes(step3);
-          saveKey("recipes", step3);
+        const { next: step4, changed: c4 } = backfillSteps(step3);
+        if (c1 || c2 || c3 || c4) {
+          setRecipes(step4);
+          saveKey("recipes", step4);
         }
       }
       setPlan(p);
@@ -5242,6 +6236,7 @@ function Library({ recipes, pantryItems, onAdd, onEdit, onDelete, onDuplicate, o
   const [cat, setCat] = useState(null); // null = todas, "__fav" = favoritas
   const [excludeAllergens, setExcludeAllergens] = useState([]); // alérgenos a excluir ("sin gluten"...)
   const [onlyCookable, setOnlyCookable] = useState(false); // solo "puedo hacerlo ya" con la despensa
+  const [expandedSteps, setExpandedSteps] = useState(null); // id de la receta con la preparación abierta
 
   const categories = useMemo(() => {
     const s = new Set();
@@ -5473,6 +6468,28 @@ function Library({ recipes, pantryItems, onAdd, onEdit, onDelete, onDuplicate, o
                     <p style={{ margin: 0, fontFamily: display, fontSize: 15, color: c.ink, lineHeight: 1.25, whiteSpace: "pre-wrap" }}>
                       {r.notes}
                     </p>
+                  </div>
+                )}
+                {(r.steps || []).length > 0 && (
+                  <div style={{ marginTop: 11, paddingTop: 10, borderTop: r.notes && r.notes.trim() ? "none" : `1px dashed ${c.line}` }}>
+                    <button
+                      onClick={() => setExpandedSteps(expandedSteps === r.id ? null : r.id)}
+                      style={{
+                        display: "flex", alignItems: "center", gap: 6, background: "none", border: "none",
+                        padding: 0, color: c.herb, fontSize: 13, fontWeight: 700,
+                      }}
+                    >
+                      <ChefHat size={14} />
+                      {expandedSteps === r.id ? "Ocultar preparación" : "Ver preparación"}
+                      <ChevronRight size={14} style={{ transform: expandedSteps === r.id ? "rotate(90deg)" : "none", transition: "transform .15s" }} />
+                    </button>
+                    {expandedSteps === r.id && (
+                      <ol style={{ margin: "10px 0 0", paddingLeft: 20, display: "flex", flexDirection: "column", gap: 7 }}>
+                        {r.steps.map((step, i) => (
+                          <li key={i} style={{ fontSize: 14, color: c.ink, lineHeight: 1.45 }}>{step}</li>
+                        ))}
+                      </ol>
+                    )}
                   </div>
                 )}
               </div>
@@ -6431,6 +7448,11 @@ function RecipeEditor({ recipe, onClose, onSave }) {
   const [r, setR] = useState(recipe);
   const set = (patch) => setR({ ...r, ...patch });
 
+  const addStep = () => set({ steps: [...(r.steps || []), ""] });
+  const updateStep = (i, text) =>
+    set({ steps: (r.steps || []).map((s, idx) => (idx === i ? text : s)) });
+  const removeStep = (i) => set({ steps: (r.steps || []).filter((_, idx) => idx !== i) });
+
   const addVariant = () =>
     set({ variants: [...r.variants, { id: uid(), name: r.variants.length ? `Opción ${r.variants.length + 1}` : "Estándar", ingredients: [] }] });
 
@@ -6491,20 +7513,52 @@ function RecipeEditor({ recipe, onClose, onSave }) {
       <p style={{ fontSize: 13, color: c.muted, marginTop: -2, fontStyle: "italic" }}>
         Las cantidades de abajo son para este número de personas. Al planificar puedes ajustarlas con el +/− del plato.
       </p>
-      <label style={lbl}>Notas / preparación (opcional)</label>
+      <label style={lbl}>Nota rápida (opcional)</label>
       <textarea
         value={r.notes || ""}
         onChange={(e) => set({ notes: e.target.value })}
-        placeholder="Pasos, tiempos, trucos… lo que quieras recordar."
-        rows={4}
+        placeholder="Un apunte breve o truco rápido — el paso a paso completo va abajo."
+        rows={2}
         style={{ ...inp, resize: "vertical", lineHeight: 1.45 }}
       />
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "16px 0 8px" }}>
+        <span style={{ fontFamily: display, fontSize: 15, fontWeight: 700, color: c.ink, lineHeight: 1 }}>Preparación paso a paso</span>
+        <button onClick={addStep} style={ghostBtn}><Plus size={14} /> Paso</button>
+      </div>
+      {(r.steps || []).length === 0 && (
+        <p style={{ fontSize: 13, color: c.muted, fontStyle: "italic", marginTop: 0 }}>
+          Sin pasos todavía. Añade el primero para empezar la receta.
+        </p>
+      )}
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 8 }}>
+        {(r.steps || []).map((step, i) => (
+          <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+            <span
+              style={{
+                width: 24, height: 24, borderRadius: "50%", background: c.herbSoft, color: c.herb,
+                fontWeight: 700, fontSize: 12, display: "grid", placeItems: "center", flexShrink: 0, marginTop: 6,
+              }}
+            >
+              {i + 1}
+            </span>
+            <textarea
+              value={step}
+              onChange={(e) => updateStep(i, e.target.value)}
+              rows={2}
+              placeholder={`Paso ${i + 1}…`}
+              style={{ ...inp, margin: 0, flex: 1, resize: "vertical", lineHeight: 1.4, fontSize: 14 }}
+            />
+            <button onClick={() => removeStep(i)} style={{ ...iconBtn, marginTop: 4 }}><X size={15} /></button>
+          </div>
+        ))}
+      </div>
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", margin: "18px 0 8px" }}>
         <span style={{ fontFamily: display, fontSize: 15, fontWeight: 700, color: c.ink, lineHeight: 1 }}>Opciones de ingredientes</span>
         <button onClick={addVariant} style={ghostBtn}><Plus size={14} /> Opción</button>
       </div>
-      <p style={{ fontSize: 12, color: c.muted, marginTop: 0 }}>
+      <p style={{ fontSize: 13, color: c.muted, marginTop: 0 }}>
         Cada opción es una versión del plato (p. ej. "con carne" / "vegana") con su propia lista.
       </p>
 
